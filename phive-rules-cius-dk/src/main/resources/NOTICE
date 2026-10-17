@@ -3,3 +3,11 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained CIUS-DK validation rules (DK-EN16931-UBL.sch of version 1.17.0) are originally from the
+"Danish eInvoice implementation for CEN EN standards" package (PEPPOL_DK_CIUS_2026-08-03_v1.17.0.ff275f9.zip)
+published by Nemhandel / Erhvervsstyrelsen (Danish Business Authority):
+https://rep.erst.dk/git/openebusiness/common/-/tree/master/released/peppol
+Copyright 2023 Danish Business Authority (ERST)
+License: European Union Public License 1.1 or any later version (SPDX: EUPL-1.1+), as stated in the LICENSE.txt of the package.
+The XSLT files in this module are generated from the upstream Schematron sources for performance reasons only.

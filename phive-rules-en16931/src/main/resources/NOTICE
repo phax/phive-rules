@@ -3,3 +3,13 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained EN 16931 validation rules are originally from
+https://github.com/ConnectingEurope/eInvoicing-EN16931 (CEN/TC 434, releases "validation-X.Y.Z")
+- Versions 1.1.0, 1.2.0, 1.2.1 and 1.2.3: Apache License, Version 2.0 (Apache-2.0)
+  Copyright (C) 2016-2018 (1.1.0) and 2016-2019 (1.2.x) Oriol Bausa, Andreas Pelekies, Philip Helger and contributors
+- Versions 1.3.0 to 1.3.17 (including 1.3.6a, a fork of 1.3.6 at https://github.com/phax/eInvoicing-EN16931):
+  European Union Public Licence (EUPL) version 1.2 (EUPL-1.2)
+- Version 1.0.0: no license statement was found in the upstream release
+
+The XSLT files of this module are generated from the upstream Schematron sources.

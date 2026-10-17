@@ -3,3 +3,23 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained SETU validation rules and schemas are originally from
+https://github.com/setu-standards/xml-specifications (folders setu/validator and setu/schemas)
+Covered versions: SETU 1.4 (Assignment, HumanResource, StaffingOrder, TimeCard) and
+TimeCard 1.4.2. The files name "SETU (helpdesk@setu.nl)" as author. The upstream repository
+does not contain a license file for the SETU specifications.
+
+The contained HR-XML schemas (external/schemas/hr-xml) are reused by SETU, see
+https://github.com/setu-standards/xml-specifications/tree/main/hr-xml
+Copyright 2007 The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org
+They are provided under the HR-XML Consortium license
+(https://github.com/setu-standards/xml-specifications/blob/main/hr-xml/license.txt):
+permission to use, copy, modify or redistribute the Work for any purpose and without fee or
+royalty is granted, provided that the above copyright notice is included on all copies and
+that any changes or modifications are noted.
+Modification: in hr-xml/TimeCard/TimeCard.xsd the schemaLocation attribute of the import of
+the XML namespace was removed.
+
+The XSLT files in external/schematron are generated from the upstream Schematron sources
+for performance reasons only; they are not hand-written.

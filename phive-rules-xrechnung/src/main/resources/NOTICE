@@ -3,3 +3,12 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained XRechnung validation rules (module versions 1.2.0 to 3.0.2) are originally from
+https://github.com/itplr-kosit/xrechnung-schematron
+published by KoSIT (Koordinierungsstelle fuer IT-Standards), Schematron releases 1.2.0 to 2.6.0.
+License: Apache License, Version 2.0 (SPDX: Apache-2.0) - see https://github.com/itplr-kosit/xrechnung-schematron/blob/master/LICENSE
+The upstream LICENSE file additionally states that the XRechnung standard is an implementation of the
+EN 16931 data model and syntaxes, copyright of CEN, and that reproduction is permitted by CEN and DIN.
+Upstream Schematron release 1.2.0 did not ship a LICENSE file; the license was first shipped with release 1.2.1.
+The XSLT files in this module are generated from the upstream Schematron sources for performance reasons only.

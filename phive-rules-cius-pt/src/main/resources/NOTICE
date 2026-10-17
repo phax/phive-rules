@@ -3,3 +3,7 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained CIUS-PT validation rules (module versions 2.0.0 and 2.1.1) are originally from the CIUS-PT packages published by eSPap (Portugal):
+https://www.espap.gov.pt/FrontEnd/Paginas/Areas/SP_Fin/SP_Fin_NormasFEAP_tpl_1.aspx
+The XSLT files in this module are generated from the upstream Schematron sources for performance reasons only.

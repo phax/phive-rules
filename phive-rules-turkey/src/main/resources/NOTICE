@@ -3,3 +3,12 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained UBL-TR e-Fatura validation rules are originally from the
+e-Fatura package published by GIB (Gelir Idaresi Baskanligi):
+  https://ebelge.gib.gov.tr/efaturamevzuat.html
+  File:      UBL-TR_Main_Schematron
+  Version:   1.2.1
+
+The XSLT file is generated from the upstream Schematron source (UBL-TR_Main_Schematron)
+by the ph-schematron-maven-plugin purely for performance reasons.

@@ -3,3 +3,17 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained Peppol BIS Billing 3.0, Self-Billing 3.0 and Post-Award validation rules (versions 2025.11, 2026.3 and 2026.5)
+are originally from https://docs.peppol.eu/poacc/billing/3.0/ (OpenPeppol). They embed the CEN EN 16931 rules from
+https://github.com/ConnectingEurope/eInvoicing-EN16931 (file CEN-EN16931-UBL.sch), licensed under the
+European Union Public Licence (EUPL) version 1.2 (EUPL-1.2).
+The Peppol files state: "This schematron uses business terms defined the CEN/EN16931-1 and is reproduced with
+permission from CEN. CEN bears no liability from the use of the content and implementation of this schematron
+and gives no warranties expressed or implied for any purpose."
+
+The contained A-NZ Peppol BIS 3.0 validation rules (versions 1.0.11 and 1.0.12) are originally from
+https://github.com/A-NZ-PEPPOL/A-NZ-PEPPOL-BIS-3.0
+Copyright (C) 2020-2023 OpenPEPPOL AISBL, licensed under the Apache License, Version 2.0 (Apache-2.0).
+
+The XSLT files of this module are generated from the upstream Schematron sources.

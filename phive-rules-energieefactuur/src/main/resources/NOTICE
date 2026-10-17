@@ -3,3 +3,17 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained Energie eFactuur (SEeF) UBL extension schemas (external/schemas/energieefactuur)
+are originally from the Standaard Energie eFactuur releases v1.0.0, v1.0.1, v2.0.0, v3.0.0
+and v3.1.0, see https://energie-efactuur.nl/
+(v3.1.0 is managed by the Marktfaciliteringsforum (MFF) - Taakgroep Energie eFactuur).
+The standard documents of all these releases state: "Dit werk is gelicenseerd onder de licentie
+Creative Commons Naamsvermelding-GeenAfgeleideWerken 3.0 Unported"
+(Creative Commons Attribution-NoDerivs 3.0 Unported, SPDX: CC-BY-ND-3.0,
+http://creativecommons.org/licenses/by-nd/3.0/deed.nl).
+Modification: in the contained XSD files the schemaLocation attributes of the xsd:import
+elements were removed.
+
+The Schematron rules for validating Energie eFactuur documents are those of the SimplerInvoicing
+module (phive-rules-simplerinvoicing), see the NOTICE file of that module.

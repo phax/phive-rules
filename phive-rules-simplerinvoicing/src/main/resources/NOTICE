@@ -4,5 +4,29 @@
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
 
-The contained SimplerInvoicing validation rules are originally from
-https://github.com/SimplerInvoicing/validation
+The contained SimplerInvoicing (SI-UBL, SI-UBL 2.0 G-Account extension) and
+NLCIUS-CII validation rules are originally from
+https://github.com/peppolautoriteit-nl/validation
+(formerly https://github.com/SimplerInvoicing/validation)
+Covered versions: SI-UBL 1.0, 1.1, 1.2, 1.2.3, 1.2.4, 2.0, 2.0.1, 2.0.2, 2.0.3 up to
+2.0.3.13, SI-UBL 2.0 G-Account extension 1.0 up to 1.0.13 and NLCIUS-CII 1.0.3 up to
+1.0.3.13.
+License: MIT (SPDX: MIT), Copyright (c) 2017 Stichting Simplerinvoicing, see
+https://github.com/peppolautoriteit-nl/validation/blob/HEAD/LICENSE.txt
+The license file was added to that repository on 2017-05-08; the upstream tags v1.0 (2014)
+and v1.1 (2015) predate it and contain no license file.
+The NLCIUS-CII rules were authored by Wouter van den Berg and Robin de Veer (TNO) with
+additional changes by Jelte Jansen (Simplerinvoicing).
+
+The SI-UBL 2.0.x and NLCIUS-CII rules include the EN 16931 validation artefacts of CEN/TC 434 from
+https://github.com/ConnectingEurope/eInvoicing-EN16931
+- SI-UBL 2.0 and 2.0.1 (upstream tag validation-1.2.1):
+  Apache License 2.0 (SPDX: Apache-2.0), Copyright (C) 2016-2019 Oriol Bausà, Andreas Pelekies,
+  Philip Helger and contributors
+- SI-UBL 2.0.2 (upstream commit 3cb9fda3), SI-UBL 2.0.3 up to 2.0.3.13 (upstream tags
+  validation-1.3.1 up to validation-1.3.16), the SI-UBL 2.0 G-Account extensions and NLCIUS-CII 1.0.3
+  up to 1.0.3.13 (upstream tags validation-1.3.2 up to validation-1.3.16):
+  European Union Public Licence v. 1.2 (SPDX: EUPL-1.2)
+
+The XSLT files in external/schematron are generated from the upstream Schematron sources
+for performance reasons only; they are not hand-written.

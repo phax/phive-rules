@@ -3,3 +3,13 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained Serbian SRBDT CIUS and extension (srbdtext) validation rules (version 1.0.0) are
+originally from https://github.com/vasiljevic/en16931-srbdt-va (folder srbdt)
+License: European Union Public Licence v. 1.2 (SPDX: EUPL-1.2), see
+https://github.com/vasiljevic/en16931-srbdt-va/blob/HEAD/LICENSE.txt
+That repository is a derivative of https://github.com/ConnectingEurope/eInvoicing-EN16931
+No copyright holder is named in the Schematron files.
+
+The XSLT files in external/schematron are generated from the upstream Schematron sources
+for performance reasons only; they are not hand-written.

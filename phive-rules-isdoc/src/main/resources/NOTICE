@@ -3,3 +3,23 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained ISDOC schemas (external/schemas/isdoc) and Schematron rules are originally from
+the ISDOC standard, see https://www.isdoc.cz/ and
+https://archiv.mv.gov.cz/isdoc/clanek/aktualni-verze.aspx
+- Version 6.0.1 (2014-05-26): (c) 2010-2014 ICT UNIE o.s., http://www.ictu.cz/;
+  (c) 2009 Sdruzeni pro informacni spolecnost (SPIS), http://www.spis.cz/
+- Version 6.0.2 (2022-03-23): (c) 2022 MVCR, https://www.mvcr.cz/; plus the copyright holders
+  of version 6.0.1
+The schema files grant: "Permission to use, copy, modify and distribute this schema and its
+documentation for any purpose and without fee is hereby granted in perpetuity, provided that the
+above copyright notice and this paragraph appear in all copies. The copyright holders make no
+representation about the suitability of the schema for any purpose. It is provided "as is"
+without expressed or implied warranty. Neither the name of the SPIS, ICT UNIE, nor the name
+ISDOC may be used to endorse or promote products derived from this software without specific
+prior written permission."
+The Schematron files of the ISDOC packages carry no separate notice. In version 6.0.2 two
+syntax errors of the upstream Schematron were corrected by this project.
+
+The XSLT files in external/schematron are generated from the upstream Schematron sources
+for performance reasons only; they are not hand-written.

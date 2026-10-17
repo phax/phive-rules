@@ -3,3 +3,11 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained Peppol PINT validation rules are originally from the OpenPeppol PINT repositories
+(https://github.com/OpenPeppol/PINT and its jurisdiction specific siblings) and https://docs.peppol.eu/poac/.
+- PINT UAE (pint-ae, versions 2026.3 and 2026.5) from https://github.com/OpenPeppol/PINT-AE
+  Copyright (C) 2020-2023 OpenPEPPOL AISBL, licensed under the Apache License, Version 2.0 (Apache-2.0)
+  according to the README of that repository.
+
+The XSLT files of this module are generated from the upstream Schematron sources.

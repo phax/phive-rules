@@ -3,3 +3,9 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained CIUS-RO validation rules (module versions 1.0.3, 1.0.4, 1.0.8 and 1.0.9) are originally from the
+"ro16931-ubl" validation artefacts published by ANAF / Ministerul Finantelor (Romania):
+https://mfinante.gov.ro/web/efactura/informatii-tehnice
+License: European Union Public Licence (EUPL) version 1.2 (SPDX: EUPL-1.2), as stated in the headers of the upstream Schematron files.
+The XSLT files in this module are generated from the upstream Schematron sources for performance reasons only.

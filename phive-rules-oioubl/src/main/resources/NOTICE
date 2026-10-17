@@ -3,3 +3,9 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained OIOUBL validation rules (version 1.17.2) are originally from the "OIOUBL Schematron" package
+(OIOUBL_Schematron_2026-05-01_v1.17.2.ec0bcd89.zip) published by Nemhandel / Erhvervsstyrelsen (Danish Business Authority):
+https://git.erst.dk/openebusiness/common/-/tree/master/released/oioubl
+The headers of the upstream Schematron files state: "It can be used following the Common Creative Licence".
+The XSLT files in this module are generated from the upstream Schematron sources for performance reasons only.

@@ -3,3 +3,13 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained UBL.BE (GLOBALUBL.BE) validation rules are originally from
+https://www.ubl.be/version-information/
+Covered versions: 1, 1.1, 1.2, 1.2.3, 1.2.5, 1.2.6, 1.2.7, 1.2.8, 1.2.9, 1.30 and 1.31.
+Copyright holder: UBL.BE ASBL-VZW (the web site carries the notice "Copyright 2017 UBL.BE
+ASBL-VZW | All Rights Reserved"). The upstream publication does not state a license for
+these validation artefacts.
+
+The XSLT files in external/schematron are generated from the upstream Schematron sources
+for performance reasons only; they are not hand-written.

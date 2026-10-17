@@ -35,6 +35,13 @@
       <name>Apache 2</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
       <distribution>repo</distribution>
+      <comments>Java code and all files except the ZATCA XSLT files</comments>
+    </license>
+    <license>
+      <name>GNU Lesser General Public License v3.0</name>
+      <url>https://www.gnu.org/licenses/lgpl-3.0.txt</url>
+      <distribution>repo</distribution>
+      <comments>ZATCA SDK XSLT files under src/main/resources/external/schematron (see NOTICE)</comments>
     </license>
   </licenses>
   <organization>

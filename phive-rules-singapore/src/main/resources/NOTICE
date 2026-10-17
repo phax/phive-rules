@@ -1,0 +1,15 @@
+=============================================================================
+= NOTICE file corresponding to section 4d of the Apache License Version 2.0 =
+=============================================================================
+This product includes Open Source Software developed by
+Philip Helger - https://www.helger.com/
+
+The contained InvoiceNow GST validation rules are originally from the
+IRAS (Inland Revenue Authority of Singapore) "Data submission to IRAS under InvoiceNow GST
+requirements" resource package (v0.3.4 rules):
+  https://go.gov.sg/gstinvoicenowreq-resources
+  File:      non_peppol_doc_validation.sch
+  Version:   2026.9.8 (date of the last changelog entry of the package)
+
+The XSLT file is generated from the upstream Schematron source by the
+ph-schematron-maven-plugin purely for performance reasons.

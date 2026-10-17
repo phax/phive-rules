@@ -66,6 +66,11 @@ The legacy aggregator `phive-rules-all-legacy` moved to [phive-rules-legacy](htt
 
 The Java code in this project is licensed under the Apache 2 license.
 The code of the validation artefacts used may use a different license. 
+The origin and license of the contained validation artefacts are documented per module and rule version in the `NOTICE` file of each module (`src/main/resources/NOTICE`).
+
+`phive-rules-zatca` contains the XSLT files of the ZATCA e-Invoicing SDK, which are licensed under the GNU LGPL v3 (texts: `LICENSE-LGPL-3.0` and `LICENSE-GPL-3.0` in that module).
+Those files stay under the LGPL v3; everything else in the module stays under the Apache 2 license.
+For the license compatibility see the [FSF license list](https://www.gnu.org/licenses/license-list.html#apache2) (Apache 2 is compatible with GPL v3 and LGPL v3).
 
 # Maven usage
 
@@ -279,6 +284,10 @@ v4.6.4 - work in progress
 * Updated to phive-rules-foundations 5.0.6
 * `phive-rules-all` now also registers the new Brazilian validation rules of `phive-rules-brazil` from phive-rules-foundations (NF-e/NFC-e, CT-e, MDF-e, NFCom, NF3e, BP-e, NFAg, NFGas and NFS-e, Group ID `br.gov.nfe`)
 * Added support for EN 16931 validation rules 1.3.17 (UBL and CII) and deprecated 1.3.16
+* Documented the third-party origin and license of the contained validation rules per module and rule version in the `NOTICE` files.
+  The pre-compiled XSLTs are generated from the upstream Schematron sources for performance reasons and therefore carry no upstream license header.
+  See [issue #98](https://github.com/phax/phive-rules/issues/98).
+* `phive-rules-zatca` now ships the LGPL-3.0 and GPL-3.0 license texts, because the contained ZATCA SDK XSLT files are licensed under the LGPL-3.0; the module's POM lists both licenses
 
 v4.6.3 - 2026-09-30
 * Added the France PPF Flux 10 validation rules v1.1, VES coordinate `fr.ctc.flux10:report:1.1`, and deprecated the 1.0 rules.

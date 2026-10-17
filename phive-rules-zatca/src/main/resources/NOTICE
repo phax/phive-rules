@@ -3,3 +3,29 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained ZATCA/FATOORA validation rules are originally from the
+Zakat, Tax and Customs Authority (ZATCA) e-Invoicing toolkit SDK
+(https://sandbox.zatca.gov.sa/downloadSDK):
+  Files:     20210819_ZATCA_E-invoice_Validation_Rules.xsl
+  Versions:  2.0.3, 2.3.8 and 3.4.6 (SDK versions)
+  Copyright: Copyright 2021 ZATCA
+  License:   GNU Lesser General Public License v3 (LGPL-3.0) as stated in the file header
+
+The contained CEN EN 16931 UBL validation rules, as shipped with the ZATCA SDK:
+  Files:     CEN-EN16931-UBL.xsl
+  Versions:  2.0.3, 2.3.8 and 3.4.6 (SDK versions)
+  Copyright: The copyright of CEN/EN 16931:2017 is owned by CEN and its members
+  License:   GNU Lesser General Public License v3 (LGPL-3.0) as stated in the file header,
+             in compliance with the terms granted in the EUPL v1.2 under which the original
+             standard has been published
+
+These XSLT files are redistributed as provided by the upstream SDK. The only changes are
+minor local patches (marked with "[PH]") such as removing the SchXslt metadata or fixing the SVRL output.
+
+Licensing of this artefact is per file:
+  - The Java code and all other files of this module are licensed under the Apache License 2.0 (see LICENSE).
+  - The XSLT files listed above remain licensed under the GNU Lesser General Public License v3.
+    They refer to a "LICENSE.txt" in the root folder; the LGPL-3.0 text is contained in
+    LICENSE-LGPL-3.0 and, because the LGPL-3.0 incorporates it by reference, the GPL-3.0 text
+    in LICENSE-GPL-3.0 (both at the root of this artefact).

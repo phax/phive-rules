@@ -3,3 +3,21 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained France CTC validation rules are originally from
+https://github.com/fnfempe/France_RFE (FNFE-MPE):
+  Versions:  1.4.0.03 and 1.4.0.04
+  License:   Apache License, Version 2.0 (Apache-2.0)
+
+The contained France CTC validation rules of the versions 0.1, 1.2.0, 1.3.0, 1.3.1 and 1.4.0
+are originally from FNFE-MPE (https://fnfe-mpe.org/ressources/).
+
+The contained France Flux 1 and Flux 10 validation rules and XML Schemas are originally from
+AIFE - PPF (Portail Public de Facturation).
+
+The contained France Flux 1 XML Schemas include third-party schemas:
+  OASIS Universal Business Language (UBL) 2.1 - Copyright (c) OASIS Open 2013. All Rights Reserved.
+  UN/CEFACT Cross Industry Invoice and code lists - Copyright (C) UN/CEFACT (2016). All Rights Reserved.
+
+The XSLT files are generated from the upstream Schematron sources by the
+ph-schematron-maven-plugin purely for performance reasons.

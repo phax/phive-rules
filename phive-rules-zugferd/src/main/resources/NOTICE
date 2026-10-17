@@ -3,3 +3,10 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained ZUGFeRD / Factur-X validation rules (module versions 2.0.1, 2.1, 2.2, 2.3.2, 2.3.3, 2.4, 2.5 and 2.5.2) are originally from the
+ZUGFeRD / Factur-X packages published by FeRD (Forum elektronische Rechnung Deutschland) together with FNFE-MPE:
+https://www.ferd-net.de/standards/paket-downloads/index.html
+Copyright AWV e.V., FNFE (as stated in the technical appendices of the packages).
+License: for the packages of version 2.1 and 2.2 the Apache License, Version 2.0 (SPDX: Apache-2.0), as included in the ReadMe of the package.
+The XSLT files in this module are generated from the upstream Schematron sources for performance reasons only.

@@ -3,3 +3,21 @@
 =============================================================================
 This product includes Open Source Software developed by
 Philip Helger - https://www.helger.com/
+
+The contained Croatian eRacun (HR-CIUS-EXT-EN16931-UBL) validation rules are originally from
+the Ministry of Finance / Porezna uprava of the Republic of Croatia, published on
+https://porezna.gov.hr/fiskalizacija/bezgotovinski-racuni/eracun
+Covered versions (the version numbers 1.0.x are assigned by this project):
+1.0.0 (HRUBLValidator 1.0.0), 1.0.1 (HRUBLValidator 2026-01-20), 1.0.2 (HRUBLSchematron
+2026-01-24), 1.0.3 (HRUBLSchematron 06.03.2026) and 1.0.4 (HRUBLSchematron 13.03.2026).
+No license is stated for these files. The web site states "Sva prava pridrzana (c) 2023
+Republika Hrvatska, Ministarstvo financija, Porezna uprava. Sadrzaji s ovih stranica se mogu
+prenositi bez posebne dozvole uz navodjenje izvora".
+The versions 1.0.0 to 1.0.3 state in their header: "This schematron uses business terms defined
+the CEN/EN16931-1 and is reproduced with permission from CEN."
+The contained eIzvjestavanje XML Schema (external/schemas/1.0/eIzvjestavanjeSchema.xsd) is
+from https://porezna.gov.hr/fiskalizacija/bezgotovinski-racuni/fiskalizacija-bezgotovinskih-racuna
+and is subject to the same web site statement.
+
+The XSLT files in external/schematron are generated from the upstream Schematron sources
+for performance reasons only; they are not hand-written.
