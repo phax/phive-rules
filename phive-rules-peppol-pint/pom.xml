@@ -61,7 +61,7 @@
     </dependency>
     <dependency>
       <groupId>com.helger.phive.rules</groupId>
-      <artifactId>phive-rules-api</artifactId>
+      <artifactId>phive-rules-shared</artifactId>
     </dependency>
 
     <dependency>
