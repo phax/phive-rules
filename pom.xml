@@ -78,7 +78,7 @@
     <peppol-vida.version>0.11.1</peppol-vida.version>
     <ph-cii.version>4.1.3</ph-cii.version>
     <ph-sbdh.version>6.1.0</ph-sbdh.version>
-    <ph-schematron.version>10.2.0</ph-schematron.version>
+    <ph-schematron.version>10.3.0</ph-schematron.version>
     <ph-ubl.version>10.2.1</ph-ubl.version>
   </properties>
   
