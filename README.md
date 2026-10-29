@@ -287,7 +287,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.6.4 - work in progress
+v4.6.4 - 2026-10-29
 * Updated to phive-rules-foundations 5.0.6
 * `phive-rules-all` now also registers the new Brazilian validation rules of `phive-rules-brazil` from phive-rules-foundations (NF-e/NFC-e, CT-e, MDF-e, NFCom, NF3e, BP-e, NFAg, NFGas and NFS-e, Group ID `br.gov.nfe`)
 * Added support for EN 16931 validation rules 1.3.17 (UBL and CII) and deprecated 1.3.16
@@ -298,6 +298,7 @@ v4.6.4 - work in progress
 * Added the Peppol Logistics validation rules of release 1.3.1 in the new module `phive-rules-peppol-logistics` with the Group ID `org.peppol.logistics`.
   The VES versions are the versions of the single transactions: `advanced-despatch-advice:1.4` (T120), `weight-statement:1.3` (T122), `transport-execution-plan-request:1.2` (T123), `transport-execution-plan:1.2` (T124), `waybill:1.1` (T125), `transportation-status-request:1.2` (T126), `transportation-status:1.2` (T127), `receipt-advice:1.1` (T128) and `application-response:1.0` (T129).
   The rules are also registered by `phive-rules-all`.
+* Uses ph-schematron 10.3.0 for faster execution
 
 v4.6.3 - 2026-09-30
 * Added the France PPF Flux 10 validation rules v1.1, VES coordinate `fr.ctc.flux10:report:1.1`, and deprecated the 1.0 rules.
