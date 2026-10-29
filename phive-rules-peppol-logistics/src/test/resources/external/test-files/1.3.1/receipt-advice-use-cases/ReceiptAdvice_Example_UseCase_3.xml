@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReceiptAdvice xmlns="urn:oasis:names:specification:ubl:schema:xsd:ReceiptAdvice-2"
+                   xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+   <cbc:CustomizationID>urn:fdc:peppol.eu:logistics:trns:receipt_advice:1</cbc:CustomizationID>
+   <cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:despatch_advice_w_receipt_advice:1</cbc:ProfileID>
+   <cbc:ID>5658999</cbc:ID>
+   <cbc:IssueDate>2021-09-10</cbc:IssueDate>
+   <cbc:IssueTime>12:05:00</cbc:IssueTime>
+   <cbc:DocumentStatusCode>5</cbc:DocumentStatusCode>
+	<cbc:ReceiptAdviceTypeCode>D</cbc:ReceiptAdviceTypeCode>
+	
+   <cac:DespatchDocumentReference>
+      <cbc:ID>565899</cbc:ID>
+      <cbc:IssueDate>2021-09-10</cbc:IssueDate>
+      <cbc:IssueTime>12:00:00</cbc:IssueTime>
+      <cbc:DocumentStatusCode>RE</cbc:DocumentStatusCode>
+	  <cbc:DocumentDescription>Incorrect Project reference number. Please correct and resend. </cbc:DocumentDescription>
+   </cac:DespatchDocumentReference>
+	
+     <cac:DeliveryCustomerParty>
+      <cac:Party>
+         <cbc:EndpointID schemeID="0088">5798000000124</cbc:EndpointID>
+         <cac:PartyIdentification>
+            <cbc:ID schemeID="0088"> 5790000435951</cbc:ID>
+         </cac:PartyIdentification>
+         <cac:PartyName>
+            <cbc:Name> Receiver inc. </cbc:Name>
+         </cac:PartyName>
+		  <cac:PartyLegalEntity>
+			  <cbc:RegistrationName> Receiver inc.</cbc:RegistrationName>
+		  </cac:PartyLegalEntity>
+      </cac:Party>
+   </cac:DeliveryCustomerParty>
+	
+   <cac:DespatchSupplierParty>
+      <cac:Party>
+         <cbc:EndpointID schemeID="0088"> 7300010000001</cbc:EndpointID>
+         <cac:PartyIdentification>
+            <cbc:ID schemeID="0088"> 7300010000001</cbc:ID>
+         </cac:PartyIdentification>
+         <cac:PartyName>
+            <cbc:Name> Sender inc. </cbc:Name>
+         </cac:PartyName>
+		  <cac:PartyLegalEntity>
+			  <cbc:RegistrationName> Sender inc.</cbc:RegistrationName>
+		  </cac:PartyLegalEntity>
+      </cac:Party>
+   </cac:DespatchSupplierParty>
+
+	<cac:ReceiptLine>
+		<cbc:ID>1</cbc:ID>
+		<cac:DespatchLineReference>
+			<cbc:LineID>1</cbc:LineID>
+		</cac:DespatchLineReference>
+	</cac:ReceiptLine>
+
+</ReceiptAdvice>

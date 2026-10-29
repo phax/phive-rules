@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ubl:WeightStatement xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:WeightStatement-2"
+                     xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                     xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+   <cbc:CustomizationID>urn:fdc:peppol.eu:logistics:trns:weight_statement:1</cbc:CustomizationID>
+   <cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:weight_statement:1</cbc:ProfileID>
+   <cbc:ID>GOA294107</cbc:ID>
+   <cbc:IssueDate>2016-11-03</cbc:IssueDate>
+   <cbc:IssueTime>09:30:00+01:00</cbc:IssueTime>
+   <cbc:WeightStatementTypeCode>01</cbc:WeightStatementTypeCode>
+   <cac:SenderParty>
+      <cbc:EndpointID schemeID="0088">7300010000001</cbc:EndpointID>
+      <cac:PartyIdentification>
+         <cbc:ID schemeID="0088">7300010000001</cbc:ID>    
+      </cac:PartyIdentification>
+      <cac:PartyName>
+         <cbc:Name>Weighing Solutions AB</cbc:Name>    
+      </cac:PartyName>
+      <cac:PostalAddress>
+         <cbc:StreetName>Skogsgatan nr 1</cbc:StreetName>
+         <cbc:AdditionalStreetName>Second entry</cbc:AdditionalStreetName>
+         <cbc:CityName>Norrköping</cbc:CityName>
+         <cbc:PostalZone>123 45</cbc:PostalZone>
+         <cbc:CountrySubentity>NA</cbc:CountrySubentity>
+         <cac:AddressLine>
+            <cbc:Line>To the right</cbc:Line>      
+         </cac:AddressLine>
+         <cac:Country>
+            <cbc:IdentificationCode>SE</cbc:IdentificationCode>      
+         </cac:Country>    
+      </cac:PostalAddress>
+      <cac:Contact>
+         <cbc:Name>Mats Svensson</cbc:Name>
+         <cbc:Telephone>0158 1233714</cbc:Telephone>
+         <cbc:ElectronicMail>mats.svensson@senderab.se</cbc:ElectronicMail>    
+      </cac:Contact>  
+   </cac:SenderParty>
+   <cac:ReceiverParty>
+      <cbc:EndpointID schemeID="0088">1251513513245</cbc:EndpointID>
+      <cac:PartyIdentification>
+         <cbc:ID schemeID="0088">1251513513245</cbc:ID>    
+      </cac:PartyIdentification>
+      <cac:PartyName>
+         <cbc:Name>Transport Management Solutions AB</cbc:Name>    
+      </cac:PartyName>
+      <cac:PostalAddress>
+         <cbc:StreetName>Byagatan nr 14</cbc:StreetName>
+         <cbc:AdditionalStreetName>Second entry</cbc:AdditionalStreetName>
+         <cbc:CityName>Norrköping</cbc:CityName>
+         <cbc:PostalZone>123 45</cbc:PostalZone>
+         <cbc:CountrySubentity>NA</cbc:CountrySubentity>
+         <cac:AddressLine>
+            <cbc:Line>To the left</cbc:Line>      
+         </cac:AddressLine>
+         <cac:Country>
+            <cbc:IdentificationCode>SE</cbc:IdentificationCode>      
+         </cac:Country>    
+      </cac:PostalAddress>
+      <cac:Contact>
+         <cbc:Name>Nils Johansson</cbc:Name>
+         <cbc:Telephone>0158 1236543</cbc:Telephone>
+         <cbc:ElectronicMail>nils.johansson@receiverab.se</cbc:ElectronicMail>    
+      </cac:Contact>  
+   </cac:ReceiverParty>
+   <cac:WeighingParty>
+      <cac:PartyIdentification>
+         <cbc:ID schemeID="0088">5790000435951</cbc:ID>    
+      </cac:PartyIdentification>
+      <cac:PartyName>
+         <cbc:Name>Gravel Pit Ltd.</cbc:Name>    
+      </cac:PartyName>
+      <cac:PostalAddress>
+         <cbc:StreetName>Byagatan nr 14</cbc:StreetName>
+         <cbc:AdditionalStreetName>Second entry</cbc:AdditionalStreetName>
+         <cbc:CityName>Norrköping</cbc:CityName>
+         <cbc:PostalZone>123 45</cbc:PostalZone>
+         <cbc:CountrySubentity>NA</cbc:CountrySubentity>
+         <cac:AddressLine>
+            <cbc:Line>To the left</cbc:Line>      
+         </cac:AddressLine>
+         <cac:Country>
+            <cbc:IdentificationCode>SE</cbc:IdentificationCode>      
+         </cac:Country>    
+      </cac:PostalAddress>
+      <cac:PhysicalLocation>
+         <cbc:ID schemeID="">0114-40-019-a</cbc:ID>
+         <cbc:Name>Townsend pit</cbc:Name>    
+      </cac:PhysicalLocation>
+      <cac:Contact>
+         <cbc:Name>Nils Johansson</cbc:Name>
+         <cbc:Telephone>0158 1236543</cbc:Telephone>
+         <cbc:ElectronicMail>nils.johansson@receiverab.se</cbc:ElectronicMail>    
+      </cac:Contact>  
+   </cac:WeighingParty>
+   <cac:ShipperParty>
+      <cac:PartyIdentification>
+         <cbc:ID schemeID="0088">5790000435951</cbc:ID>    
+      </cac:PartyIdentification>
+      <cac:PartyName>
+         <cbc:Name>Tony's Trucks and Transport</cbc:Name>    
+      </cac:PartyName>
+      <cac:PostalAddress>
+         <cbc:StreetName>Skogsgatan nr 1</cbc:StreetName>
+         <cbc:AdditionalStreetName>Second entry</cbc:AdditionalStreetName>
+         <cbc:CityName>Norrköping</cbc:CityName>
+         <cbc:PostalZone>123 45</cbc:PostalZone>
+         <cbc:CountrySubentity>NA</cbc:CountrySubentity>
+         <cac:AddressLine>
+            <cbc:Line>To the right</cbc:Line>      
+         </cac:AddressLine>
+         <cac:Country>
+            <cbc:IdentificationCode>SE</cbc:IdentificationCode>      
+         </cac:Country>    
+      </cac:PostalAddress>
+      <cac:Contact>
+         <cbc:Name>Mats Svensson</cbc:Name>
+         <cbc:Telephone>0158 1233714</cbc:Telephone>
+         <cbc:ElectronicMail>mats.svensson@senderab.se</cbc:ElectronicMail>    
+      </cac:Contact>  
+   </cac:ShipperParty>
+   <cac:Shipment>
+      <cbc:ID schemeID="GSIN">73500538500000019</cbc:ID>
+      <cac:GoodsItem>
+         <cbc:ID>1</cbc:ID>
+         <cac:Item>
+            <cbc:Name>Sortering 0/2 mm krossat bergmaterial CE-märkt enligt system 2+ för användning till asfalt.</cbc:Name>
+            <cac:BuyersItemIdentification>
+               <cbc:ID>KO2001030300</cbc:ID>        
+            </cac:BuyersItemIdentification>
+            <cac:SellersItemIdentification>
+               <cbc:ID>17589683</cbc:ID>        
+            </cac:SellersItemIdentification>
+            <cac:StandardItemIdentification>
+               <cbc:ID schemeID="0160">1234567891234</cbc:ID>        
+            </cac:StandardItemIdentification>
+            <cac:CommodityClassification>
+               <cbc:ItemClassificationCode listID="ZZZ" listVersionID="4.0" name="SBMI">KO2012140200</cbc:ItemClassificationCode>        
+            </cac:CommodityClassification>      
+         </cac:Item>
+         <cac:MeasurementDimension>
+            <cbc:AttributeID>AAF</cbc:AttributeID>
+            <cbc:Measure unitCode="TNE">12.3</cbc:Measure>      
+         </cac:MeasurementDimension>    
+      </cac:GoodsItem>  
+   </cac:Shipment>
+</ubl:WeightStatement>

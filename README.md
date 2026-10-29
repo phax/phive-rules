@@ -47,6 +47,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-peppol - the Peppol specific rules - always the latest two rule sets
 * phive-rules-peppol-pint - the Peppol PINT specific rules (since v4.4.0 as separate module - previously in `phive-rules-peppol`)
 * phive-rules-peppol-italy - Peppol Italy specific rules (since v2.1.1)
+* phive-rules-peppol-logistics - Peppol Logistics rules (since v4.6.4)
 * phive-rules-peppol-taxdata - Peppol Tax Data Document (TDD) rules, extracted from phive-rules-peppol (since v4.4.0)
 * phive-rules-serbia - Validation rules for the Serbian SEF (SRBDT) EN 16931 CIUS and SEO logistics documents (since v4.3.9)
 * phive-rules-setu - Dutch SETU selected standards (since v3.0.4)
@@ -152,6 +153,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-peppol-italy</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-peppol-logistics</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -288,6 +295,9 @@ v4.6.4 - work in progress
   The pre-compiled XSLTs are generated from the upstream Schematron sources for performance reasons and therefore carry no upstream license header.
   See [issue #98](https://github.com/phax/phive-rules/issues/98).
 * `phive-rules-zatca` now ships the LGPL-3.0 and GPL-3.0 license texts, because the contained ZATCA SDK XSLT files are licensed under the LGPL-3.0; the module's POM lists both licenses
+* Added the Peppol Logistics validation rules of release 1.3.1 in the new module `phive-rules-peppol-logistics` with the Group ID `org.peppol.logistics`.
+  The VES versions are the versions of the single transactions: `advanced-despatch-advice:1.4` (T120), `weight-statement:1.3` (T122), `transport-execution-plan-request:1.2` (T123), `transport-execution-plan:1.2` (T124), `waybill:1.1` (T125), `transportation-status-request:1.2` (T126), `transportation-status:1.2` (T127), `receipt-advice:1.1` (T128) and `application-response:1.0` (T129).
+  The rules are also registered by `phive-rules-all`.
 
 v4.6.3 - 2026-09-30
 * Added the France PPF Flux 10 validation rules v1.1, VES coordinate `fr.ctc.flux10:report:1.1`, and deprecated the 1.0 rules.

@@ -202,6 +202,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-peppol-logistics</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-serbia</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -280,6 +285,7 @@
     <module>phive-rules-peppol-taxdata</module>
     <module>phive-rules-peppol-pint</module>
     <module>phive-rules-peppol-italy</module>
+    <module>phive-rules-peppol-logistics</module>
     <module>phive-rules-serbia</module>
     <module>phive-rules-setu</module>
     <module>phive-rules-simplerinvoicing</module>

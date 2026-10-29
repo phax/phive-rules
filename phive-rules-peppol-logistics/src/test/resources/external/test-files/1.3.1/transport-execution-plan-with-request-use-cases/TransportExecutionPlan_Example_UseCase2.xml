@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TransportExecutionPlan xmlns="urn:oasis:names:specification:ubl:schema:xsd:TransportExecutionPlan-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:logistics:trns:transport_execution_plan:1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:transport_execution_plan_w_request:1</cbc:ProfileID>
+	<cbc:ID>691278571829041271246</cbc:ID>
+	<cbc:IssueDate>2021-09-29</cbc:IssueDate>
+	<cbc:IssueTime>09:49:00+02:00</cbc:IssueTime>
+	<cbc:DocumentStatusCode>9</cbc:DocumentStatusCode>
+	<cbc:TransportUserRemarks>Some remarks</cbc:TransportUserRemarks>
+	<cbc:TransportServiceProviderRemarks>Some remarks</cbc:TransportServiceProviderRemarks>
+	
+	<cac:SenderParty>
+		<cbc:EndpointID schemeID="0198">DK85955619</cbc:EndpointID>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0088">7300010000001</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PartyName>
+			<cbc:Name>Leman</cbc:Name>
+		</cac:PartyName>
+		<cac:PostalAddress>
+			<cbc:StreetName>Ventrupvej 6</cbc:StreetName>
+			<cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+			<cbc:CityName>Greve</cbc:CityName>
+			<cbc:PostalZone>2670</cbc:PostalZone>
+			<cac:Country>
+				<cbc:IdentificationCode>DK</cbc:IdentificationCode>
+			</cac:Country>
+		</cac:PostalAddress>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Leman AS</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+		<cac:Contact>
+			<cbc:Name>Mr Transport user</cbc:Name>
+			<cbc:Telephone>0158 1233714</cbc:Telephone>
+			<cbc:ElectronicMail>transport-user@transportuser.dk</cbc:ElectronicMail>
+		</cac:Contact>
+	</cac:SenderParty>
+	
+	<cac:ReceiverParty>
+		<cbc:EndpointID schemeID="0007">5560339086</cbc:EndpointID>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0007">5560339086</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PostalAddress>
+			<cbc:StreetName>Warfvinges väg 25</cbc:StreetName>
+			<cbc:CityName>Stockholm</cbc:CityName>
+			<cbc:PostalZone>112 74</cbc:PostalZone>
+			<cac:Country>
+				<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+			</cac:Country>
+		</cac:PostalAddress>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Skanska Sverige AB</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+		<cac:Contact>
+			<cbc:Name>Alexander Janving</cbc:Name>
+			<cbc:Telephone>010-448 00 004</cbc:Telephone>
+			<cbc:ElectronicMail>some.email@skanska.se</cbc:ElectronicMail>
+		</cac:Contact>
+	</cac:ReceiverParty>
+	
+	<cac:TransportUserParty>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0007">5560339086</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PostalAddress>
+			<cbc:StreetName>Warfvinges väg 25</cbc:StreetName>
+			<cbc:CityName>Stockholm</cbc:CityName>
+			<cbc:PostalZone>112 74</cbc:PostalZone>
+			<cac:Country>
+				<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+			</cac:Country>
+		</cac:PostalAddress>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Skanska Sverige AB</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+		<cac:Contact>
+			<cbc:Name>Alexander Janving</cbc:Name>
+			<cbc:Telephone>010-448 00 004</cbc:Telephone>
+			<cbc:ElectronicMail>some.email@skanska.se</cbc:ElectronicMail>
+		</cac:Contact>
+	</cac:TransportUserParty>
+	
+	<cac:TransportServiceProviderParty>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0088">7300010000001</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PartyName>
+			<cbc:Name>Leman</cbc:Name>
+		</cac:PartyName>
+		<cac:PostalAddress>
+			<cbc:StreetName>Ventrupvej 6</cbc:StreetName>
+			<cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+			<cbc:CityName>Greve</cbc:CityName>
+			<cbc:PostalZone>2670</cbc:PostalZone>
+			<cbc:CountrySubentity>Region Sjælland</cbc:CountrySubentity>
+			<cac:Country>
+				<cbc:IdentificationCode>DK</cbc:IdentificationCode>
+			</cac:Country>
+		</cac:PostalAddress>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Leman AS</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+		<cac:Contact>
+			<cbc:Name>Mr Transport user</cbc:Name>
+			<cbc:Telephone>0158 1233714</cbc:Telephone>
+			<cbc:ElectronicMail>transport-user@transportuser.dk</cbc:ElectronicMail>
+		</cac:Contact>
+	</cac:TransportServiceProviderParty>
+	
+	<cac:BillToParty>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0088">7300010000001</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PartyName>
+			<cbc:Name>Novo Nordisk Pharmatech A/S</cbc:Name>
+		</cac:PartyName>
+		<cac:PostalAddress>
+			<cbc:StreetName>Københavnsvej 216</cbc:StreetName>
+			<cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+			<cbc:CityName>Køge</cbc:CityName>
+			<cbc:PostalZone>4600</cbc:PostalZone>
+			<cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+			<cac:AddressLine>
+				<cbc:Line>Bygning 5</cbc:Line>
+			</cac:AddressLine>
+			<cac:Country>
+				<cbc:IdentificationCode>DK</cbc:IdentificationCode>
+			</cac:Country>
+		</cac:PostalAddress>
+		<cac:PartyTaxScheme>
+			<cbc:CompanyID>GB325456788</cbc:CompanyID>
+			<cac:TaxScheme>
+				<cbc:ID>VAT</cbc:ID>
+			</cac:TaxScheme>
+		</cac:PartyTaxScheme>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Consortial</cbc:RegistrationName>
+			<cbc:CompanyID schemeID="0089">SC234567</cbc:CompanyID>
+			<cac:RegistrationAddress>
+				<cbc:CityName>Farthing</cbc:CityName>
+				<cac:Country>
+					<cbc:IdentificationCode>GB</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:RegistrationAddress>
+		</cac:PartyLegalEntity>
+		<cac:Contact>
+			<cbc:Name>Mr Transport user</cbc:Name>
+			<cbc:Telephone>0158 1233714</cbc:Telephone>
+			<cbc:ElectronicMail>transport-user@transportuser.dk</cbc:ElectronicMail>
+		</cac:Contact>
+	</cac:BillToParty>
+	
+	<cac:TransportExecutionPlanRequestDocumentReference>
+		<cbc:ID>7648779</cbc:ID>
+		<cbc:IssueDate>2021-09-29</cbc:IssueDate>
+		<cbc:IssueTime>07:49:00+02:00</cbc:IssueTime>
+	</cac:TransportExecutionPlanRequestDocumentReference>
+	
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>7648779</cbc:ID>
+		<cbc:DocumentTypeCode>380</cbc:DocumentTypeCode>
+		<cbc:DocumentType>Delivery soecification</cbc:DocumentType>
+		<cac:Attachment>
+			<cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="Hours-spent.pdf">aHR0cHM6Ly90ZXN0LXZlZmEuZGlmaS5uby9wZXBwb2xiaXMvcG9hY2MvYmlsbGluZy8zLjAvYmlzLw==</cbc:EmbeddedDocumentBinaryObject>
+			<cac:ExternalReference>
+				<cbc:URI>www.beast.se</cbc:URI>
+			</cac:ExternalReference>
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>
+	
+	<cac:MainTransportationService>
+		<cbc:TransportServiceCode>4</cbc:TransportServiceCode>
+		<cbc:TransportationServiceDescription>Transport from door to door</cbc:TransportationServiceDescription>
+	</cac:MainTransportationService>
+	
+	<cac:AdditionalTransportationService>
+		<cbc:TransportServiceCode>12</cbc:TransportServiceCode>
+		<cbc:TransportationServiceDescription>Insurance</cbc:TransportationServiceDescription>
+	</cac:AdditionalTransportationService>
+	
+	<cac:Consignment>
+		<cbc:ID schemeID="GINC">735005233GS1TRANSPORT000001</cbc:ID>
+		<cbc:GrossWeightMeasure unitCode="KGM">2460</cbc:GrossWeightMeasure>
+		<cbc:GrossVolumeMeasure unitCode="MTQ">3.10</cbc:GrossVolumeMeasure>
+		<cbc:HazardousRiskIndicator>false</cbc:HazardousRiskIndicator>
+		<cbc:TotalTransportHandlingUnitQuantity unitCode="EA">2</cbc:TotalTransportHandlingUnitQuantity>
+		
+		<cac:RequestedPickupTransportEvent>
+			<cbc:IdentificationID>21412312412</cbc:IdentificationID>
+			<cac:Location>
+				<cbc:Name>Beijer Byggmaterial port 2</cbc:Name>
+				<cac:Address>
+					<cbc:StreetName>Bällstavägen 102</cbc:StreetName>
+					<cbc:CityName>Bromma</cbc:CityName>
+					<cbc:PostalZone>168 64</cbc:PostalZone>
+					<cac:Country>
+						<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:Address>
+			</cac:Location>
+			<cac:Period>
+				<cbc:StartDate>2021-09-25</cbc:StartDate>
+				<cbc:StartTime>12:45:00+02:00</cbc:StartTime>
+				<cbc:EndDate>2021-09-25</cbc:EndDate>
+				<cbc:EndTime>13:00:00+02:00</cbc:EndTime>
+			</cac:Period>
+		</cac:RequestedPickupTransportEvent>
+		
+		<cac:RequestedDeliveryTransportEvent>
+			<cbc:IdentificationID>625435485674654132</cbc:IdentificationID>
+			<cac:Location>
+				<cbc:ID schemeID="0088">5790000435951</cbc:ID>
+				<cbc:Name>Skanska Sverige AB</cbc:Name>
+				<cac:Address>
+					<cbc:StreetName>Hammarbyvägen 3</cbc:StreetName>
+					<cbc:CityName>Stockholm</cbc:CityName>
+					<cbc:PostalZone>123 45</cbc:PostalZone>
+					<cac:AddressLine>
+						<cbc:Line>3:e våningen, Rum 5</cbc:Line>
+					</cac:AddressLine>
+					<cac:Country>
+						<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:Address>
+			</cac:Location>
+			<cac:Period>
+				<cbc:StartDate>2021-09-29</cbc:StartDate>
+				<cbc:StartTime>10:00:00+01:00</cbc:StartTime>
+				<cbc:EndDate>2021-09-29</cbc:EndDate>
+				<cbc:EndTime>11:00:00+01:00</cbc:EndTime>
+			</cac:Period>
+		</cac:RequestedDeliveryTransportEvent>
+		
+		<cac:PlannedPickupTransportEvent>
+			<cbc:IdentificationID>21412312412</cbc:IdentificationID>
+			<cac:Location>
+				<cbc:Name>Beijer Byggmaterial port 2</cbc:Name>
+				<cac:Address>
+					<cbc:StreetName>Bällstavägen 102</cbc:StreetName>
+					<cbc:CityName>Bromma</cbc:CityName>
+					<cbc:PostalZone>168 64</cbc:PostalZone>
+					<cac:Country>
+						<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:Address>
+			</cac:Location>
+			<cac:Period>
+				<cbc:StartDate>2021-09-25</cbc:StartDate>
+				<cbc:StartTime>12:45:00+02:00</cbc:StartTime>
+				<cbc:EndDate>2021-09-25</cbc:EndDate>
+				<cbc:EndTime>13:00:00+02:00</cbc:EndTime>
+			</cac:Period>
+		</cac:PlannedPickupTransportEvent>
+		
+		<cac:PlannedDeliveryTransportEvent>
+			<cbc:IdentificationID>625435485674654132</cbc:IdentificationID>
+			<cac:Location>
+				<cbc:ID schemeID="0088">5790000435951</cbc:ID>
+				<cbc:Name>Skanska Sverige AB</cbc:Name>
+				<cac:Address>
+					<cbc:StreetName>Hammarbyvägen 3</cbc:StreetName>
+					<cbc:CityName>Stockholm</cbc:CityName>
+					<cbc:PostalZone>123 45</cbc:PostalZone>
+					<cac:AddressLine>
+						<cbc:Line>3:e våningen, Rum 5</cbc:Line>
+					</cac:AddressLine>
+					<cac:Country>
+						<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:Address>
+			</cac:Location>
+			<cac:Period>
+				<cbc:StartDate>2021-09-29</cbc:StartDate>
+				<cbc:StartTime>10:00:00+01:00</cbc:StartTime>
+				<cbc:EndDate>2021-09-29</cbc:EndDate>
+				<cbc:EndTime>11:00:00+01:00</cbc:EndTime>
+			</cac:Period>
+		</cac:PlannedDeliveryTransportEvent>
+		
+		<cac:ConsigneeParty>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5560339086</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Warfvinges väg 25</cbc:StreetName>
+				<cbc:CityName>Stockholm</cbc:CityName>
+				<cbc:PostalZone>112 74</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Skanska Sverige AB</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Alexander Janving</cbc:Name>
+				<cbc:Telephone>010-448 00 004</cbc:Telephone>
+				<cbc:ElectronicMail>some.email@skanska.se</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:ConsigneeParty>
+		
+		<cac:ConsignorParty>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5560125220</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Bällstavägen 102</cbc:StreetName>
+				<cbc:CityName>Bromma</cbc:CityName>
+				<cbc:PostalZone>168 64</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Beijer Byggmaterial AB</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Robin Olsson</cbc:Name>
+				<cbc:Telephone>075-241 32304</cbc:Telephone>
+				<cbc:ElectronicMail>info.bromma@beijerbygg.se</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:ConsignorParty>
+		
+		<cac:OriginalDepartureCountry>
+			<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+		</cac:OriginalDepartureCountry>
+		<cac:FinalDestinationCountry>
+			<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+		</cac:FinalDestinationCountry>
+		
+		<cac:DeliveryTerms>
+			<cbc:ID>DAP</cbc:ID>
+		</cac:DeliveryTerms>
+		<cac:PaymentTerms>
+			<cbc:Note>Please send invoice via Peppol to payee party</cbc:Note>
+		</cac:PaymentTerms>
+		
+		<cac:MainCarriageShipmentStage>
+			<cbc:TransportModeCode>3</cbc:TransportModeCode>
+			<cbc:HazardousRiskIndicator>false</cbc:HazardousRiskIndicator>
+			
+			<cac:CarrierParty>
+				<cac:PartyIdentification>
+					<cbc:ID schemeID="0088">7300010000001</cbc:ID>
+				</cac:PartyIdentification>
+				<cac:PartyName>
+					<cbc:Name>Leman</cbc:Name>
+				</cac:PartyName>
+				<cac:PostalAddress>
+					<cbc:StreetName>Ventrupvej 6</cbc:StreetName>
+					<cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+					<cbc:CityName>Greve</cbc:CityName>
+					<cbc:PostalZone>2670</cbc:PostalZone>
+					<cac:Country>
+						<cbc:IdentificationCode>DK</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:PostalAddress>
+				<cac:PartyLegalEntity>
+					<cbc:RegistrationName>Leman AS</cbc:RegistrationName>
+				</cac:PartyLegalEntity>
+				<cac:Contact>
+					<cbc:Name>Mr Transport user</cbc:Name>
+					<cbc:Telephone>0158 1233714</cbc:Telephone>
+					<cbc:ElectronicMail>transport-user@transportuser.dk</cbc:ElectronicMail>
+				</cac:Contact>
+			</cac:CarrierParty>
+		</cac:MainCarriageShipmentStage>
+		
+		<cac:TransportHandlingUnit>
+			<cbc:ID schemeID="SSCC">173500538500000016</cbc:ID>
+			<cbc:TransportHandlingUnitTypeCode>AG</cbc:TransportHandlingUnitTypeCode>
+			<cbc:ShippingMarks>900206705</cbc:ShippingMarks>
+			<cac:MeasurementDimension>
+				<cbc:AttributeID>AAB</cbc:AttributeID>
+				<cbc:Measure unitCode="KGM">1230</cbc:Measure>
+			</cac:MeasurementDimension>
+			<cac:MeasurementDimension>
+				<cbc:AttributeID>AAW</cbc:AttributeID>
+				<cbc:Measure unitCode="MTQ">1.55</cbc:Measure>
+			</cac:MeasurementDimension>
+			<cac:GoodsItem>
+				<cbc:ID>1</cbc:ID>
+				<cbc:Description>Stolpförankring galvaniserad</cbc:Description>
+			</cac:GoodsItem>
+		</cac:TransportHandlingUnit>
+		
+		<cac:TransportHandlingUnit>
+			<cbc:ID schemeID="SSCC">173500538500000023</cbc:ID>
+			<cbc:TransportHandlingUnitTypeCode>AG</cbc:TransportHandlingUnitTypeCode>
+			<cbc:ShippingMarks>900206705</cbc:ShippingMarks>
+			<cac:MeasurementDimension>
+				<cbc:AttributeID>AAB</cbc:AttributeID>
+				<cbc:Measure unitCode="KGM">1230</cbc:Measure>
+			</cac:MeasurementDimension>
+			<cac:MeasurementDimension>
+				<cbc:AttributeID>AAW</cbc:AttributeID>
+				<cbc:Measure unitCode="MTQ">1.55</cbc:Measure>
+			</cac:MeasurementDimension>
+			<cac:GoodsItem>
+				<cbc:ID>1</cbc:ID>
+				<cbc:Description>Stolpförankring galvaniserad</cbc:Description>
+			</cac:GoodsItem>
+		</cac:TransportHandlingUnit>
+	</cac:Consignment>
+</TransportExecutionPlan>

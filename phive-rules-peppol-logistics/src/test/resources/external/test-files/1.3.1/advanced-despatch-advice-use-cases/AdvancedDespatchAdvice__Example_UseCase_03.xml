@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+                Content:
+                This file contains an Example for Use-case no 3 in Logistics Advanced Despatch Adivce.
+			
+-->
+<DespatchAdvice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2"
+ xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+ xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	
+	<cbc:CustomizationID>urn:fdc:peppol.eu:logistics:trns:advanced_despatch_advice:1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:despatch_advice_only:1</cbc:ProfileID>
+	
+	
+	<cbc:ID>43413589</cbc:ID>
+	<cbc:IssueDate>2020-12-21</cbc:IssueDate>
+	<cbc:IssueTime>13:14:34</cbc:IssueTime>
+	<cbc:DespatchAdviceTypeCode>2</cbc:DespatchAdviceTypeCode>
+	<cbc:Note>Some note about the delivery</cbc:Note>
+	
+	<cac:OrderReference>
+		<cbc:ID>AEG012345</cbc:ID>
+	</cac:OrderReference>
+
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>P-12345</cbc:ID>
+		<cbc:DocumentType>ProjectReference</cbc:DocumentType>
+	</cac:AdditionalDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>P-12345:7669:12125</cbc:ID>
+		<cbc:DocumentType>AccountingCost</cbc:DocumentType>
+	</cac:AdditionalDocumentReference>
+
+
+	<cac:DespatchSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0007">5560125220</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5560125220</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Bällstavägen 102</cbc:StreetName>
+				<cbc:CityName>Bromma</cbc:CityName>
+				<cbc:PostalZone>168 64</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Beijer Byggmaterial AB</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Robin Olsson</cbc:Name>
+				<cbc:Telephone>075-241 32304</cbc:Telephone>
+				<cbc:ElectronicMail>info.bromma@beijerbygg.se</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DespatchSupplierParty>
+	
+	<cac:DeliveryCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0007">5560339086</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5560339086</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Warfvinges väg 25</cbc:StreetName>
+				<cbc:CityName>Stockholm</cbc:CityName>
+				<cbc:PostalZone>112 74</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Skanska Sverige AB</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Alexander Janving</cbc:Name>
+				<cbc:Telephone>010-448 00 004</cbc:Telephone>
+				<cbc:ElectronicMail>some.email@skanska.se</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DeliveryCustomerParty>
+	
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5560339086</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Warfvinges väg 25</cbc:StreetName>
+				<cbc:CityName>Stockholm</cbc:CityName>
+				<cbc:PostalZone>112 74</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Skanska Sverige AB</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5560125220</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Bällstavägen 102</cbc:StreetName>
+				<cbc:CityName>Bromma</cbc:CityName>
+				<cbc:PostalZone>168 64</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Beijer Byggmaterial AB</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	
+	<cac:Shipment>
+		<cbc:ID schemeID="GSIN">73500538500000019</cbc:ID>
+		<cac:Delivery>
+
+			<cac:DeliveryLocation>
+				<cbc:ID schemeID="0088">5790000435951</cbc:ID>
+				<cbc:Name>Skanska Sverige AB</cbc:Name>
+				<cac:Address>
+					<cbc:StreetName>Sockengatan 44</cbc:StreetName>
+					<cbc:CityName>Byarum</cbc:CityName>
+					<cbc:PostalZone>123 45</cbc:PostalZone>
+					<cac:Country>
+						<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:Address>
+			</cac:DeliveryLocation>
+
+			<cac:EstimatedDeliveryPeriod>
+				<cbc:StartDate>2020-12-21</cbc:StartDate>
+			</cac:EstimatedDeliveryPeriod>
+			
+		</cac:Delivery>
+	</cac:Shipment>
+	
+	<cac:DespatchLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:Note>Three persons working full day.</cbc:Note>
+		<cbc:DeliveredQuantity unitCode="HUR">24</cbc:DeliveredQuantity>
+		
+		<cac:OrderLineReference>
+			<cbc:LineID>10</cbc:LineID>
+		</cac:OrderLineReference>
+		
+		<cac:Item>
+			<cbc:Name>Building a fence around Sockengatan 44</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>900206705</cbc:ID>
+			</cac:SellersItemIdentification>
+			
+			<cac:AdditionalItemProperty>
+				<cbc:Name>NA</cbc:Name>
+				<cbc:NameCode listID="IPNC">Price</cbc:NameCode>
+				<cbc:Value>618.50</cbc:Value>
+				<cbc:ValueQualifier>CON</cbc:ValueQualifier>
+			</cac:AdditionalItemProperty>
+
+		</cac:Item>
+	</cac:DespatchLine>
+	
+</DespatchAdvice>

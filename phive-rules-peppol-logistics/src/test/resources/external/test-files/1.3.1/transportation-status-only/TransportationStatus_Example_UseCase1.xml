@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TransportationStatus xmlns="urn:oasis:names:specification:ubl:schema:xsd:TransportationStatus-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:logistics:trns:transportation_status:1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:transportation_status_only:1</cbc:ProfileID>
+	<cbc:ID>TS_1</cbc:ID>
+	<cbc:IssueDate>2021-09-29</cbc:IssueDate>
+	<cbc:IssueTime>13:22:40+01:00</cbc:IssueTime>
+	<cbc:Description>Pickup at Beijer Byggmaterial completed</cbc:Description>
+	<cbc:ShippingOrderID schemeID="zzz">KHN23-44044</cbc:ShippingOrderID>
+	<cbc:TransportationStatusTypeCode>4</cbc:TransportationStatusTypeCode>
+	<cbc:TransportExecutionStatusCode>13</cbc:TransportExecutionStatusCode>
+	
+	<cac:Consignment>
+		<cbc:ID schemeID="GINC">735005233GS1TRANSPORT000001</cbc:ID>
+		<cac:Status>
+			<cbc:Description>Pickup at Beijer Byggmaterial completed</cbc:Description>
+		</cac:Status>
+		<cac:TransportHandlingUnit>
+			<cbc:ID schemeID="SSCC">173500538500000016</cbc:ID>
+			<cac:Status>
+				<cbc:ConditionCode listID="zzz">1</cbc:ConditionCode>
+				<cbc:Description>Ok</cbc:Description>
+			</cac:Status>
+		</cac:TransportHandlingUnit>
+		<cac:TransportHandlingUnit>
+			<cbc:ID schemeID="SSCC">173500538500000023</cbc:ID>
+			<cac:Status>
+				<cbc:ConditionCode listID="zzz">1</cbc:ConditionCode>
+				<cbc:Description>Ok</cbc:Description>
+			</cac:Status>
+		</cac:TransportHandlingUnit>
+	</cac:Consignment>
+	
+	<cac:TransportEvent>
+		<cbc:IdentificationID>625435485674654132</cbc:IdentificationID>
+		<cbc:OccurrenceDate>2021-09-29</cbc:OccurrenceDate>
+		<cbc:OccurrenceTime>12:00:00+02:00</cbc:OccurrenceTime>
+		<cbc:TransportEventTypeCode>13</cbc:TransportEventTypeCode>
+		<cbc:CompletionIndicator>true</cbc:CompletionIndicator>
+		<cac:Signature>
+			<cbc:ID>34234</cbc:ID>
+			<cbc:ValidationDate>2021-09-29</cbc:ValidationDate>
+			<cbc:ValidationTime>12:01:00+01:00</cbc:ValidationTime>
+			<cac:SignatoryParty>
+				<cac:PartyName>
+					<cbc:Name>Beijer Byggmaterial</cbc:Name>
+				</cac:PartyName>
+				<cac:Person>
+					<cbc:FirstName>Annie</cbc:FirstName>
+					<cbc:FamilyName>Peterson</cbc:FamilyName>
+					<cbc:JobTitle>Sales assistant</cbc:JobTitle>
+				</cac:Person>
+			</cac:SignatoryParty>
+			<cac:DigitalSignatureAttachment>
+				<cbc:EmbeddedDocumentBinaryObject mimeCode="image/png" filename="signature_pickup.phg">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</cbc:EmbeddedDocumentBinaryObject>
+			</cac:DigitalSignatureAttachment>
+		</cac:Signature>
+	</cac:TransportEvent>	
+	
+	<cac:Signature>
+		<cbc:ID>3453</cbc:ID>
+		<cbc:ValidationDate>2021-09-29</cbc:ValidationDate>
+		<cbc:ValidationTime>13:01:00+01:00</cbc:ValidationTime>
+		<cac:SignatoryParty>
+			<cac:PartyName>
+				<cbc:Name>NTG Nordic</cbc:Name>
+			</cac:PartyName>
+			<cac:Person>
+				<cbc:FirstName>Karsten</cbc:FirstName>
+				<cbc:FamilyName>Hansen</cbc:FamilyName>
+			</cac:Person>
+		</cac:SignatoryParty>
+		<cac:DigitalSignatureAttachment>
+			<cbc:EmbeddedDocumentBinaryObject mimeCode="image/png" filename="signature.phg">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</cbc:EmbeddedDocumentBinaryObject>
+		</cac:DigitalSignatureAttachment>
+	</cac:Signature>
+	
+	<cac:SenderParty>
+		<cbc:EndpointID schemeID="0184">33572190</cbc:EndpointID>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0088">7300010000001</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PartyName>
+			<cbc:Name>NTG Nordic</cbc:Name>
+		</cac:PartyName>
+		<cac:PostalAddress>
+			<cbc:StreetName>Truckvej 5</cbc:StreetName>
+			<cbc:CityName>Køge</cbc:CityName>
+			<cbc:PostalZone>4600</cbc:PostalZone>
+			<cac:Country>
+				<cbc:IdentificationCode>DK</cbc:IdentificationCode>
+			</cac:Country>
+		</cac:PostalAddress>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>NTG Nordic A/S</cbc:RegistrationName>
+			<cbc:CompanyID schemeID="0184">33572190</cbc:CompanyID>
+		</cac:PartyLegalEntity>
+		<cac:Contact>
+			<cbc:Name>Karsten Hansen</cbc:Name>
+			<cbc:Telephone>+45889356</cbc:Telephone>
+			<cbc:ElectronicMail>kh@ntgnordic.dk</cbc:ElectronicMail>
+		</cac:Contact>
+	</cac:SenderParty>
+	
+	<cac:ReceiverParty>
+		<cbc:EndpointID schemeID="0007">5560125220</cbc:EndpointID>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0007">5560125220</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PostalAddress>
+			<cbc:StreetName>Bällstavägen 102</cbc:StreetName>
+			<cbc:CityName>Bromma</cbc:CityName>
+			<cbc:PostalZone>168 64</cbc:PostalZone>
+			<cac:Country>
+				<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+			</cac:Country>
+		</cac:PostalAddress>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Beijer Byggmaterial AB</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+		<cac:Contact>
+			<cbc:Name>Robin Olsson</cbc:Name>
+			<cbc:Telephone>075-241 32304</cbc:Telephone>
+			<cbc:ElectronicMail>info.bromma@beijerbygg.se</cbc:ElectronicMail>
+		</cac:Contact>
+	</cac:ReceiverParty>	
+	
+	<cac:TransportExecutionPlanDocumentReference>
+		<cbc:ID>691278571829041271246</cbc:ID>
+		<cbc:IssueDate>2021-09-29</cbc:IssueDate>
+		<cbc:IssueTime>09:49:00+02:00</cbc:IssueTime>
+	</cac:TransportExecutionPlanDocumentReference>
+</TransportationStatus>

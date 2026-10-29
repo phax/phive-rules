@@ -42,6 +42,7 @@ import com.helger.phive.oioubl.OIOUBLValidation;
 import com.helger.phive.osa.OSAValidation;
 import com.helger.phive.peppol.PeppolValidation;
 import com.helger.phive.peppol.italy.PeppolItalyValidation;
+import com.helger.phive.peppol.logistics.PeppolValidationLogistics;
 import com.helger.phive.peppol.pint.PeppolValidationPint;
 import com.helger.phive.peppol.taxdata.PeppolValidationTaxData;
 import com.helger.phive.serbia.SEOValidation;
@@ -115,6 +116,7 @@ public final class PhiveRulesValidation
     // Must be after Peppol, because the CIUS-DK rules build on the Peppol BIS Billing rules
     CIUS_DKValidation.init (aRegistry);
     PeppolValidationTaxData.init (aRegistry);
+    PeppolValidationLogistics.init (aRegistry);
     PeppolValidationPint.initPeppolPint (aRegistry);
     SEOValidation.initSEO (aRegistry);
     SRBDTValidation.initSRBDT (aRegistry);

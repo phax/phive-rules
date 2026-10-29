@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReceiptAdvice xmlns="urn:oasis:names:specification:ubl:schema:xsd:ReceiptAdvice-2"
+                   xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+   <cbc:CustomizationID>urn:fdc:peppol.eu:logistics:trns:receipt_advice:1</cbc:CustomizationID>
+   <cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:despatch_advice_w_receipt_advice:1</cbc:ProfileID>
+   <cbc:ID>5658999</cbc:ID>
+   <cbc:IssueDate>2021-09-11</cbc:IssueDate>
+   <cbc:IssueTime>12:00:00</cbc:IssueTime>
+   <cbc:DocumentStatusCode>5</cbc:DocumentStatusCode>
+   <cbc:ReceiptAdviceTypeCode>S</cbc:ReceiptAdviceTypeCode>
+   <cbc:Note>Delivery late but ok</cbc:Note>
+	
+   <cac:DespatchDocumentReference>
+      <cbc:ID>565899</cbc:ID>
+      <cbc:IssueDate>2021-09-10</cbc:IssueDate>
+      <cbc:IssueTime>12:00:00</cbc:IssueTime>
+   </cac:DespatchDocumentReference>
+	
+     <cac:DeliveryCustomerParty>
+      <cac:Party>
+         <cbc:EndpointID schemeID="0088">5798000000124</cbc:EndpointID>
+         <cac:PartyIdentification>
+            <cbc:ID schemeID="0088"> 5790000435951</cbc:ID>
+         </cac:PartyIdentification>
+         <cac:PartyName>
+            <cbc:Name> Receiver inc. </cbc:Name>
+         </cac:PartyName>
+         <cac:PostalAddress>
+            <cbc:StreetName>Avon Way</cbc:StreetName>
+            <cbc:AdditionalStreetName>Big projects</cbc:AdditionalStreetName>
+            <cbc:CityName>Bridgtown</cbc:CityName>
+            <cbc:PostalZone>ZZ99 1ZZ</cbc:PostalZone>
+            <cbc:CountrySubentity>Avon</cbc:CountrySubentity>
+            <cac:AddressLine>
+               <cbc:Line>3rd Floor, Room 5</cbc:Line>
+            </cac:AddressLine>
+            <cac:Country>
+               <cbc:IdentificationCode>GB</cbc:IdentificationCode>
+            </cac:Country>
+         </cac:PostalAddress>
+         <cac:PartyTaxScheme>
+            <cbc:CompanyID> GB523859989 </cbc:CompanyID>
+            <cac:TaxScheme>
+               <cbc:ID> VAT </cbc:ID>
+            </cac:TaxScheme>
+         </cac:PartyTaxScheme>
+         <cac:PartyLegalEntity>
+            <cbc:RegistrationName> Sender inc.</cbc:RegistrationName>
+            <cbc:CompanyID schemeID="0089"> GB523859989</cbc:CompanyID>
+            <cac:RegistrationAddress>
+               <cbc:CityName> Bridgtown </cbc:CityName>
+               <cac:Country>
+                  <cbc:IdentificationCode> UK</cbc:IdentificationCode>
+               </cac:Country>
+            </cac:RegistrationAddress>
+         </cac:PartyLegalEntity>
+		  <cac:Contact>
+			  <cbc:Name>Mr Fred Churchill</cbc:Name>
+			  <cbc:Telephone>0127 2653214</cbc:Telephone>
+			  <cbc:ElectronicMail>fred@iytcorporation.gov.uk</cbc:ElectronicMail>
+		  </cac:Contact>
+      </cac:Party>
+   </cac:DeliveryCustomerParty>
+	
+   <cac:DespatchSupplierParty>
+      <cac:Party>
+         <cbc:EndpointID schemeID="0088"> 7300010000001</cbc:EndpointID>
+         <cac:PartyIdentification>
+            <cbc:ID schemeID="0088"> 7300010000001</cbc:ID>
+         </cac:PartyIdentification>
+         <cac:PartyName>
+            <cbc:Name> Sender inc. </cbc:Name>
+         </cac:PartyName>
+         <cac:PostalAddress>
+            <cbc:StreetName>Busy Street</cbc:StreetName>
+            <cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+            <cbc:CityName>Farthing</cbc:CityName>
+            <cbc:PostalZone>AA99 1BB</cbc:PostalZone>
+            <cbc:CountrySubentity>Heremouthshire</cbc:CountrySubentity>
+            <cac:AddressLine>
+               <cbc:Line>The Roundabout</cbc:Line>
+            </cac:AddressLine>
+            <cac:Country>
+               <cbc:IdentificationCode>GB</cbc:IdentificationCode>
+            </cac:Country>
+         </cac:PostalAddress>
+         <cac:PartyTaxScheme>
+            <cbc:CompanyID> GB325456788</cbc:CompanyID>
+            <cac:TaxScheme>
+               <cbc:ID> VAT </cbc:ID>
+            </cac:TaxScheme>
+         </cac:PartyTaxScheme>
+         <cac:PartyLegalEntity>
+            <cbc:RegistrationName> Consortial</cbc:RegistrationName>
+            <cbc:CompanyID schemeID="0089"> SC234567 </cbc:CompanyID>
+            <cac:RegistrationAddress>
+               <cbc:CityName> Farthing </cbc:CityName>
+               <cac:Country>
+                  <cbc:IdentificationCode> UK </cbc:IdentificationCode>
+               </cac:Country>
+            </cac:RegistrationAddress>
+         </cac:PartyLegalEntity>
+         <cac:Contact>
+            <cbc:Name> Mrs Bouquet</cbc:Name>
+            <cbc:Telephone> 0158 1233714 </cbc:Telephone>
+            <cbc:ElectronicMail> bouquet@fpconsortial.co.uk </cbc:ElectronicMail>
+         </cac:Contact>
+      </cac:Party>
+   </cac:DespatchSupplierParty>
+	
+   <cac:BuyerCustomerParty>
+      <cac:Party>
+         <cac:PartyIdentification>
+            <cbc:ID schemeID="0088"> 5790000435951</cbc:ID>
+         </cac:PartyIdentification>
+         <cac:PartyName>
+            <cbc:Name> IYT Corporation</cbc:Name>
+         </cac:PartyName>
+         <cac:PostalAddress>
+            <cbc:StreetName>Avon Way</cbc:StreetName>
+            <cbc:AdditionalStreetName>Purchasing</cbc:AdditionalStreetName>
+            <cbc:CityName>Bridgtow</cbc:CityName>
+            <cbc:PostalZone>ZZ99 1ZZ</cbc:PostalZone>
+            <cbc:CountrySubentity>Avon</cbc:CountrySubentity>
+            <cac:AddressLine>
+               <cbc:Line>3rd Floor, Room 5</cbc:Line>
+            </cac:AddressLine>
+            <cac:Country>
+               <cbc:IdentificationCode>GB</cbc:IdentificationCode>
+            </cac:Country>
+         </cac:PostalAddress>
+      </cac:Party>
+   </cac:BuyerCustomerParty>
+	
+   <cac:SellerSupplierParty>
+      <cac:Party>
+         <cac:PartyIdentification>
+            <cbc:ID schemeID="0088"> 5790000435951</cbc:ID>
+         </cac:PartyIdentification>
+         <cac:PartyName>
+            <cbc:Name> IYT Corporation</cbc:Name>
+         </cac:PartyName>
+         <cac:PostalAddress>
+            <cbc:StreetName>Avon Way</cbc:StreetName>
+            <cbc:AdditionalStreetName>Sales</cbc:AdditionalStreetName>
+            <cbc:CityName>Bridgtow</cbc:CityName>
+            <cbc:PostalZone>ZZ99 1ZZ</cbc:PostalZone>
+            <cbc:CountrySubentity>Avon</cbc:CountrySubentity>
+            <cac:AddressLine>
+               <cbc:Line>3rd Floor, Room 5</cbc:Line>
+            </cac:AddressLine>
+            <cac:Country>
+               <cbc:IdentificationCode>GB</cbc:IdentificationCode>
+            </cac:Country>
+         </cac:PostalAddress>
+      </cac:Party>
+   </cac:SellerSupplierParty>
+	
+   <cac:Shipment>
+	   <cbc:ID schemeID="GSIN">73500538500000019</cbc:ID>
+	   <cac:Consignment>
+		   <cbc:ID schemeID="GINC">735005233GS1TRANSPORT000001</cbc:ID>
+
+		   <cac:Status>
+            <cbc:ConditionCode>CA</cbc:ConditionCode>
+			 <cbc:StatusReasonCode>1</cbc:StatusReasonCode>
+			 <cbc:StatusReason>Delivery outside requested time window.</cbc:StatusReason>
+         </cac:Status>
+		  
+         <cac:CarrierParty>
+            <cac:PartyIdentification>
+               <cbc:ID schemeID="0088"> 5790000435951</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+               <cbc:Name>Carrier Name</cbc:Name>
+            </cac:PartyName>
+            <cac:Person>
+               <cac:IdentityDocumentReference>
+                  <cbc:ID>45642323</cbc:ID>
+                  <cbc:DocumentType>ID06</cbc:DocumentType>
+               </cac:IdentityDocumentReference>
+            </cac:Person>
+         </cac:CarrierParty>
+      </cac:Consignment>
+	   
+      <cac:Delivery>
+         <cbc:ActualDeliveryDate>2021-09-11</cbc:ActualDeliveryDate>
+         <cbc:ActualDeliveryTime>11:00:00</cbc:ActualDeliveryTime>
+		  
+         <cac:DeliveryTerms>
+            <cbc:ID> EXW </cbc:ID>
+            <cbc:SpecialTerms> EQN-06</cbc:SpecialTerms>
+            <cac:DeliveryLocation>
+               <cbc:ID> Kalmar </cbc:ID>
+            </cac:DeliveryLocation>
+         </cac:DeliveryTerms>
+      </cac:Delivery>
+   </cac:Shipment>
+
+	<cac:ReceiptLine>
+		<cbc:ID>1</cbc:ID>
+		<cac:DespatchLineReference>
+			<cbc:LineID>1</cbc:LineID>
+		</cac:DespatchLineReference>
+	</cac:ReceiptLine>
+
+</ReceiptAdvice>

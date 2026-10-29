@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TransportationStatus xmlns="urn:oasis:names:specification:ubl:schema:xsd:TransportationStatus-2"
+                          xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                          xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+   <cbc:CustomizationID>urn:fdc:peppol.eu:logistics:trns:transportation_status:1</cbc:CustomizationID>
+   <cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:advanced_transport_execution_plan:1</cbc:ProfileID>
+   <cbc:ProfileExecutionID>b95a9804-79cf-11f0-8de9-0242ac120002</cbc:ProfileExecutionID>
+   <cbc:ID>e2663b86-79cf-11f0-8de9-0242ac120002</cbc:ID>
+   <cbc:IssueDate>2025-06-06</cbc:IssueDate>
+   <cbc:IssueTime>09:29:30+02:00</cbc:IssueTime>
+   <cbc:Description>An answer for the dialog</cbc:Description>
+   <cbc:ShippingOrderID>KHN23-44044</cbc:ShippingOrderID>
+   <cbc:TransportationStatusTypeCode>3</cbc:TransportationStatusTypeCode>
+   <cbc:TransportExecutionStatusCode>102</cbc:TransportExecutionStatusCode>
+   <cac:DocumentReference>
+      <cbc:ID>7648779</cbc:ID>     
+      <cbc:DocumentType>Delivery specification</cbc:DocumentType>
+      <cac:Attachment>
+         <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="Hours-spent.pdf">aHR0cHM6Ly90ZXN0LXZlZmEuZGlmaS5uby9wZXBwb2xiaXMvcG9hY2MvYmlsbGluZy8zLjAvYmlzLw==</cbc:EmbeddedDocumentBinaryObject>
+         <cac:ExternalReference>
+            <cbc:URI>www.beast.se</cbc:URI>      
+         </cac:ExternalReference>    
+      </cac:Attachment>  
+   </cac:DocumentReference>   
+   <cac:SenderParty>
+      <cbc:EndpointID schemeID="0198">DK85955619</cbc:EndpointID>
+      <cac:PartyIdentification>
+         <cbc:ID>85955619</cbc:ID>
+      </cac:PartyIdentification>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Transport provider A/S</cbc:RegistrationName>			
+		</cac:PartyLegalEntity>
+		<cac:Contact>			 
+			 <cbc:Telephone>0158 1233714</cbc:Telephone>
+			 <cbc:ElectronicMail>msreceiver@tplogistics.co.uk</cbc:ElectronicMail>    
+		</cac:Contact>  
+   </cac:SenderParty>
+   <cac:ReceiverParty>
+      <cbc:EndpointID schemeID="0198">DK41955619</cbc:EndpointID>
+        <cac:PartyIdentification>
+            <cbc:ID>41955619</cbc:ID>
+        </cac:PartyIdentification>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Transport UserParty A/S</cbc:RegistrationName>			
+		</cac:PartyLegalEntity>
+   </cac:ReceiverParty>
+</TransportationStatus>

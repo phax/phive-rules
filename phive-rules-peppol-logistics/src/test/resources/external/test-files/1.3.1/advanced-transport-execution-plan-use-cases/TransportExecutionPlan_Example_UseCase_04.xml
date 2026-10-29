@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TransportExecutionPlan xmlns="urn:oasis:names:specification:ubl:schema:xsd:TransportExecutionPlan-2"
+                            xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                            xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+   <cbc:CustomizationID>urn:fdc:peppol.eu:logistics:trns:transport_execution_plan:1</cbc:CustomizationID>
+   <cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:advanced_transport_execution_plan:1</cbc:ProfileID>
+   <cbc:ProfileExecutionID>b95a9804-79cf-11f0-8de9-0242ac120002</cbc:ProfileExecutionID>
+   <cbc:ID>e2663b86-79cf-11f0-8de9-0242ac120002</cbc:ID>
+   <cbc:IssueDate>2025-05-09</cbc:IssueDate>
+   <cbc:IssueTime>09:49:00+02:00</cbc:IssueTime>
+   <cbc:Note>Some notes from the requester</cbc:Note>
+   <cac:SenderParty>
+      <cbc:EndpointID schemeID="0198">DK85955619</cbc:EndpointID>
+      <cac:PartyIdentification>
+         <cbc:ID>85955619</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyLegalEntity>
+         <cbc:RegistrationName>Transport Sender A/S</cbc:RegistrationName>			
+      </cac:PartyLegalEntity>
+      <cac:Contact>			
+         <cbc:Telephone>0158 1233714</cbc:Telephone>
+         <cbc:ElectronicMail>transport-user@transportuser.dk</cbc:ElectronicMail>
+      </cac:Contact>
+   </cac:SenderParty>
+   <cac:ReceiverParty>
+      <cbc:EndpointID schemeID="0198">DK41955619</cbc:EndpointID>
+      <cac:PartyIdentification>
+         <cbc:ID>41955619</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyLegalEntity>
+         <cbc:RegistrationName>Transport Receiver A/S</cbc:RegistrationName>			
+      </cac:PartyLegalEntity>		
+   </cac:ReceiverParty>
+   <cac:TransportUserParty>
+      <cac:PartyIdentification>
+         <cbc:ID>41955619</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyLegalEntity>
+         <cbc:RegistrationName>Transport UserParty A/S</cbc:RegistrationName>			
+      </cac:PartyLegalEntity>
+   </cac:TransportUserParty>
+   <cac:TransportServiceProviderParty>
+      <cac:PartyIdentification>
+         <cbc:ID>85955619</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyLegalEntity>
+         <cbc:RegistrationName>Transport provider A/S</cbc:RegistrationName>			
+      </cac:PartyLegalEntity>		
+   </cac:TransportServiceProviderParty>   
+   <cac:AdditionalDocumentReference>
+      <cbc:ID>inv-123456</cbc:ID>		
+      <cbc:DocumentType>SenderInvoiceReference</cbc:DocumentType>
+      <cac:Attachment>
+         <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="ArrivalNotice.pdf">aHR0cHM6Ly90ZXN0LXZlZmEuZGlmaS5uby9wZXBwb2xiaXMvcG9hY2MvYmlsbGluZy8zLjAvYmlzLw==</cbc:EmbeddedDocumentBinaryObject>
+         <cac:ExternalReference>
+            <cbc:URI>https://documents.semantic.biz?documentID=d1b34d9d-8020-49a2-a43c-75f5518d77e6</cbc:URI>
+         </cac:ExternalReference>
+      </cac:Attachment>
+   </cac:AdditionalDocumentReference>			
+	<cac:MainTransportationService>
+		<cbc:TransportServiceCode>19</cbc:TransportServiceCode>
+		<cbc:TransportationServiceDescription>ArrivalNotice</cbc:TransportationServiceDescription>
+	</cac:MainTransportationService>   
+	<cac:Consignment>
+		<cbc:ID>12535157654567654</cbc:ID>		
+		<cbc:GrossWeightMeasure unitCode="KGM">103</cbc:GrossWeightMeasure>				
+		<cbc:TotalTransportHandlingUnitQuantity unitCode="EA">1</cbc:TotalTransportHandlingUnitQuantity>
+      <cac:ConsigneeParty>			
+         <cac:PartyName>
+            <cbc:Name>Importer AS</cbc:Name>				
+         </cac:PartyName>			
+      </cac:ConsigneeParty>
+      <cac:ConsignorParty>			
+         <cac:PartyName>
+            <cbc:Name>Exporter AS</cbc:Name>				
+         </cac:PartyName>			
+      </cac:ConsignorParty>		
+      <cac:TransportHandlingUnit>
+			<cbc:ID>11111222222222</cbc:ID>
+			<cbc:TransportHandlingUnitTypeCode>AG</cbc:TransportHandlingUnitTypeCode>			
+			<cac:TransportEquipment>
+				<cbc:ID>1234567</cbc:ID>
+				<cbc:TransportEquipmentTypeCode>CN</cbc:TransportEquipmentTypeCode>				
+			</cac:TransportEquipment>			
+		   <cac:GoodsItem>
+				<cbc:ID>10</cbc:ID>
+            <cbc:SequenceNumberID>234</cbc:SequenceNumberID>
+            <cbc:Description>Torsk sl u/h fersk fulliset 20kg iso 2-4 kg</cbc:Description>
+			</cac:GoodsItem>
+		</cac:TransportHandlingUnit>						
+	</cac:Consignment>
+</TransportExecutionPlan>

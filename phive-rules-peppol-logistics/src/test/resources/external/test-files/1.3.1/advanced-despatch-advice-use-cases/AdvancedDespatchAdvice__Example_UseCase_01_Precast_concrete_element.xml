@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+                Content:
+                This file contains an Example for Use-case no 1 in Logistics Advanced Despatch Adivce.
+				Precast concrete element without transport
+				
+				Change Log:
+				2025-01-09
+				- Initial version
+		
+-->
+<DespatchAdvice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:logistics:trns:advanced_despatch_advice:1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:despatch_advice_only:1</cbc:ProfileID>
+	<cbc:ID>KUN-75682</cbc:ID>
+	<cbc:IssueDate>2024-07-04</cbc:IssueDate>
+	<cbc:IssueTime>19:18:10</cbc:IssueTime>
+	<cbc:DocumentStatusCode>9</cbc:DocumentStatusCode>
+	<cbc:DespatchAdviceTypeCode>1</cbc:DespatchAdviceTypeCode>
+	<cbc:Note>
+		Truck 3 stuvar HD 20
+		+ Gods från fabriken (G797)
+		+ Armering från Götes Gata (A1)
+		+ Lyftutrustning L13 tur och retur
+	</cbc:Note>
+	<cac:AdditionalDocumentReference>
+		<!-- Buyer project number -->
+		<cbc:ID>10541</cbc:ID>
+		<cbc:DocumentType>ProjectReference</cbc:DocumentType>
+	</cac:AdditionalDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<!-- Buyer accounting cost number -->
+		<cbc:ID>10541-1-8992</cbc:ID>
+		<cbc:DocumentType>AccountingCost</cbc:DocumentType>
+	</cac:AdditionalDocumentReference>
+	<cac:DespatchSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0007">5565394904</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5565394904</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>KUNGSGATAN 2</cbc:StreetName>
+				<cbc:CityName>KUNGSÖR</cbc:CityName>
+				<cbc:PostalZone>736 36</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>AB STRÄNGBETONG</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>HENRIK VINELL</cbc:Name>
+				<cbc:Telephone>+46730378284</cbc:Telephone>
+				<cbc:ElectronicMail>henrik.vinell@strangbetong.se</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DespatchSupplierParty>
+	<cac:DeliveryCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0007">5593026189</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5593026189</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>BOX 30116</cbc:StreetName>
+				<cbc:CityName>STOCKHOLM</cbc:CityName>
+				<cbc:PostalZone>.</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>CONSOLIS ELEMENT SVERIGE</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Kalle Karlsson</cbc:Name>
+				<cbc:Telephone>+46</cbc:Telephone>
+				<cbc:ElectronicMail>faktura@elementssverige.se</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+
+	</cac:DeliveryCustomerParty>
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5593026189</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>CONSOLIS ELEMENT SVERIGE</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>BOX 30116</cbc:StreetName>
+				<cbc:CityName>STOCKHOLM</cbc:CityName>
+				<cbc:PostalZone>.</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5565394904</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>AB STRÄNGBETONG</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>GUSTAVIII BOULEVARD 36</cbc:StreetName>
+				<cbc:CityName>SOLNA</cbc:CityName>
+				<cbc:PostalZone>169 73</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<cac:Shipment>
+		<cbc:ID>KUN-75682</cbc:ID>
+		<cbc:GrossWeightMeasure unitCode="KGM">25016.81</cbc:GrossWeightMeasure>
+		<cac:Consignment>
+			<cbc:ID>KUN-75682</cbc:ID>
+			<cac:CarrierParty>
+				<cac:PartyIdentification>
+					<cbc:ID schemeID="0007">5567878318</cbc:ID>
+				</cac:PartyIdentification>
+				<cac:PartyName>
+					<cbc:Name>M4 GRUPPEN AB</cbc:Name>
+				</cac:PartyName>
+			</cac:CarrierParty>
+		</cac:Consignment>
+		<cac:Delivery>
+			<cbc:ActualDeliveryDate>2024-01-02</cbc:ActualDeliveryDate>
+			<cbc:ActualDeliveryTime>10:50:04</cbc:ActualDeliveryTime>
+			<cac:DeliveryLocation>
+				<cbc:ID schemeID="0007">5593026189</cbc:ID>
+				<cbc:Name>Ingavarvet Östra</cbc:Name>
+				<cac:Address>
+					<cbc:StreetName>SLAGGVARPSVÄGEN 17</cbc:StreetName>
+					<cbc:CityName>FALUN</cbc:CityName>
+					<cbc:PostalZone>791 01</cbc:PostalZone>
+					<cac:Country>
+						<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:Address>
+			</cac:DeliveryLocation>
+			<cac:EstimatedDeliveryPeriod>
+				<cbc:StartDate>2024-01-02</cbc:StartDate>
+				<cbc:StartTime>11:00:00</cbc:StartTime>
+				<cbc:EndDate>2024-01-02</cbc:EndDate>
+				<cbc:EndTime>11:00:00</cbc:EndTime>
+			</cac:EstimatedDeliveryPeriod>
+			<cac:Despatch>
+				<cac:DespatchAddress>
+					<cbc:StreetName>KUNGSGATAN 2</cbc:StreetName>
+					<cbc:CityName>KUNGSÖR</cbc:CityName>
+					<cbc:PostalZone>736 36</cbc:PostalZone>
+					<cac:Country>
+						<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:DespatchAddress>
+			</cac:Despatch>
+		</cac:Delivery>
+	</cac:Shipment>
+	<cac:DespatchLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:DeliveredQuantity unitCode="EA">4</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<!-- Buyer purchase order line id -->
+			<cbc:LineID>10</cbc:LineID>
+			<!-- Seller sales order line id -->
+			<cbc:SalesOrderLineID>KUN-15663-1420</cbc:SalesOrderLineID>
+			<cac:OrderReference>
+				<!-- Buyer purchase order number -->
+				<cbc:ID>123456789</cbc:ID>
+				<!-- Seller sales order number -->
+				<cbc:SalesOrderID>KUN-15663</cbc:SalesOrderID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>D3101-HD/F 120/20 F155</cbc:Name>
+			<cac:BuyersItemIdentification>
+				<cbc:ID>D3101</cbc:ID>
+			</cac:BuyersItemIdentification>
+			<cac:SellersItemIdentification>
+				<cbc:ID>ELEMENT-KUN-15663-1420</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="ZZZ" listVersionID="" name="SB">SB10149</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="TST" listVersionID="26.0801" name="UNSPSC">30103619</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Boverket Resource ID</cbc:Name>
+				<cbc:NameCode listID="IPNC">BoVResourceID</cbc:NameCode>
+				<cbc:Value>6000000059</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Program Operator</cbc:Name>
+				<cbc:NameCode listID="IPNC">ProgramOperator</cbc:NameCode>
+				<cbc:Value>The Norwegian EPD Foundation</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>EPD Number</cbc:Name>
+				<cbc:NameCode listID="IPNC">EPDNumber</cbc:NameCode>
+				<cbc:Value>NEPD-6998-6380-SE</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>EPD Product Name</cbc:Name>
+				<cbc:NameCode listID="IPNC">EPDProductName</cbc:NameCode>
+				<cbc:Value>HÅLDÄCK</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>GWP GHG A1-3 EPD total value for line</cbc:Name>
+				<cbc:NameCode listID="IPNC">GWP-GHG_A1-3_vA1</cbc:NameCode>
+				<cbc:Value>NA</cbc:Value>
+				<cbc:ValueQuantity unitCode="KGM">160.87</cbc:ValueQuantity>
+			</cac:AdditionalItemProperty>
+			<cac:ItemInstance>
+				<!-- Serial number for the element -->
+				<cbc:SerialID>ELEMENT-KUN-15663-49</cbc:SerialID>
+			</cac:ItemInstance>
+			<cac:ItemInstance>
+				<cbc:SerialID>ELEMENT-KUN-15663-50</cbc:SerialID>
+			</cac:ItemInstance>
+			<cac:ItemInstance>
+				<cbc:SerialID>ELEMENT-KUN-15663-51</cbc:SerialID>
+			</cac:ItemInstance>
+			<cac:ItemInstance>
+				<cbc:SerialID>ELEMENT-KUN-15663-52</cbc:SerialID>
+			</cac:ItemInstance>
+			<cac:Dimension>
+				<cbc:AttributeID>WD</cbc:AttributeID>
+				<cbc:Measure unitCode="MMT">1200</cbc:Measure>
+			</cac:Dimension>
+			<cac:Dimension>
+				<cbc:AttributeID>LN</cbc:AttributeID>
+				<cbc:Measure unitCode="MMT">4010</cbc:Measure>
+			</cac:Dimension>
+			<cac:Dimension>
+				<cbc:AttributeID>HT</cbc:AttributeID>
+				<cbc:Measure unitCode="MMT">264</cbc:Measure>
+			</cac:Dimension>
+			<cac:Dimension>
+				<cbc:AttributeID>AAB</cbc:AttributeID>
+				<cbc:Measure unitCode="KGM">1256.83</cbc:Measure>
+			</cac:Dimension>
+			<cac:Dimension>
+				<cbc:AttributeID>AAF</cbc:AttributeID>
+				<cbc:Measure unitCode="KGM">1256.83</cbc:Measure>
+			</cac:Dimension>
+		</cac:Item>
+	</cac:DespatchLine>
+	<cac:DespatchLine>
+		<cbc:ID>2</cbc:ID>
+		<cbc:DeliveredQuantity unitCode="EA">1</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<!-- Buyer purchase order line id -->
+			<cbc:LineID>20</cbc:LineID>
+			<!-- Seller sales order line id -->
+			<cbc:SalesOrderLineID>KUN-15663-1422</cbc:SalesOrderLineID>
+			<cac:OrderReference>
+				<!-- Buyer purchase order number -->
+				<cbc:ID>123456789</cbc:ID>
+				<!-- Seller sales order number -->
+				<cbc:SalesOrderID>KUN-15663</cbc:SalesOrderID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>D3102-HD/F 120/22 F155</cbc:Name>
+			<cac:BuyersItemIdentification>
+				<cbc:ID>D3102</cbc:ID>
+			</cac:BuyersItemIdentification>
+			<cac:SellersItemIdentification>
+				<cbc:ID>ELEMENT-KUN-15663-1422</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="ZZZ" listVersionID="" name="SBE">SB10149</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="TST" listVersionID="26.0801" name="UNSPSC">30103619</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Boverket Resource ID</cbc:Name>
+				<cbc:NameCode listID="IPNC">BoVResourceID</cbc:NameCode>
+				<cbc:Value>6000000059</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Program Operator</cbc:Name>
+				<cbc:NameCode listID="IPNC">ProgramOperator</cbc:NameCode>
+				<cbc:Value>The Norwegian EPD Foundation</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>EPD Number</cbc:Name>
+				<cbc:NameCode listID="IPNC">EPDNumber</cbc:NameCode>
+				<cbc:Value>NEPD-6998-6380-SE</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>EPD Product Name</cbc:Name>
+				<cbc:NameCode listID="IPNC">EPDProductName</cbc:NameCode>
+				<cbc:Value>HÅLDÄCK</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>GWP GHG A1-3 EPD total value for line</cbc:Name>
+				<cbc:NameCode listID="IPNC">GWP-GHG_A1-3_vA1</cbc:NameCode>
+				<cbc:Value>NA</cbc:Value>
+				<cbc:ValueQuantity unitCode="KGM">153.03</cbc:ValueQuantity>
+			</cac:AdditionalItemProperty>
+			<cac:ItemInstance>
+				<!-- Serial number for the element -->
+				<cbc:SerialID>ELEMENT-KUN-15664-63</cbc:SerialID>
+			</cac:ItemInstance>
+			<cac:Dimension>
+				<cbc:AttributeID>WD</cbc:AttributeID>
+				<cbc:Measure unitCode="MMT">1200</cbc:Measure>
+			</cac:Dimension>
+			<cac:Dimension>
+				<cbc:AttributeID>LN</cbc:AttributeID>
+				<cbc:Measure unitCode="MMT">4010</cbc:Measure>
+			</cac:Dimension>
+			<cac:Dimension>
+				<cbc:AttributeID>HT</cbc:AttributeID>
+				<cbc:Measure unitCode="MMT">200</cbc:Measure>
+			</cac:Dimension>
+			<cac:Dimension>
+				<cbc:AttributeID>AAB</cbc:AttributeID>
+				<cbc:Measure unitCode="KGM">1195.56</cbc:Measure>
+			</cac:Dimension>
+			<cac:Dimension>
+				<cbc:AttributeID>AAF</cbc:AttributeID>
+				<cbc:Measure unitCode="KGM">1195.56</cbc:Measure>
+			</cac:Dimension>
+		</cac:Item>
+	</cac:DespatchLine>
+	<cac:DespatchLine>
+		<cbc:ID>3</cbc:ID>
+		<cbc:DeliveredQuantity unitCode="EA">1</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<!-- Buyer purchase order line id -->
+			<cbc:LineID>30</cbc:LineID>
+			<!-- Seller sales order line id -->
+			<cbc:SalesOrderLineID>DEVICE-KUN-75682-12</cbc:SalesOrderLineID>
+			<cac:OrderReference>
+				<!-- Buyer purchase order number -->
+				<cbc:ID>123456789</cbc:ID>
+				<!-- Seller sales order number -->
+				<cbc:SalesOrderID>KUN-15663</cbc:SalesOrderID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>ARMERING från Götes Gata (1st pall, 2st bunt 12m)</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>DEVICE-KUN-75682-12</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="TST" listVersionID="26.0801" name="UNSPSC">30103623</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>ItemType</cbc:Name>
+				<cbc:Value>Assembly device</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:ItemInstance>
+				<!-- Serial number for the equipment -->
+				<cbc:SerialID>8977698737</cbc:SerialID>
+			</cac:ItemInstance>
+			<cac:Dimension>
+				<cbc:AttributeID>AAB</cbc:AttributeID>
+				<cbc:Measure unitCode="KGM">565</cbc:Measure>
+			</cac:Dimension>
+			<cac:Dimension>
+				<cbc:AttributeID>AAF</cbc:AttributeID>
+				<cbc:Measure unitCode="KGM">565</cbc:Measure>
+			</cac:Dimension>
+		</cac:Item>
+	</cac:DespatchLine>
+	<cac:DespatchLine>
+		<!-- Skulle kunna vara equipment istället -->
+		<cbc:ID>4</cbc:ID>
+		<cbc:DeliveredQuantity unitCode="EA">1</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<!-- Buyer purchase order line id -->
+			<cbc:LineID>40</cbc:LineID>
+			<!-- Seller sales order line id -->
+			<cbc:SalesOrderLineID>DEVICE-KUN-75682-3</cbc:SalesOrderLineID>
+			<cac:OrderReference>
+				<!-- Buyer purchase order number -->
+				<cbc:ID>123456789</cbc:ID>
+				<!-- Seller sales order number -->
+				<cbc:SalesOrderID>KUN-15663</cbc:SalesOrderID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+
+		<cac:Item>
+			<cbc:Name>LITET OK</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>DEVICE-KUN-75682-3</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="TST" listVersionID="26.0801" name="UNSPSC">24101668</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+
+			<cac:ItemInstance>
+				<!-- Serial number for the equipment -->
+				<cbc:SerialID>9877698767657</cbc:SerialID>
+			</cac:ItemInstance>
+			<cac:Dimension>
+				<cbc:AttributeID>AAB</cbc:AttributeID>
+				<cbc:Measure unitCode="KGM">620</cbc:Measure>
+			</cac:Dimension>
+			<cac:Dimension>
+				<cbc:AttributeID>AAF</cbc:AttributeID>
+				<cbc:Measure unitCode="KGM">620</cbc:Measure>
+			</cac:Dimension>
+
+		</cac:Item>
+	</cac:DespatchLine>
+</DespatchAdvice>

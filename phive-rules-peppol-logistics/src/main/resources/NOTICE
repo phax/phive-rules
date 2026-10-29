@@ -1,0 +1,10 @@
+=============================================================================
+= NOTICE file corresponding to section 4d of the Apache License Version 2.0 =
+=============================================================================
+This product includes Open Source Software developed by
+Philip Helger - https://www.helger.com/
+
+The contained Peppol Logistics validation rules (release 1.3.1) are originally from
+https://docs.peppol.eu/logistics/ (OpenPeppol). The Schematron files do not state a licence.
+
+The XSLT files of this module are generated from the upstream Schematron sources.

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TransportExecutionPlanRequest xmlns="urn:oasis:names:specification:ubl:schema:xsd:TransportExecutionPlanRequest-2"
+                                   xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                                   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+   <cbc:CustomizationID>urn:fdc:peppol.eu:logistics:trns:transport_execution_plan_request:1</cbc:CustomizationID>
+   <cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:transport_execution_plan_w_request:1</cbc:ProfileID>
+   <cbc:ID>141278571829041241241</cbc:ID>
+   <cbc:IssueDate>2021-09-29</cbc:IssueDate>
+   <cbc:IssueTime>09:49:00+02:00</cbc:IssueTime>
+   <cbc:DocumentStatusCode>9</cbc:DocumentStatusCode>   
+	
+   <cac:TransportUserParty>
+		<cbc:EndpointID schemeID="0007">5560125220</cbc:EndpointID>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0007">5560125220</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PostalAddress>
+			<cbc:StreetName>Bällstavägen 102</cbc:StreetName>
+			<cbc:CityName>Bromma</cbc:CityName>
+			<cbc:PostalZone>168 64</cbc:PostalZone>
+			<cac:Country>
+				<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+			</cac:Country>
+		</cac:PostalAddress>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Beijer Byggmaterial AB</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+		<cac:Contact>
+			<cbc:Name>Robin Olsson</cbc:Name>
+			<cbc:Telephone>075-241 32304</cbc:Telephone>
+			<cbc:ElectronicMail>info.bromma@beijerbygg.se</cbc:ElectronicMail>
+		</cac:Contact>		
+   </cac:TransportUserParty>
+	
+   <cac:TransportServiceProviderParty>
+      <cbc:EndpointID schemeID="0088">5790001963576</cbc:EndpointID>      
+      <cac:PartyName>
+         <cbc:Name>ByggeSpeditören</cbc:Name>    
+      </cac:PartyName>
+      <cac:PostalAddress>
+         <cbc:StreetName>Industrivänget 8</cbc:StreetName>        
+         <cbc:CityName>Uddevalla</cbc:CityName>
+         <cbc:PostalZone>451 33</cbc:PostalZone>        
+         <cac:Country>
+            <cbc:IdentificationCode>SE</cbc:IdentificationCode>      
+         </cac:Country>    
+      </cac:PostalAddress>     
+      <cac:PartyLegalEntity>
+         <cbc:RegistrationName>Ericsen Spedition</cbc:RegistrationName>
+         <cbc:CompanyID schemeID="0007">5560125220</cbc:CompanyID>  
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+         <cbc:Name>Claes Ericsen</cbc:Name>
+         <cbc:Telephone>+465889356</cbc:Telephone>
+         <cbc:ElectronicMail>ce@byggespeditoren.se</cbc:ElectronicMail>    
+      </cac:Contact>  
+   </cac:TransportServiceProviderParty>
+	
+   <cac:PayeeParty>
+      <cac:PartyIdentification>
+		<cbc:ID schemeID="0007">5560339086</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PostalAddress>
+			<cbc:StreetName>Warfvinges väg 25</cbc:StreetName>
+			<cbc:CityName>Stockholm</cbc:CityName>
+			<cbc:PostalZone>112 74</cbc:PostalZone>
+			<cac:Country>
+				<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+			</cac:Country>
+		</cac:PostalAddress>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Skanska Sverige AB</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+   </cac:PayeeParty>  
+	
+   <cac:MainTransportationService>
+      <cbc:TransportServiceCode>3</cbc:TransportServiceCode>
+      <cbc:TransportationServiceDescription>Transport from door to door</cbc:TransportationServiceDescription>  
+   </cac:MainTransportationService>
+	
+   <cac:AdditionalTransportationService>
+      <cbc:TransportServiceCode>12</cbc:TransportServiceCode>
+      <cbc:TransportationServiceDescription>Insurance</cbc:TransportationServiceDescription>  
+   </cac:AdditionalTransportationService>
+	
+   <cac:Consignment>
+	   <cbc:ID schemeID="GINC">735005233GS1TRANSPORT000001</cbc:ID>
+	   <cbc:GrossWeightMeasure unitCode="KGM">2460</cbc:GrossWeightMeasure>
+	  <cbc:GrossVolumeMeasure unitCode="MTQ">3.10</cbc:GrossVolumeMeasure>      
+      <cbc:HazardousRiskIndicator>false</cbc:HazardousRiskIndicator>
+      <cbc:TotalTransportHandlingUnitQuantity unitCode="EA">2</cbc:TotalTransportHandlingUnitQuantity>
+	   
+      <cac:RequestedPickupTransportEvent>
+         <cbc:IdentificationID>21412312412</cbc:IdentificationID>
+         <cac:Location>            
+            <cbc:Name>Beijer Byggmaterial port 2</cbc:Name>
+            <cac:Address>
+				<cbc:StreetName>Bällstavägen 102</cbc:StreetName>
+				<cbc:CityName>Bromma</cbc:CityName>
+				<cbc:PostalZone>168 64</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:Address>      
+         </cac:Location>
+         <cac:Period>
+            <cbc:StartDate>2021-09-25</cbc:StartDate>
+            <cbc:StartTime>12:45:00+02:00</cbc:StartTime>
+            <cbc:EndDate>2021-09-25</cbc:EndDate>
+            <cbc:EndTime>13:00:00+02:00</cbc:EndTime>      
+         </cac:Period>    
+      </cac:RequestedPickupTransportEvent>
+	   
+      <cac:RequestedDeliveryTransportEvent>
+         <cbc:IdentificationID>625435485674654132</cbc:IdentificationID>
+         <cac:Location>
+			<cbc:ID schemeID="0088">5790000435951</cbc:ID>
+			<cbc:Name>Skanska Sverige AB</cbc:Name>
+			<cac:Address>
+				<cbc:StreetName>Hammarbyvägen 3</cbc:StreetName>
+				<cbc:CityName>Stockholm</cbc:CityName>
+				<cbc:PostalZone>123 45</cbc:PostalZone>
+				<cac:AddressLine>
+					<cbc:Line>3:e våningen, Rum 5</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:Address>      
+         </cac:Location>
+         <cac:Period>
+            <cbc:StartDate>2021-09-29</cbc:StartDate>
+            <cbc:StartTime>10:00:00+01:00</cbc:StartTime>
+            <cbc:EndDate>2021-09-29</cbc:EndDate>
+            <cbc:EndTime>11:00:00+01:00</cbc:EndTime>      
+         </cac:Period>    
+      </cac:RequestedDeliveryTransportEvent>
+	   
+      <cac:ConsigneeParty>
+         <cac:PartyIdentification>
+			<cbc:ID schemeID="0007">5560339086</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PostalAddress>
+			<cbc:StreetName>Warfvinges väg 25</cbc:StreetName>
+			<cbc:CityName>Stockholm</cbc:CityName>
+			<cbc:PostalZone>112 74</cbc:PostalZone>
+			<cac:Country>
+				<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+			</cac:Country>
+		</cac:PostalAddress>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Skanska Sverige AB</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+		<cac:Contact>
+			<cbc:Name>Alexander Janving</cbc:Name>
+			<cbc:Telephone>010-448 00 004</cbc:Telephone>
+			<cbc:ElectronicMail>some.email@skanska.se</cbc:ElectronicMail>
+		</cac:Contact>
+      </cac:ConsigneeParty>
+	   
+      <cac:ConsignorParty>
+         <cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5560125220</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Bällstavägen 102</cbc:StreetName>
+				<cbc:CityName>Bromma</cbc:CityName>
+				<cbc:PostalZone>168 64</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Beijer Byggmaterial AB</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Robin Olsson</cbc:Name>
+				<cbc:Telephone>075-241 32304</cbc:Telephone>
+				<cbc:ElectronicMail>info.bromma@beijerbygg.se</cbc:ElectronicMail>
+			</cac:Contact>    
+      </cac:ConsignorParty>
+	   
+      <cac:OriginalDepartureCountry>
+         <cbc:IdentificationCode>SE</cbc:IdentificationCode>    
+      </cac:OriginalDepartureCountry>
+      <cac:FinalDestinationCountry>
+         <cbc:IdentificationCode>SE</cbc:IdentificationCode>    
+      </cac:FinalDestinationCountry>
+	   
+      <cac:DeliveryTerms>
+         <cbc:ID>DAP</cbc:ID>           
+      </cac:DeliveryTerms>
+      <cac:PaymentTerms>         
+         <cbc:Note>Please send invoice via Peppol to payee party</cbc:Note>    
+      </cac:PaymentTerms>   
+	   
+      <cac:MainCarriageShipmentStage>
+         <cbc:TransportModeCode>3</cbc:TransportModeCode>                            
+      </cac:MainCarriageShipmentStage>
+	   
+      <cac:TransportHandlingUnit>
+		  <cbc:ID schemeID="SSCC">173500538500000016</cbc:ID>
+		  <cbc:TransportHandlingUnitTypeCode>AG</cbc:TransportHandlingUnitTypeCode>
+			<cbc:ShippingMarks>900206705</cbc:ShippingMarks>			
+			<cac:MeasurementDimension>
+				<cbc:AttributeID>AAB</cbc:AttributeID>
+				<cbc:Measure unitCode="KGM">1230</cbc:Measure>
+			</cac:MeasurementDimension>
+			<cac:MeasurementDimension>
+				<cbc:AttributeID>AAW</cbc:AttributeID>
+				<cbc:Measure unitCode="MTQ">1.55</cbc:Measure>
+			</cac:MeasurementDimension>
+			<cac:GoodsItem>
+				<cbc:ID>1</cbc:ID>
+				<cbc:Description>Stolpförankring galvaniserad</cbc:Description>				
+			</cac:GoodsItem>					
+		</cac:TransportHandlingUnit>		
+	   
+		<cac:TransportHandlingUnit>
+			<cbc:ID schemeID="SSCC">173500538500000016</cbc:ID>
+			<cbc:TransportHandlingUnitTypeCode>AG</cbc:TransportHandlingUnitTypeCode>
+			<cbc:ShippingMarks>900206705</cbc:ShippingMarks>
+			<cac:MeasurementDimension>
+				<cbc:AttributeID>AAB</cbc:AttributeID>
+				<cbc:Measure unitCode="KGM">1230</cbc:Measure>
+			</cac:MeasurementDimension>
+			<cac:MeasurementDimension>
+				<cbc:AttributeID>AAW</cbc:AttributeID>
+				<cbc:Measure unitCode="MTQ">1.55</cbc:Measure>
+			</cac:MeasurementDimension>
+			<cac:GoodsItem>
+				<cbc:ID>1</cbc:ID>
+				<cbc:Description>Stolpförankring galvaniserad</cbc:Description>				
+			</cac:GoodsItem>	
+		</cac:TransportHandlingUnit>  
+   </cac:Consignment>
+</TransportExecutionPlanRequest>

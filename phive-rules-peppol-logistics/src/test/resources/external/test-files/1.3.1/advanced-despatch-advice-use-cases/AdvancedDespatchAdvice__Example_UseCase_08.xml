@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+					Content:
+					This file contains an Example for Use-case no 8 in Lgistics ADvanced Despatch Advice.
+					
+-->
+<DespatchAdvice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	
+	<cbc:CustomizationID>urn:fdc:peppol.eu:logistics:trns:advanced_despatch_advice:1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:despatch_advice_only:1</cbc:ProfileID>
+	
+	<cbc:ID>43413589</cbc:ID>
+	<cbc:IssueDate>2020-12-21</cbc:IssueDate>
+	<cbc:IssueTime>13:14:34</cbc:IssueTime>
+	<cbc:DespatchAdviceTypeCode>2</cbc:DespatchAdviceTypeCode>
+	
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>P-12345</cbc:ID>
+		<cbc:DocumentType>ProjectReference</cbc:DocumentType>
+	</cac:AdditionalDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>P-12345:7669:12125</cbc:ID>
+		<cbc:DocumentType>AccountingCost</cbc:DocumentType>
+	</cac:AdditionalDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>SEK</cbc:ID>
+		<cbc:DocumentType>CurrencyCode</cbc:DocumentType>
+	</cac:AdditionalDocumentReference>
+	
+	<cac:DespatchSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0007">5560125220</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5560125220</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Transportvägen 7</cbc:StreetName>
+				<cbc:CityName>Bromma</cbc:CityName>
+				<cbc:PostalZone>168 64</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Avfallshantering AB</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Robin Olsson</cbc:Name>
+				<cbc:Telephone>070-241 23456</cbc:Telephone>
+				<cbc:ElectronicMail>info.bromma@avfallshanteringAB.se</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DespatchSupplierParty>
+	
+	<cac:DeliveryCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0007">5560339086</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5560339086</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Warfvinges väg 25</cbc:StreetName>
+				<cbc:CityName>Stockholm</cbc:CityName>
+				<cbc:PostalZone>112 74</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Skanska Sverige AB</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Alexander Janving</cbc:Name>
+				<cbc:Telephone>010-448 00 004</cbc:Telephone>
+				<cbc:ElectronicMail>some.email@skanska.se</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DeliveryCustomerParty>
+	
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5560339086</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Warfvinges väg 25</cbc:StreetName>
+				<cbc:CityName>Stockholm</cbc:CityName>
+				<cbc:PostalZone>112 74</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Skanska Sverige AB</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5560125220</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Transportvägen 7</cbc:StreetName>
+				<cbc:CityName>Bromma</cbc:CityName>
+				<cbc:PostalZone>168 64</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Avfallshantering AB</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	
+	<cac:Shipment>
+		<cbc:ID schemeID="GSIN">73500538500000019</cbc:ID>
+
+		<cac:ShipmentStage>
+			<cbc:TransportModeCode>3</cbc:TransportModeCode>
+			<cac:TransportMeans>
+				<cac:RoadTransport>
+					<cbc:LicensePlateID>SE-ABC123</cbc:LicensePlateID>
+				</cac:RoadTransport>
+			</cac:TransportMeans>
+		</cac:ShipmentStage>
+		
+		<cac:Delivery>
+			
+			<cbc:ActualDeliveryDate>2020-12-21</cbc:ActualDeliveryDate>
+			<cbc:ActualDeliveryTime>07:15:00</cbc:ActualDeliveryTime>
+			
+			<cac:DeliveryLocation>
+				<cbc:ID schemeID="0088">5790000435951</cbc:ID>
+				<cbc:Name>Recycling location 123</cbc:Name>
+				<cac:Address>
+					<cbc:StreetName>Waste road 1</cbc:StreetName>
+					<cbc:CityName>Stockholm</cbc:CityName>
+					<cbc:PostalZone>123 45</cbc:PostalZone>
+					<cac:Country>
+						<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+					</cac:Country>
+					<cac:LocationCoordinate>
+						<cbc:CoordinateSystemCode>EPSG:3857</cbc:CoordinateSystemCode>
+						<cbc:LatitudeDegreesMeasure unitCode="DD">123.456</cbc:LatitudeDegreesMeasure>
+						<cbc:LongitudeDegreesMeasure unitCode="DD">123.456</cbc:LongitudeDegreesMeasure>
+					</cac:LocationCoordinate>
+				</cac:Address>
+			</cac:DeliveryLocation>
+			
+			<cac:Despatch>
+				<cbc:ActualDespatchDate>2020-12-21</cbc:ActualDespatchDate>
+				<cbc:ActualDespatchTime>02:00:00</cbc:ActualDespatchTime>
+				
+				<cac:DespatchAddress>
+					<cbc:StreetName>Construction road 1</cbc:StreetName>
+					<cbc:CityName>Stockholm</cbc:CityName>
+					<cbc:PostalZone>123 45</cbc:PostalZone>
+					<cac:Country>
+						<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+					</cac:Country>
+					<cac:LocationCoordinate>
+						<cbc:CoordinateSystemCode>EPSG:3857</cbc:CoordinateSystemCode>
+						<cbc:LatitudeDegreesMeasure unitCode="DD">59.33169866504851</cbc:LatitudeDegreesMeasure>
+						<cbc:LongitudeDegreesMeasure unitCode="DD">18.063330898492403</cbc:LongitudeDegreesMeasure>
+					</cac:LocationCoordinate>
+				</cac:DespatchAddress>
+				
+			</cac:Despatch>
+		</cac:Delivery>
+	</cac:Shipment>
+	
+	<cac:DespatchLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:DeliveredQuantity unitCode="TNE">2.345</cbc:DeliveredQuantity>
+
+		<cac:OrderLineReference>
+			<cbc:LineID>10</cbc:LineID>
+			<cac:OrderReference>
+				<cbc:ID>AEG012345</cbc:ID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+
+		<cac:DocumentReference>
+			<cbc:ID>MT8723456</cbc:ID>
+			<cbc:DocumentTypeCode>14</cbc:DocumentTypeCode>
+		</cac:DocumentReference>
+		
+		<cac:Item>
+			<cbc:Name>Wood waste, untreated, unpainted</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>312611</cbc:ID>
+			</cac:SellersItemIdentification>
+
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="ZZZ" listVersionID="221014" name="AI">0301010</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+
+			<cac:AdditionalItemProperty>
+				<cbc:Name>NA</cbc:Name>
+				<cbc:NameCode listID="IPNC">Price</cbc:NameCode>
+				<cbc:Value>330.25</cbc:Value>
+				<cbc:ValueQualifier>CON</cbc:ValueQualifier>
+			</cac:AdditionalItemProperty>
+
+			<cac:AdditionalItemProperty>
+				<cbc:Name>GWP GHG A1-3 vA1 EPD value</cbc:Name>
+				<cbc:NameCode listID="IPNC">GWP-GHG_A1-3_vA1</cbc:NameCode>
+				<cbc:Value>112 kg</cbc:Value>
+				<cbc:ValueQuantity unitCode="KGM">112</cbc:ValueQuantity>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>EPD Dataset ID</cbc:Name>
+				<cbc:NameCode listID="IPNC">EPDDataSetID</cbc:NameCode>
+				<cbc:Value>165f8554-00cd-43ad-aeb7-ba769854554a</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>EPD Dataset URL</cbc:Name>
+				<cbc:NameCode listID="IPNC">EPDDataSetURL</cbc:NameCode>
+				<cbc:Value>https://epdnorway.lca-data.com/datasetdetail/process.xhtml?uuid=165f8554-00cd-43ad-aeb7-ba769854554a&amp;version=00.01.000&amp;stock=PUBLIC</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>EPD HR URL</cbc:Name>
+				<cbc:NameCode listID="IPNC">EPDHRURL</cbc:NameCode>
+				<cbc:Value>https://portal.environdec.com/api/api/v1/EPDLibrary/Files/07e17ba1-cf00-48e5-9cf1-d8bd90a468f8/Data</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Boverket Resource ID</cbc:Name>
+				<cbc:NameCode listID="IPNC">BoVResourceID</cbc:NameCode>
+				<cbc:Value>6000000020</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Treatment Code</cbc:Name>
+				<cbc:NameCode listID="IPNC">TreatmentCode</cbc:NameCode>
+				<cbc:Value>R11#A</cbc:Value>
+			</cac:AdditionalItemProperty>
+			
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Waste Declaration Number</cbc:Name>
+				<cbc:NameCode listID="SE:Waste">WasteDeclarationNumber</cbc:NameCode>  
+				<cbc:Value>1234567890</cbc:Value>
+				</cac:AdditionalItemProperty>
+			
+		</cac:Item>
+	</cac:DespatchLine>
+</DespatchAdvice>

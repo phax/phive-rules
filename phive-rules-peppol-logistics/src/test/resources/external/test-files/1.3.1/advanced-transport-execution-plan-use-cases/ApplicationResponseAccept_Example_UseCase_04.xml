@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApplicationResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2"
+					 xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+					 xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:logistics:trns:application_response:1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:advanced_transport_execution_plan:1</cbc:ProfileID>
+	<cbc:ProfileExecutionID>35a75b8c-83ed-11f0-8de9-0242ac120002</cbc:ProfileExecutionID>
+	<cbc:ID>3f108cde-83ed-11f0-8de9-0242ac120002</cbc:ID>
+	<cbc:IssueDate>2025-06-01</cbc:IssueDate>
+	<cbc:IssueTime>12:00:00</cbc:IssueTime>
+	<cac:SenderParty>
+      <cbc:EndpointID schemeID="0198">DK85955619</cbc:EndpointID>
+      <cac:PartyIdentification>
+         <cbc:ID>85955619</cbc:ID>
+      </cac:PartyIdentification>
+		<cac:Contact>
+			<cbc:Name>Jens Jensen</cbc:Name>
+			<cbc:Telephone>23232323</cbc:Telephone>
+			<cbc:ElectronicMail>jj@test-company.dk</cbc:ElectronicMail>
+		</cac:Contact>
+	</cac:SenderParty>
+	<cac:ReceiverParty>
+      <cbc:EndpointID schemeID="0198">DK41955619</cbc:EndpointID>
+        <cac:PartyIdentification>
+            <cbc:ID>41955619</cbc:ID>
+        </cac:PartyIdentification>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Seller company</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+	</cac:ReceiverParty>
+	<cac:DocumentResponse>
+		<cac:Response>
+			<cbc:ResponseCode>AP</cbc:ResponseCode>			
+		</cac:Response>
+		<cac:DocumentReference>
+			<cbc:ID>e2663b86-79cf-11f0-8de9-0242ac120002</cbc:ID>
+			<cbc:IssueDate>2025-05-09</cbc:IssueDate>
+			<cbc:DocumentType>TransportExecutionPlanRequest</cbc:DocumentType>
+		</cac:DocumentReference>		
+	</cac:DocumentResponse>
+</ApplicationResponse>

@@ -208,6 +208,32 @@
       "notes": "XSD only, very stable."
     },
     {
+      "id": "peppol-logistics",
+      "module": "phive-rules-peppol-logistics",
+      "coordinates": [
+        "org.peppol.logistics:advanced-despatch-advice",
+        "weight-statement",
+        "transport-execution-plan-request",
+        "transport-execution-plan",
+        "waybill",
+        "transportation-status-request",
+        "transportation-status",
+        "receipt-advice",
+        "application-response"
+      ],
+      "publisher": "OpenPeppol",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/logistics/",
+      "url-status": "verified",
+      "current": "release 1.3.1 (T120 1.4, T122 1.3, T123 1.2, T124 1.2, T125 1.1, T126 1.2, T127 1.2, T128 1.1, T129 1.0)",
+      "current-upstream": "Peppol Logistics - Release 1.3.1 Hotfix",
+      "upstream-latest": "Release 1.3.1 Hotfix (last updated 2026-09-16)",
+      "status": "up-to-date",
+      "last-checked": "2026-10-29",
+      "detect": "Release name in the page header and the per-transaction syntax versions on the main page; the rules are in https://docs.peppol.eu/logistics/files/Schematron.zip and the examples in https://docs.peppol.eu/logistics/files/Examples.zip",
+      "notes": "VES versions are the per-transaction syntax versions, not the release version. T123/T124 are validated against UBL 2.4, T120/T129 against UBL 2.1, all others against UBL 2.3. Two upstream examples were invalid and are fixed locally, marked with '[PH]' XML comments: ReceiptAdvice_Example_Full.xml (PEPPOL-T128-R023) and TransportationStatusRequest_Example_UseCase_04.xml (XSD element order). Re-apply when updating the examples."
+    },
+    {
       "id": "peppol-italy",
       "module": "phive-rules-peppol-italy",
       "coordinates": [

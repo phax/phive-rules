@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+                Content:
+                Example for Use-case no 01 in Logistics Advanced Despatch Adivce for wood.
+				
+				Change Log:
+				2023-05-15
+				- Initial version
+				
+				Change Log:
+				2023-06-09
+				- Changed value for PEFC Issuer Party
+		
+-->
+<DespatchAdvice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:logistics:trns:advanced_despatch_advice:1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:despatch_advice_only:1</cbc:ProfileID>
+	<cbc:ID>43413589</cbc:ID>
+	<!-- Unique ID from the supplier -->
+	<cbc:IssueDate>2020-12-21</cbc:IssueDate>
+	<cbc:IssueTime>13:14:34</cbc:IssueTime>
+	<cbc:DespatchAdviceTypeCode>1</cbc:DespatchAdviceTypeCode>
+	<cbc:Note>Some note about the delivery</cbc:Note>
+
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>9876986</cbc:ID>
+		<cbc:DocumentType>ProjectReference</cbc:DocumentType>
+	</cac:AdditionalDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>9876986-1-5544</cbc:ID>
+		<cbc:DocumentType>AccountingCost</cbc:DocumentType>
+	</cac:AdditionalDocumentReference>
+
+	<cac:DespatchSupplierParty>
+		<!-- Mandatory, the party that despatcheds the goods or provides service -->
+		<cac:Party>
+			<cbc:EndpointID schemeID="0192">951278017</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0192">951278017</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Myhrersvingen 9</cbc:StreetName>
+				<cbc:CityName>Eidsvoll</cbc:CityName>
+				<cbc:PostalZone>2080</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>NO</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>MOELVEN EIDSVOLL AS</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Terje Trä</cbc:Name>
+				<cbc:Telephone>+47 63 92 48 80</cbc:Telephone>
+				<cbc:ElectronicMail>someone@moelven.se</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DespatchSupplierParty>
+
+	<cac:DeliveryCustomerParty>
+		<!-- Mandatory, the party that recieves the goods or service -->
+		<cac:Party>
+			<cbc:EndpointID schemeID="0007">5560125220</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5560125220</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Bällstavägen 102</cbc:StreetName>
+				<cbc:CityName>Bromma</cbc:CityName>
+				<cbc:PostalZone>168 64</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Beijer Byggmaterial AB</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Robin Olsson</cbc:Name>
+				<cbc:Telephone>075-241 32304</cbc:Telephone>
+				<cbc:ElectronicMail>info.bromma@beijerbygg.se</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DeliveryCustomerParty>
+
+	<cac:BuyerCustomerParty>
+		<!-- BEAst recommends sending BuyerCustomerParty even if it is optional since it is easier for the receiver. -->
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5560125220</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Bällstavägen 102</cbc:StreetName>
+				<cbc:CityName>Bromma</cbc:CityName>
+				<cbc:PostalZone>168 64</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Beijer Byggmaterial AB</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+
+	<cac:SellerSupplierParty>
+		<!-- It is recommended sending SellerSupplierParty even if it is optional since it is easier for the receiver. -->
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0192">951278017</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Myhrersvingen 9</cbc:StreetName>
+				<cbc:CityName>Eidsvoll</cbc:CityName>
+				<cbc:PostalZone>2080</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>NO</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>MOELVEN EIDSVOLL AS</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+
+
+	<cac:Shipment>
+		<cbc:ID schemeID="GSIN">73500538500000019</cbc:ID>
+		<!-- Mandatory Shipment number (fraktsedelsnummer) is mapped to this field -->
+		<cac:Delivery>
+			<cac:EstimatedDeliveryPeriod>
+				<cbc:StartDate>2022-11-23</cbc:StartDate>
+				<cbc:EndDate>2022-11-23</cbc:EndDate>
+			</cac:EstimatedDeliveryPeriod>
+		</cac:Delivery>
+	</cac:Shipment>
+
+
+	<cac:DespatchLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:DeliveredQuantity unitCode="EA">84</cbc:DeliveredQuantity>
+
+		<!-- OrderLineReference LineID is Mandatory, if no order number and line has been provided by the buyer, set it to NA (For example, if no digital order has been issued.)
+		<cac:OrderLineReference>
+			<cbc:LineID>NA</cbc:LineID>
+		</cac:OrderLineReference>  -->
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+			<cac:OrderReference>
+				<cbc:ID>90000123</cbc:ID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+
+		<cac:Item>
+			<!-- If a up to date and complete masterdata/catalog are available for the receiver of this message
+			then the only necessary Item information to send would be StandardItemIdentification as GTIN-->
+			<cbc:Name>Regel C24 Gran 45x145x4800 mm</cbc:Name>
+			<cac:BuyersItemIdentification>
+				<!-- Litera number or similar, used for the buyer reference -->
+				<cbc:ID>9870202</cbc:ID>
+			</cac:BuyersItemIdentification>
+			<cac:SellersItemIdentification>
+				<!-- Not needed if GTIN is provided -->
+				<cbc:ID>768038</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:ManufacturersItemIdentification>
+				<!-- Not needed if GTIN is provided -->
+				<cbc:ID>768038</cbc:ID>
+			</cac:ManufacturersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">7040437680386</cbc:ID>
+				<!-- 0160 = GTIN, full list https://docs.peppol.eu/poacc/upgrade-3/codelist/ICD/ -->
+			</cac:StandardItemIdentification>
+
+			<!-- Machine readable data -->
+			<cac:AdditionalItemProperty>
+				<cbc:Name>EPD Dataset ID</cbc:Name>
+				<cbc:NameCode listID="IPNC">EPDDataSetID</cbc:NameCode>
+				<cbc:Value>165f8554-00cd-43ad-aeb7-ba769854554a</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>EPD Dataset URL</cbc:Name>
+				<cbc:NameCode listID="IPNC">EPDDataSetURL</cbc:NameCode>
+				<cbc:Value>https://epdnorway.lca-data.com/datasetdetail/process.xhtml?uuid=165f8554-00cd-43ad-aeb7-ba769854554a&amp;version=00.01.000&amp;stock=PUBLIC</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<!-- Human readable data -->
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Program Operator</cbc:Name>
+				<cbc:NameCode listID="IPNC">ProgramOperator</cbc:NameCode>
+				<cbc:Value>The Norwegian EPD Foundation</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>EPD Number</cbc:Name>
+				<cbc:NameCode listID="IPNC">EPDNumber</cbc:NameCode>
+				<cbc:Value>NEPD-6998-6380-SE</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>EPD Product Name</cbc:Name>
+				<cbc:NameCode listID="IPNC">EPDProductName</cbc:NameCode>
+				<cbc:Value>HÅLDÄCK</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>EPD HR URL</cbc:Name>
+				<cbc:NameCode listID="IPNC">EPDHRURL</cbc:NameCode>
+				<cbc:Value>https://portal.environdec.com/api/api/v1/EPDLibrary/Files/07e17ba1-cf00-48e5-9cf1-d8bd90a468f8/Data</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>GWP GHG A1-3 vA1 EPD value</cbc:Name>
+				<cbc:NameCode listID="IPNC">GWP-GHG_A1-3_vA1</cbc:NameCode>
+				<cbc:Value>NA</cbc:Value>
+				<cbc:ValueQuantity unitCode="KGM">0.0735</cbc:ValueQuantity>
+			</cac:AdditionalItemProperty>
+			<!-- Generic climate data -->
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Boverket Resource ID</cbc:Name>
+				<cbc:NameCode listID="IPNC">BoVResourceID</cbc:NameCode>
+				<cbc:Value>6000000192</cbc:Value>
+			</cac:AdditionalItemProperty>
+			
+			<!-- European Union Deforestation Regulation -->
+			<cac:AdditionalItemProperty>
+				<cbc:Name>EUDRReferenceNumber</cbc:Name>
+				<!-- 14-character reference number from TRACES -->
+				<cbc:Value>25SEAMDIS29386</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>EUDRVerificationNumber</cbc:Name>
+				<!-- 8-character verification number from TRACES -->
+				<cbc:Value>RNV5IPXH</cbc:Value>
+			</cac:AdditionalItemProperty>
+
+			<cac:Certificate>
+				<cbc:ID>SE-N8639</cbc:ID>
+				<cbc:CertificateTypeCode>KD56C/30min</cbc:CertificateTypeCode>
+				<cbc:CertificateType>Kiln Drying</cbc:CertificateType>
+				<cbc:Remarks>12</cbc:Remarks>
+				<cac:IssuerParty>
+					<cac:PartyName>
+						<cbc:Name>Swedish Board of Agriculture</cbc:Name>
+					</cac:PartyName>
+				</cac:IssuerParty>
+			</cac:Certificate>
+
+			<cac:Certificate>
+				<cbc:ID>SE-N8639</cbc:ID>
+				<cbc:CertificateTypeCode>ISPM15</cbc:CertificateTypeCode>
+				<cbc:CertificateType>HT</cbc:CertificateType>
+				<cac:IssuerParty>
+					<cac:PartyName>
+						<cbc:Name>Swedish Board of Agriculture</cbc:Name>
+					</cac:PartyName>
+				</cac:IssuerParty>
+			</cac:Certificate>
+
+			<cac:Certificate>
+				<cbc:ID>2018-SKM-PEFC-211</cbc:ID>
+				<cbc:CertificateTypeCode>PEFC</cbc:CertificateTypeCode>
+				<cbc:CertificateType>100% PEFC Certified</cbc:CertificateType>
+				<cbc:Remarks>100</cbc:Remarks>
+				<cac:IssuerParty>
+					<cac:PartyName>
+						<cbc:Name>DNV Sverige</cbc:Name>
+					</cac:PartyName>
+				</cac:IssuerParty>
+			</cac:Certificate>
+
+			<cac:Dimension>
+				<cbc:AttributeID>AAF</cbc:AttributeID>
+				<cbc:Measure unitCode="KGM">14.4096</cbc:Measure>
+			</cac:Dimension>
+		</cac:Item>
+	</cac:DespatchLine>
+</DespatchAdvice>

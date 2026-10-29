@@ -1,0 +1,999 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ubl:TransportExecutionPlan xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:TransportExecutionPlan-2"
+                            xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                            xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+   <cbc:CustomizationID>urn:fdc:peppol.eu:logistics:trns:transport_execution_plan:1</cbc:CustomizationID>
+   <cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:transport_execution_plan_w_request:1</cbc:ProfileID>
+   <cbc:ProfileExecutionID>XZ-4532</cbc:ProfileExecutionID>
+   <cbc:ID>691278571829041271246</cbc:ID>
+   <cbc:IssueDate>2021-09-29</cbc:IssueDate>
+   <cbc:IssueTime>09:49:00+02:00</cbc:IssueTime>
+   <cbc:DocumentStatusCode>9</cbc:DocumentStatusCode>
+   <cbc:Note>Textual notes</cbc:Note>
+   <cbc:TransportUserRemarks>Some remarks</cbc:TransportUserRemarks>
+   <cbc:TransportServiceProviderRemarks>Some remarks</cbc:TransportServiceProviderRemarks>
+   <cac:SenderParty>
+      <cbc:EndpointID schemeID="0198">DK41955619</cbc:EndpointID>
+      <cac:PartyIdentification>
+         <cbc:ID schemeID="0088">7300010000001</cbc:ID>    
+      </cac:PartyIdentification>
+      <cac:PartyName>
+         <cbc:Name>Leman</cbc:Name>    
+      </cac:PartyName>
+      <cac:PostalAddress>
+         <cbc:StreetName>Ventrupvej 6</cbc:StreetName>
+         <cbc:AdditionalStreetName>Greve Landsby</cbc:AdditionalStreetName>
+         <cbc:CityName>Greve</cbc:CityName>
+         <cbc:PostalZone>2670</cbc:PostalZone>
+         <cbc:CountrySubentity>Region Sjælland</cbc:CountrySubentity>
+         <cac:AddressLine>
+            <cbc:Line>Bygning 5</cbc:Line>      
+         </cac:AddressLine>
+         <cac:Country>
+            <cbc:IdentificationCode>DK</cbc:IdentificationCode>      
+         </cac:Country>    
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+         <cbc:CompanyID>GB325456788</cbc:CompanyID>
+         <cac:TaxScheme>
+            <cbc:ID>VAT</cbc:ID>      
+         </cac:TaxScheme>    
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+         <cbc:RegistrationName>Consortial</cbc:RegistrationName>
+         <cbc:CompanyID schemeID="0089">SC234567</cbc:CompanyID>
+         <cac:RegistrationAddress>
+            <cbc:CityName>Farthing</cbc:CityName>
+            <cac:Country>
+               <cbc:IdentificationCode>GB</cbc:IdentificationCode>        
+            </cac:Country>      
+         </cac:RegistrationAddress>    
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+         <cbc:Name>Mr Sender</cbc:Name>
+         <cbc:Telephone>0158 1233714</cbc:Telephone>
+         <cbc:ElectronicMail>sender@consignor-company.co.uk</cbc:ElectronicMail>    
+      </cac:Contact>  
+   </cac:SenderParty>
+   <cac:ReceiverParty>
+      <cbc:EndpointID schemeID="0198">DK10154596</cbc:EndpointID>
+      <cac:PartyIdentification>
+         <cbc:ID schemeID="0088">7300010000001</cbc:ID>    
+      </cac:PartyIdentification>
+      <cac:PartyName>
+         <cbc:Name>DHL Express</cbc:Name>    
+      </cac:PartyName>
+      <cac:PostalAddress>
+         <cbc:StreetName>Jydekrogen 14</cbc:StreetName>
+         <cbc:AdditionalStreetName>Indkørsel 5</cbc:AdditionalStreetName>
+         <cbc:CityName>Vallensbæk Landsby</cbc:CityName>
+         <cbc:PostalZone>2625</cbc:PostalZone>
+         <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+         <cac:AddressLine>
+            <cbc:Line>Bygning 5</cbc:Line>      
+         </cac:AddressLine>
+         <cac:Country>
+            <cbc:IdentificationCode>DK</cbc:IdentificationCode>      
+         </cac:Country>    
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+         <cbc:CompanyID>GB325456788</cbc:CompanyID>
+         <cac:TaxScheme>
+            <cbc:ID>VAT</cbc:ID>      
+         </cac:TaxScheme>    
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+         <cbc:RegistrationName>Consortial</cbc:RegistrationName>
+         <cbc:CompanyID schemeID="0089">SC234567</cbc:CompanyID>
+         <cac:RegistrationAddress>
+            <cbc:CityName>Farthing</cbc:CityName>
+            <cac:Country>
+               <cbc:IdentificationCode>GB</cbc:IdentificationCode>        
+            </cac:Country>      
+         </cac:RegistrationAddress>    
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+         <cbc:Name>Mrs Receiver</cbc:Name>
+         <cbc:Telephone>0158 1233714</cbc:Telephone>
+         <cbc:ElectronicMail>msreceiver@tplogistics.co.uk</cbc:ElectronicMail>    
+      </cac:Contact>  
+   </cac:ReceiverParty>
+   <cac:TransportUserParty>
+      <cac:PartyIdentification>
+         <cbc:ID schemeID="0088">7300010000001</cbc:ID>    
+      </cac:PartyIdentification>
+      <cac:PartyName>
+         <cbc:Name>Novo Nordisk Pharmatech A/S</cbc:Name>    
+      </cac:PartyName>
+      <cac:PostalAddress>
+         <cbc:StreetName>Københavnsvej 216</cbc:StreetName>
+         <cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+         <cbc:CityName>Køge</cbc:CityName>
+         <cbc:PostalZone>4600</cbc:PostalZone>
+         <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+         <cac:AddressLine>
+            <cbc:Line>Bygning 5</cbc:Line>      
+         </cac:AddressLine>
+         <cac:Country>
+            <cbc:IdentificationCode>DK</cbc:IdentificationCode>      
+         </cac:Country>    
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+         <cbc:CompanyID>GB325456788</cbc:CompanyID>
+         <cac:TaxScheme>
+            <cbc:ID>VAT</cbc:ID>      
+         </cac:TaxScheme>    
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+         <cbc:RegistrationName>Consortial</cbc:RegistrationName>
+         <cbc:CompanyID schemeID="0089">SC234567</cbc:CompanyID>
+         <cac:RegistrationAddress>
+            <cbc:CityName>Farthing</cbc:CityName>
+            <cac:Country>
+               <cbc:IdentificationCode>GB</cbc:IdentificationCode>        
+            </cac:Country>      
+         </cac:RegistrationAddress>    
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+         <cbc:Name>Mr Transport user</cbc:Name>
+         <cbc:Telephone>0158 1233714</cbc:Telephone>
+         <cbc:ElectronicMail>transport-user@transportuser.dk</cbc:ElectronicMail>    
+      </cac:Contact>  
+   </cac:TransportUserParty>
+   <cac:TransportServiceProviderParty>
+      <cac:PartyIdentification>
+         <cbc:ID schemeID="0088">7300010000001</cbc:ID>    
+      </cac:PartyIdentification>
+      <cac:PartyName>
+         <cbc:Name>Leman</cbc:Name>    
+      </cac:PartyName>
+      <cac:PostalAddress>
+         <cbc:StreetName>Ventrupvej 6</cbc:StreetName>
+         <cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+         <cbc:CityName>Greve</cbc:CityName>
+         <cbc:PostalZone>2670</cbc:PostalZone>
+         <cbc:CountrySubentity>Region Sjælland</cbc:CountrySubentity>
+         <cac:AddressLine>
+            <cbc:Line>Bygning 5</cbc:Line>      
+         </cac:AddressLine>
+         <cac:Country>
+            <cbc:IdentificationCode>DK</cbc:IdentificationCode>      
+         </cac:Country>    
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+         <cbc:CompanyID>GB325456788</cbc:CompanyID>
+         <cac:TaxScheme>
+            <cbc:ID>VAT</cbc:ID>      
+         </cac:TaxScheme>    
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+         <cbc:RegistrationName>Consortial</cbc:RegistrationName>
+         <cbc:CompanyID schemeID="0089">SC234567</cbc:CompanyID>
+         <cac:RegistrationAddress>
+            <cbc:CityName>Farthing</cbc:CityName>
+            <cac:Country>
+               <cbc:IdentificationCode>GB</cbc:IdentificationCode>        
+            </cac:Country>      
+         </cac:RegistrationAddress>    
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+         <cbc:Name>Mr Transport user</cbc:Name>
+         <cbc:Telephone>0158 1233714</cbc:Telephone>
+         <cbc:ElectronicMail>transport-user@transportuser.dk</cbc:ElectronicMail>    
+      </cac:Contact>  
+   </cac:TransportServiceProviderParty>
+   <cac:BillToParty>
+      <cac:PartyIdentification>
+         <cbc:ID schemeID="0088">7300010000001</cbc:ID>    
+      </cac:PartyIdentification>
+      <cac:PartyName>
+         <cbc:Name>Novo Nordisk Pharmatech A/S</cbc:Name>    
+      </cac:PartyName>
+      <cac:PostalAddress>
+         <cbc:StreetName>Københavnsvej 216</cbc:StreetName>
+         <cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+         <cbc:CityName>Køge</cbc:CityName>
+         <cbc:PostalZone>4600</cbc:PostalZone>
+         <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+         <cac:AddressLine>
+            <cbc:Line>Bygning 5</cbc:Line>      
+         </cac:AddressLine>
+         <cac:Country>
+            <cbc:IdentificationCode>DK</cbc:IdentificationCode>      
+         </cac:Country>    
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+         <cbc:CompanyID>GB325456788</cbc:CompanyID>
+         <cac:TaxScheme>
+            <cbc:ID>VAT</cbc:ID>      
+         </cac:TaxScheme>    
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+         <cbc:RegistrationName>Consortial</cbc:RegistrationName>
+         <cbc:CompanyID schemeID="0089">SC234567</cbc:CompanyID>
+         <cac:RegistrationAddress>
+            <cbc:CityName>Farthing</cbc:CityName>
+            <cac:Country>
+               <cbc:IdentificationCode>GB</cbc:IdentificationCode>        
+            </cac:Country>      
+         </cac:RegistrationAddress>    
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+         <cbc:Name>Mr Transport user</cbc:Name>
+         <cbc:Telephone>0158 1233714</cbc:Telephone>
+         <cbc:ElectronicMail>transport-user@transportuser.dk</cbc:ElectronicMail>    
+      </cac:Contact>  
+   </cac:BillToParty>
+   <cac:TransportExecutionPlanRequestDocumentReference>
+      <cbc:ID>7648779</cbc:ID>
+      <cbc:IssueDate>2021-09-29</cbc:IssueDate>
+      <cbc:IssueTime>07:49:00+02:00</cbc:IssueTime>  
+   </cac:TransportExecutionPlanRequestDocumentReference>
+   <cac:AdditionalDocumentReference>
+      <cbc:ID>7648779</cbc:ID>
+      <cbc:DocumentTypeCode>380</cbc:DocumentTypeCode>
+      <cbc:DocumentType>Delivery soecification</cbc:DocumentType>
+      <cac:Attachment>
+         <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="Hours-spent.pdf">aHR0cHM6Ly90ZXN0LXZlZmEuZGlmaS5uby9wZXBwb2xiaXMvcG9hY2MvYmlsbGluZy8zLjAvYmlzLw==</cbc:EmbeddedDocumentBinaryObject>
+         <cac:ExternalReference>
+            <cbc:URI>www.beast.se</cbc:URI>      
+         </cac:ExternalReference>    
+      </cac:Attachment>  
+   </cac:AdditionalDocumentReference>
+   <cac:MainTransportationService>
+      <cbc:TransportServiceCode>4</cbc:TransportServiceCode>
+      <cbc:TransportationServiceDescription>Transport from door to door</cbc:TransportationServiceDescription>  
+   </cac:MainTransportationService>
+   <cac:AdditionalTransportationService>
+      <cbc:TransportServiceCode>12</cbc:TransportServiceCode>
+      <cbc:TransportationServiceDescription>Insurance</cbc:TransportationServiceDescription>  
+   </cac:AdditionalTransportationService>
+   <cac:Consignment>
+      <cbc:ID schemeID="GINC">735005233GS1TRANSPORT000001</cbc:ID>
+      <cbc:ConsigneeAssignedID>0160110</cbc:ConsigneeAssignedID>
+      <cbc:ConsignorAssignedID>501153162</cbc:ConsignorAssignedID>
+      <cbc:GrossWeightMeasure unitCode="KGM">1030</cbc:GrossWeightMeasure>
+      <cbc:GrossVolumeMeasure unitCode="MTQ">20</cbc:GrossVolumeMeasure>
+      <cbc:LoadingLengthMeasure unitCode="MTR">0.4</cbc:LoadingLengthMeasure>
+      <cbc:HazardousRiskIndicator>false</cbc:HazardousRiskIndicator>
+      <cbc:TotalTransportHandlingUnitQuantity unitCode="EA">1</cbc:TotalTransportHandlingUnitQuantity>
+      <cac:CustomsDeclaration>
+         <cbc:ID>CD-765897</cbc:ID>
+         <cbc:FunctionCode>CDH</cbc:FunctionCode>
+         <cac:ValidityPeriod>
+            <cbc:StartDate>2025-07-01</cbc:StartDate>      
+         </cac:ValidityPeriod>
+         <cac:CustomsParty>
+            <cac:PartyIdentification>
+               <cbc:ID schemeID="0088">7300010000001</cbc:ID>        
+            </cac:PartyIdentification>
+            <cac:PartyName>
+               <cbc:Name>Customs party A/S</cbc:Name>        
+            </cac:PartyName>
+            <cac:PostalAddress>
+               <cbc:StreetName>Københavnsvej 216</cbc:StreetName>
+               <cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+               <cbc:CityName>Køge</cbc:CityName>
+               <cbc:PostalZone>4600</cbc:PostalZone>
+               <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+               <cac:AddressLine>
+                  <cbc:Line>Bygning 5</cbc:Line>          
+               </cac:AddressLine>
+               <cac:Country>
+                  <cbc:IdentificationCode>DK</cbc:IdentificationCode>          
+               </cac:Country>        
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+               <cbc:CompanyID>GB325456788</cbc:CompanyID>
+               <cac:TaxScheme>
+                  <cbc:ID>VAT</cbc:ID>          
+               </cac:TaxScheme>        
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+               <cbc:RegistrationName>Consortial</cbc:RegistrationName>
+               <cbc:CompanyID schemeID="0089">SC234567</cbc:CompanyID>
+               <cac:RegistrationAddress>
+                  <cbc:CityName>Farthing</cbc:CityName>
+                  <cac:Country>
+                     <cbc:IdentificationCode>GB</cbc:IdentificationCode>            
+                  </cac:Country>          
+               </cac:RegistrationAddress>        
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+               <cbc:Name>Mr Customs</cbc:Name>
+               <cbc:Telephone>0158 1233714</cbc:Telephone>
+               <cbc:ElectronicMail>transport-user@customs.dk</cbc:ElectronicMail>        
+            </cac:Contact>      
+         </cac:CustomsParty>
+         <cac:AdditionalDocumentReference>
+            <cbc:ID>MO76854445</cbc:ID>
+            <cbc:DocumentTypeCode>380</cbc:DocumentTypeCode>
+            <cbc:DocumentType>Delivery soecification</cbc:DocumentType>      
+         </cac:AdditionalDocumentReference>    
+      </cac:CustomsDeclaration>
+      <cac:RequestedPickupTransportEvent>
+         <cbc:IdentificationID>21412312412</cbc:IdentificationID>
+         <cac:Location>
+            <cbc:ID schemeID="0088">5790000435951</cbc:ID>
+            <cbc:Name>Novo Nordisk Pharmatech A/S</cbc:Name>
+            <cac:Address>
+               <cbc:StreetName>Københavnsvej 216</cbc:StreetName>
+               <cbc:AdditionalStreetName>Purchasing</cbc:AdditionalStreetName>
+               <cbc:CityName>Køge</cbc:CityName>
+               <cbc:PostalZone>4600</cbc:PostalZone>
+               <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+               <cac:AddressLine>
+                  <cbc:Line>3rd Floor, Room 5</cbc:Line>          
+               </cac:AddressLine>
+               <cac:Country>
+                  <cbc:IdentificationCode>DK</cbc:IdentificationCode>          
+               </cac:Country>
+               <cac:LocationCoordinate>
+                  <cbc:CoordinateSystemCode>EPSG:3857</cbc:CoordinateSystemCode>
+                  <cbc:LatitudeDegreesMeasure unitCode="DD">59.331660358041425</cbc:LatitudeDegreesMeasure>
+                  <cbc:LongitudeDegreesMeasure unitCode="DD">18.063363084988005</cbc:LongitudeDegreesMeasure>
+                  <cbc:AltitudeMeasure unitCode="MTR">12.5</cbc:AltitudeMeasure>          
+               </cac:LocationCoordinate>        
+            </cac:Address>      
+         </cac:Location>
+         <cac:Period>
+            <cbc:StartDate>2021-09-29</cbc:StartDate>
+            <cbc:StartTime>08:00:00+01:00</cbc:StartTime>
+            <cbc:EndDate>2021-09-29</cbc:EndDate>
+            <cbc:EndTime>10:00:00+01:00</cbc:EndTime>      
+         </cac:Period>    
+      </cac:RequestedPickupTransportEvent>
+      <cac:RequestedDeliveryTransportEvent>
+         <cbc:IdentificationID>625435485674654132</cbc:IdentificationID>
+         <cac:Location>
+            <cbc:ID schemeID="0088">5790000435951</cbc:ID>
+            <cbc:Name>DHL Københavns lufthavn</cbc:Name>
+            <cac:Address>
+               <cbc:StreetName>Kystvejen 24</cbc:StreetName>
+               <cbc:AdditionalStreetName>Ved lufthavnen</cbc:AdditionalStreetName>
+               <cbc:CityName>Kastrup</cbc:CityName>
+               <cbc:PostalZone>2770</cbc:PostalZone>
+               <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+               <cac:AddressLine>
+                  <cbc:Line>3rd Floor, Room 5</cbc:Line>          
+               </cac:AddressLine>
+               <cac:Country>
+                  <cbc:IdentificationCode>DK</cbc:IdentificationCode>          
+               </cac:Country>
+               <cac:LocationCoordinate>
+                  <cbc:CoordinateSystemCode>EPSG:3857</cbc:CoordinateSystemCode>
+                  <cbc:LatitudeDegreesMeasure unitCode="DD">59.331660358041425</cbc:LatitudeDegreesMeasure>
+                  <cbc:LongitudeDegreesMeasure unitCode="DD">18.063363084988005</cbc:LongitudeDegreesMeasure>
+                  <cbc:AltitudeMeasure unitCode="MTR">12.5</cbc:AltitudeMeasure>          
+               </cac:LocationCoordinate>        
+            </cac:Address>      
+         </cac:Location>
+         <cac:Period>
+            <cbc:StartDate>2021-09-29</cbc:StartDate>
+            <cbc:StartTime>10:00:00+01:00</cbc:StartTime>
+            <cbc:EndDate>2021-09-29</cbc:EndDate>
+            <cbc:EndTime>11:00:00+01:00</cbc:EndTime>      
+         </cac:Period>    
+      </cac:RequestedDeliveryTransportEvent>
+      <cac:PlannedPickupTransportEvent>
+         <cbc:IdentificationID>21412312412</cbc:IdentificationID>
+         <cac:Location>
+            <cbc:ID schemeID="0088">5790000435951</cbc:ID>
+            <cbc:Name>Novo Nordisk Pharmatech A/S</cbc:Name>
+            <cac:Address>
+               <cbc:StreetName>Københavnsvej 216</cbc:StreetName>
+               <cbc:AdditionalStreetName>Purchasing</cbc:AdditionalStreetName>
+               <cbc:CityName>Køge</cbc:CityName>
+               <cbc:PostalZone>4600</cbc:PostalZone>
+               <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+               <cac:AddressLine>
+                  <cbc:Line>3rd Floor, Room 5</cbc:Line>          
+               </cac:AddressLine>
+               <cac:Country>
+                  <cbc:IdentificationCode>DK</cbc:IdentificationCode>          
+               </cac:Country>
+               <cac:LocationCoordinate>
+                  <cbc:CoordinateSystemCode>EPSG:3857</cbc:CoordinateSystemCode>
+                  <cbc:LatitudeDegreesMeasure unitCode="DD">59.331660358041425</cbc:LatitudeDegreesMeasure>
+                  <cbc:LongitudeDegreesMeasure unitCode="DD">18.063363084988005</cbc:LongitudeDegreesMeasure>
+                  <cbc:AltitudeMeasure unitCode="MTR">12.5</cbc:AltitudeMeasure>          
+               </cac:LocationCoordinate>        
+            </cac:Address>      
+         </cac:Location>
+         <cac:Period>
+            <cbc:StartDate>2021-09-29</cbc:StartDate>
+            <cbc:StartTime>08:00:00+01:00</cbc:StartTime>
+            <cbc:EndDate>2021-09-29</cbc:EndDate>
+            <cbc:EndTime>10:00:00+01:00</cbc:EndTime>      
+         </cac:Period>    
+      </cac:PlannedPickupTransportEvent>
+      <cac:PlannedDeliveryTransportEvent>
+         <cbc:IdentificationID>625435485674654132</cbc:IdentificationID>
+         <cac:Location>
+            <cbc:ID schemeID="0088">5790000435951</cbc:ID>
+            <cbc:Name>DHL Københavns lufthavn</cbc:Name>
+            <cac:Address>
+               <cbc:StreetName>Kystvejen 24</cbc:StreetName>
+               <cbc:AdditionalStreetName>Ved lufthavnen</cbc:AdditionalStreetName>
+               <cbc:CityName>Kastrup</cbc:CityName>
+               <cbc:PostalZone>2770</cbc:PostalZone>
+               <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+               <cac:AddressLine>
+                  <cbc:Line>3rd Floor, Room 5</cbc:Line>          
+               </cac:AddressLine>
+               <cac:Country>
+                  <cbc:IdentificationCode>DK</cbc:IdentificationCode>          
+               </cac:Country>
+               <cac:LocationCoordinate>
+                  <cbc:CoordinateSystemCode>EPSG:3857</cbc:CoordinateSystemCode>
+                  <cbc:LatitudeDegreesMeasure unitCode="DD">59.331660358041425</cbc:LatitudeDegreesMeasure>
+                  <cbc:LongitudeDegreesMeasure unitCode="DD">18.063363084988005</cbc:LongitudeDegreesMeasure>
+                  <cbc:AltitudeMeasure unitCode="MTR">12.5</cbc:AltitudeMeasure>          
+               </cac:LocationCoordinate>        
+            </cac:Address>      
+         </cac:Location>
+         <cac:Period>
+            <cbc:StartDate>2021-09-29</cbc:StartDate>
+            <cbc:StartTime>10:00:00+01:00</cbc:StartTime>
+            <cbc:EndDate>2021-09-29</cbc:EndDate>
+            <cbc:EndTime>11:00:00+01:00</cbc:EndTime>      
+         </cac:Period>    
+      </cac:PlannedDeliveryTransportEvent>
+      <cac:ConsigneeParty>
+         <cac:PartyIdentification>
+            <cbc:ID schemeID="0088">7300010000001</cbc:ID>      
+         </cac:PartyIdentification>
+         <cac:PartyName>
+            <cbc:Name>HUS Hospital</cbc:Name>      
+         </cac:PartyName>
+         <cac:PostalAddress>
+            <cbc:StreetName>Topeliuksenkatu 5</cbc:StreetName>
+            <cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+            <cbc:CityName>Helsinki</cbc:CityName>
+            <cbc:PostalZone>00260</cbc:PostalZone>
+            <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+            <cac:AddressLine>
+               <cbc:Line>Bygning 5</cbc:Line>        
+            </cac:AddressLine>
+            <cac:Country>
+               <cbc:IdentificationCode>FI</cbc:IdentificationCode>        
+            </cac:Country>      
+         </cac:PostalAddress>
+         <cac:PartyLegalEntity>
+            <cbc:RegistrationName>HUS Hospital</cbc:RegistrationName>
+            <cbc:CompanyID schemeID="0212">1567535-0</cbc:CompanyID>
+            <cac:RegistrationAddress>
+               <cbc:CityName>Helsinki</cbc:CityName>
+               <cac:Country>
+                  <cbc:IdentificationCode>FI</cbc:IdentificationCode>          
+               </cac:Country>        
+            </cac:RegistrationAddress>      
+         </cac:PartyLegalEntity>
+         <cac:Contact>
+            <cbc:Name>Mr Sender</cbc:Name>
+            <cbc:Telephone>0158 1233714</cbc:Telephone>
+            <cbc:ElectronicMail>sender@consignor-company.co.uk</cbc:ElectronicMail>      
+         </cac:Contact>    
+      </cac:ConsigneeParty>
+      <cac:ConsignorParty>
+         <cac:PartyIdentification>
+            <cbc:ID schemeID="0088">7300010000001</cbc:ID>      
+         </cac:PartyIdentification>
+         <cac:PartyName>
+            <cbc:Name>Novo Nordisk Pharmatech A/S</cbc:Name>      
+         </cac:PartyName>
+         <cac:PostalAddress>
+            <cbc:StreetName>Københavnsvej 216</cbc:StreetName>
+            <cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+            <cbc:CityName>Køge</cbc:CityName>
+            <cbc:PostalZone>4600</cbc:PostalZone>
+            <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+            <cac:AddressLine>
+               <cbc:Line>Bygning 5</cbc:Line>        
+            </cac:AddressLine>
+            <cac:Country>
+               <cbc:IdentificationCode>DK</cbc:IdentificationCode>        
+            </cac:Country>      
+         </cac:PostalAddress>
+         <cac:PartyLegalEntity>
+            <cbc:RegistrationName>Novo Nordisk Pharmatech A/S</cbc:RegistrationName>
+            <cbc:CompanyID schemeID="0198">DK13246149</cbc:CompanyID>
+            <cac:RegistrationAddress>
+               <cbc:CityName>Køge</cbc:CityName>
+               <cac:Country>
+                  <cbc:IdentificationCode>DK</cbc:IdentificationCode>          
+               </cac:Country>        
+            </cac:RegistrationAddress>      
+         </cac:PartyLegalEntity>
+         <cac:Contact>
+            <cbc:Name>Mr Sender</cbc:Name>
+            <cbc:Telephone>0158 1233714</cbc:Telephone>
+            <cbc:ElectronicMail>sender@consignor-company.co.uk</cbc:ElectronicMail>      
+         </cac:Contact>    
+      </cac:ConsignorParty>
+      <cac:CarrierParty>
+         <cac:PartyIdentification>
+            <cbc:ID schemeID="0088">7300010000001</cbc:ID>      
+         </cac:PartyIdentification>
+         <cac:PartyName>
+            <cbc:Name>DHL Express</cbc:Name>      
+         </cac:PartyName>
+         <cac:PostalAddress>
+            <cbc:StreetName>Jydekrogen 14</cbc:StreetName>
+            <cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+            <cbc:CityName>Vallensbæk Landsby</cbc:CityName>
+            <cbc:PostalZone>2625</cbc:PostalZone>
+            <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+            <cac:AddressLine>
+               <cbc:Line>Bygning 5</cbc:Line>        
+            </cac:AddressLine>
+            <cac:Country>
+               <cbc:IdentificationCode>DK</cbc:IdentificationCode>        
+            </cac:Country>      
+         </cac:PostalAddress>
+         <cac:PartyLegalEntity>
+            <cbc:RegistrationName>DHL Express</cbc:RegistrationName>
+            <cbc:CompanyID schemeID="0198">DK10154596</cbc:CompanyID>
+            <cac:RegistrationAddress>
+               <cbc:CityName>Vallensbæk Landsby</cbc:CityName>
+               <cac:Country>
+                  <cbc:IdentificationCode>DK</cbc:IdentificationCode>          
+               </cac:Country>        
+            </cac:RegistrationAddress>      
+         </cac:PartyLegalEntity>
+         <cac:Contact>
+            <cbc:Name>Mrs Bouquet</cbc:Name>
+            <cbc:Telephone>0158 1233714</cbc:Telephone>
+            <cbc:ElectronicMail>bouquet@fpconsortial.co.uk</cbc:ElectronicMail>      
+         </cac:Contact>
+         <cac:Person>
+            <cac:IdentityDocumentReference>
+               <cbc:ID>45642323</cbc:ID>
+               <cbc:DocumentType>ID06</cbc:DocumentType>        
+            </cac:IdentityDocumentReference>      
+         </cac:Person>    
+      </cac:CarrierParty>
+      <cac:OriginalDepartureCountry>
+         <cbc:IdentificationCode>DK</cbc:IdentificationCode>    
+      </cac:OriginalDepartureCountry>
+      <cac:FinalDestinationCountry>
+         <cbc:IdentificationCode>FI</cbc:IdentificationCode>    
+      </cac:FinalDestinationCountry>
+      <cac:TransportEvent>
+         <cac:Location>
+            <cbc:ID schemeID="0088">5790000435951</cbc:ID>
+            <cbc:Name>Novo Nordisk Pharmatech A/S</cbc:Name>
+            <cac:Address>
+               <cbc:StreetName>Københavnsvej 216</cbc:StreetName>
+               <cbc:AdditionalStreetName>Purchasing</cbc:AdditionalStreetName>
+               <cbc:CityName>Køge</cbc:CityName>
+               <cbc:PostalZone>4600</cbc:PostalZone>
+               <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+               <cac:AddressLine>
+                  <cbc:Line>3rd Floor, Room 5</cbc:Line>          
+               </cac:AddressLine>
+               <cac:Country>
+                  <cbc:IdentificationCode>DK</cbc:IdentificationCode>          
+               </cac:Country>
+               <cac:LocationCoordinate>
+                  <cbc:CoordinateSystemCode>EPSG:3857</cbc:CoordinateSystemCode>
+                  <cbc:LatitudeDegreesMeasure unitCode="DD">59.331660358041425</cbc:LatitudeDegreesMeasure>
+                  <cbc:LongitudeDegreesMeasure unitCode="DD">18.063363084988005</cbc:LongitudeDegreesMeasure>
+                  <cbc:AltitudeMeasure unitCode="MTR">12.5</cbc:AltitudeMeasure>          
+               </cac:LocationCoordinate>        
+            </cac:Address>      
+         </cac:Location>
+         <cac:Period>
+            <cbc:StartDate>2021-09-29</cbc:StartDate>
+            <cbc:StartTime>08:00:00+01:00</cbc:StartTime>
+            <cbc:EndDate>2021-09-29</cbc:EndDate>
+            <cbc:EndTime>10:00:00+01:00</cbc:EndTime>      
+         </cac:Period>    
+      </cac:TransportEvent>
+      <cac:DeliveryTerms>
+         <cbc:ID>DAP</cbc:ID>
+         <cbc:SpecialTerms>DAP</cbc:SpecialTerms>
+         <cac:DeliveryLocation>
+            <cbc:ID schemeID="0088">5790000435951</cbc:ID>
+            <cbc:Name>CPH</cbc:Name>      
+         </cac:DeliveryLocation>    
+      </cac:DeliveryTerms>
+      <cac:PaymentTerms>
+         <cbc:ID>DAP</cbc:ID>
+         <cbc:Note>To be paid on invoice</cbc:Note>    
+      </cac:PaymentTerms>
+      <cac:FreightAllowanceCharge>
+         <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+         <cbc:AllowanceChargeReasonCode>1</cbc:AllowanceChargeReasonCode>
+         <cbc:Amount currencyID="EUR">100</cbc:Amount>    
+      </cac:FreightAllowanceCharge>
+      <cac:MainCarriageShipmentStage>
+         <cbc:TransportModeCode>4</cbc:TransportModeCode>
+         <cbc:HazardousRiskIndicator>false</cbc:HazardousRiskIndicator>
+         <cac:CarrierParty>
+            <cac:PartyIdentification>
+               <cbc:ID schemeID="0088">7300010000001</cbc:ID>        
+            </cac:PartyIdentification>
+            <cac:PartyName>
+               <cbc:Name>DHL Express</cbc:Name>        
+            </cac:PartyName>
+            <cac:PostalAddress>
+               <cbc:StreetName>Jydekrogen 14</cbc:StreetName>
+               <cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+               <cbc:CityName>Vallensbæk Landsby</cbc:CityName>
+               <cbc:PostalZone>2625</cbc:PostalZone>
+               <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+               <cac:AddressLine>
+                  <cbc:Line>Bygning 5</cbc:Line>          
+               </cac:AddressLine>
+               <cac:Country>
+                  <cbc:IdentificationCode>DK</cbc:IdentificationCode>          
+               </cac:Country>        
+            </cac:PostalAddress>
+            <cac:PartyLegalEntity>
+               <cbc:RegistrationName>DHL Express</cbc:RegistrationName>
+               <cbc:CompanyID schemeID="0198">DK10154596</cbc:CompanyID>
+               <cac:RegistrationAddress>
+                  <cbc:CityName>Vallensbæk Landsby</cbc:CityName>
+                  <cac:Country>
+                     <cbc:IdentificationCode>DK</cbc:IdentificationCode>            
+                  </cac:Country>          
+               </cac:RegistrationAddress>        
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+               <cbc:Name>Mrs Bouquet</cbc:Name>
+               <cbc:Telephone>0158 1233714</cbc:Telephone>
+               <cbc:ElectronicMail>bouquet@fpconsortial.co.uk</cbc:ElectronicMail>        
+            </cac:Contact>
+            <cac:Person>
+               <cac:IdentityDocumentReference>
+                  <cbc:ID>45642323</cbc:ID>
+                  <cbc:DocumentType>ID06</cbc:DocumentType>          
+               </cac:IdentityDocumentReference>        
+            </cac:Person>      
+         </cac:CarrierParty>
+         <cac:PlannedDepartureTransportEvent>
+            <cbc:IdentificationID>6522956526554654</cbc:IdentificationID>
+            <cac:Location>
+               <cbc:ID schemeID="0088">5790000435951</cbc:ID>
+               <cbc:Name>Name</cbc:Name>
+               <cac:Address>
+                  <cbc:StreetName>Avon Way</cbc:StreetName>
+                  <cbc:AdditionalStreetName>Purchasing</cbc:AdditionalStreetName>
+                  <cbc:CityName>Bridgtow</cbc:CityName>
+                  <cbc:PostalZone>ZZ99 1ZZ</cbc:PostalZone>
+                  <cbc:CountrySubentity>Avon</cbc:CountrySubentity>
+                  <cac:AddressLine>
+                     <cbc:Line>3rd Floor, Room 5</cbc:Line>            
+                  </cac:AddressLine>
+                  <cac:Country>
+                     <cbc:IdentificationCode>GB</cbc:IdentificationCode>            
+                  </cac:Country>
+                  <cac:LocationCoordinate>
+                     <cbc:CoordinateSystemCode>EPSG:3857</cbc:CoordinateSystemCode>
+                     <cbc:LatitudeDegreesMeasure unitCode="DD">59.331660358041425</cbc:LatitudeDegreesMeasure>
+                     <cbc:LongitudeDegreesMeasure unitCode="DD">18.063363084988005</cbc:LongitudeDegreesMeasure>
+                     <cbc:AltitudeMeasure unitCode="MTR">12.5</cbc:AltitudeMeasure>            
+                  </cac:LocationCoordinate>          
+               </cac:Address>        
+            </cac:Location>
+            <cac:Period>
+               <cbc:StartDate>2021-09-29</cbc:StartDate>
+               <cbc:StartTime>10:00:00+01:00</cbc:StartTime>
+               <cbc:EndDate>2021-09-29</cbc:EndDate>
+               <cbc:EndTime>11:00:00+01:00</cbc:EndTime>        
+            </cac:Period>      
+         </cac:PlannedDepartureTransportEvent>
+         <cac:PlannedArrivalTransportEvent>
+            <cbc:IdentificationID>54354684732168476514</cbc:IdentificationID>
+            <cac:Location>
+               <cbc:ID schemeID="0088">5790000435951</cbc:ID>
+               <cbc:Name>Finnair Cargo terminal</cbc:Name>
+               <cac:Address>
+                  <cbc:StreetName>Turbiinitie 4</cbc:StreetName>
+                  <cbc:CityName>Vantaa</cbc:CityName>
+                  <cbc:PostalZone>01530</cbc:PostalZone>
+                  <cac:Country>
+                     <cbc:IdentificationCode>FI</cbc:IdentificationCode>            
+                  </cac:Country>          
+               </cac:Address>        
+            </cac:Location>
+            <cac:Period>
+               <cbc:StartDate>2021-09-29</cbc:StartDate>
+               <cbc:StartTime>10:00:00+01:00</cbc:StartTime>
+               <cbc:EndDate>2021-09-29</cbc:EndDate>
+               <cbc:EndTime>11:00:00+01:00</cbc:EndTime>        
+            </cac:Period>      
+         </cac:PlannedArrivalTransportEvent>    
+      </cac:MainCarriageShipmentStage>
+      <cac:PreCarriageShipmentStage>
+         <cbc:TransportModeCode>4</cbc:TransportModeCode>
+         <cac:CarrierParty>
+            <cac:PartyIdentification>
+               <cbc:ID schemeID="0088">7300010000001</cbc:ID>        
+            </cac:PartyIdentification>
+            <cac:PartyName>
+               <cbc:Name>DHL Express</cbc:Name>        
+            </cac:PartyName>
+            <cac:PostalAddress>
+               <cbc:StreetName>Jydekrogen 14</cbc:StreetName>
+               <cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+               <cbc:CityName>Vallensbæk Landsby</cbc:CityName>
+               <cbc:PostalZone>2625</cbc:PostalZone>
+               <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+               <cac:AddressLine>
+                  <cbc:Line>Bygning 5</cbc:Line>          
+               </cac:AddressLine>
+               <cac:Country>
+                  <cbc:IdentificationCode>DK</cbc:IdentificationCode>          
+               </cac:Country>        
+            </cac:PostalAddress>
+            <cac:PartyLegalEntity>
+               <cbc:RegistrationName>DHL Express</cbc:RegistrationName>
+               <cbc:CompanyID schemeID="0198">DK10154596</cbc:CompanyID>
+               <cac:RegistrationAddress>
+                  <cbc:CityName>Vallensbæk Landsby</cbc:CityName>
+                  <cac:Country>
+                     <cbc:IdentificationCode>DK</cbc:IdentificationCode>            
+                  </cac:Country>          
+               </cac:RegistrationAddress>        
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+               <cbc:Name>Mrs Bouquet</cbc:Name>
+               <cbc:Telephone>0158 1233714</cbc:Telephone>
+               <cbc:ElectronicMail>bouquet@fpconsortial.co.uk</cbc:ElectronicMail>        
+            </cac:Contact>
+            <cac:Person>
+               <cac:IdentityDocumentReference>
+                  <cbc:ID>45642323</cbc:ID>
+                  <cbc:DocumentType>ID06</cbc:DocumentType>          
+               </cac:IdentityDocumentReference>        
+            </cac:Person>      
+         </cac:CarrierParty>
+         <cac:PlannedDepartureTransportEvent>
+            <cbc:IdentificationID>6522956526554654</cbc:IdentificationID>
+            <cac:Location>
+               <cbc:ID schemeID="0088">5790000435951</cbc:ID>
+               <cbc:Name>Name</cbc:Name>
+               <cac:Address>
+                  <cbc:StreetName>Avon Way</cbc:StreetName>
+                  <cbc:AdditionalStreetName>Purchasing</cbc:AdditionalStreetName>
+                  <cbc:CityName>Bridgtow</cbc:CityName>
+                  <cbc:PostalZone>ZZ99 1ZZ</cbc:PostalZone>
+                  <cbc:CountrySubentity>Avon</cbc:CountrySubentity>
+                  <cac:AddressLine>
+                     <cbc:Line>3rd Floor, Room 5</cbc:Line>            
+                  </cac:AddressLine>
+                  <cac:Country>
+                     <cbc:IdentificationCode>GB</cbc:IdentificationCode>            
+                  </cac:Country>
+                  <cac:LocationCoordinate>
+                     <cbc:CoordinateSystemCode>EPSG:3857</cbc:CoordinateSystemCode>
+                     <cbc:LatitudeDegreesMeasure unitCode="DD">59.331660358041425</cbc:LatitudeDegreesMeasure>
+                     <cbc:LongitudeDegreesMeasure unitCode="DD">18.063363084988005</cbc:LongitudeDegreesMeasure>
+                     <cbc:AltitudeMeasure unitCode="MTR">12.5</cbc:AltitudeMeasure>            
+                  </cac:LocationCoordinate>          
+               </cac:Address>        
+            </cac:Location>
+            <cac:Period>
+               <cbc:StartDate>2021-09-29</cbc:StartDate>
+               <cbc:StartTime>10:00:00+01:00</cbc:StartTime>
+               <cbc:EndDate>2021-09-29</cbc:EndDate>
+               <cbc:EndTime>11:00:00+01:00</cbc:EndTime>        
+            </cac:Period>      
+         </cac:PlannedDepartureTransportEvent>
+         <cac:PlannedArrivalTransportEvent>
+            <cbc:IdentificationID>54354684732168476514</cbc:IdentificationID>
+            <cac:Location>
+               <cbc:ID schemeID="0088">5790000435951</cbc:ID>
+               <cbc:Name>Finnair Cargo terminal</cbc:Name>
+               <cac:Address>
+                  <cbc:StreetName>Turbiinitie 4</cbc:StreetName>
+                  <cbc:CityName>Vantaa</cbc:CityName>
+                  <cbc:PostalZone>01530</cbc:PostalZone>
+                  <cac:Country>
+                     <cbc:IdentificationCode>FI</cbc:IdentificationCode>            
+                  </cac:Country>          
+               </cac:Address>        
+            </cac:Location>
+            <cac:Period>
+               <cbc:StartDate>2021-09-29</cbc:StartDate>
+               <cbc:StartTime>10:00:00+01:00</cbc:StartTime>
+               <cbc:EndDate>2021-09-29</cbc:EndDate>
+               <cbc:EndTime>11:00:00+01:00</cbc:EndTime>        
+            </cac:Period>      
+         </cac:PlannedArrivalTransportEvent>    
+      </cac:PreCarriageShipmentStage>
+      <cac:OnCarriageShipmentStage>
+         <cbc:TransportModeCode>3</cbc:TransportModeCode>
+         <cbc:HazardousRiskIndicator>false</cbc:HazardousRiskIndicator>
+         <cac:CarrierParty>
+            <cac:PartyIdentification>
+               <cbc:ID schemeID="0088">7300010000001</cbc:ID>        
+            </cac:PartyIdentification>
+            <cac:PartyName>
+               <cbc:Name>DHL Express Finland</cbc:Name>        
+            </cac:PartyName>
+            <cac:PostalAddress>
+               <cbc:StreetName>Tullimiehentie 10</cbc:StreetName>
+               <cbc:AdditionalStreetName>way 1</cbc:AdditionalStreetName>
+               <cbc:CityName>Vantaa</cbc:CityName>
+               <cbc:PostalZone>01530</cbc:PostalZone>
+               <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+               <cac:AddressLine>
+                  <cbc:Line>Bygning 5</cbc:Line>          
+               </cac:AddressLine>
+               <cac:Country>
+                  <cbc:IdentificationCode>FI</cbc:IdentificationCode>          
+               </cac:Country>        
+            </cac:PostalAddress>
+            <cac:PartyLegalEntity>
+               <cbc:RegistrationName>DHL Express</cbc:RegistrationName>
+               <cbc:CompanyID schemeID="0198">DK10154596</cbc:CompanyID>
+               <cac:RegistrationAddress>
+                  <cbc:CityName>Vallensbæk Landsby</cbc:CityName>
+                  <cac:Country>
+                     <cbc:IdentificationCode>FI</cbc:IdentificationCode>            
+                  </cac:Country>          
+               </cac:RegistrationAddress>        
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+               <cbc:Name>Mrs Bouquet</cbc:Name>
+               <cbc:Telephone>0158 1233714</cbc:Telephone>
+               <cbc:ElectronicMail>bouquet@fpconsortial.co.uk</cbc:ElectronicMail>        
+            </cac:Contact>
+            <cac:Person>
+               <cac:IdentityDocumentReference>
+                  <cbc:ID>45642323</cbc:ID>
+                  <cbc:DocumentType>ID06</cbc:DocumentType>          
+               </cac:IdentityDocumentReference>        
+            </cac:Person>      
+         </cac:CarrierParty>
+         <cac:PlannedDepartureTransportEvent>
+            <cbc:IdentificationID>6522956526554654</cbc:IdentificationID>
+            <cac:Location>
+               <cbc:ID schemeID="0088">5790000435951</cbc:ID>
+               <cbc:Name>Name</cbc:Name>
+               <cac:Address>
+                  <cbc:StreetName>Avon Way</cbc:StreetName>
+                  <cbc:AdditionalStreetName>Purchasing</cbc:AdditionalStreetName>
+                  <cbc:CityName>Bridgtow</cbc:CityName>
+                  <cbc:PostalZone>ZZ99 1ZZ</cbc:PostalZone>
+                  <cbc:CountrySubentity>Avon</cbc:CountrySubentity>
+                  <cac:AddressLine>
+                     <cbc:Line>3rd Floor, Room 5</cbc:Line>            
+                  </cac:AddressLine>
+                  <cac:Country>
+                     <cbc:IdentificationCode>GB</cbc:IdentificationCode>            
+                  </cac:Country>
+                  <cac:LocationCoordinate>
+                     <cbc:CoordinateSystemCode>EPSG:3857</cbc:CoordinateSystemCode>
+                     <cbc:LatitudeDegreesMeasure unitCode="DD">59.331660358041425</cbc:LatitudeDegreesMeasure>
+                     <cbc:LongitudeDegreesMeasure unitCode="DD">18.063363084988005</cbc:LongitudeDegreesMeasure>
+                     <cbc:AltitudeMeasure unitCode="MTR">12.5</cbc:AltitudeMeasure>            
+                  </cac:LocationCoordinate>          
+               </cac:Address>        
+            </cac:Location>
+            <cac:Period>
+               <cbc:StartDate>2021-09-29</cbc:StartDate>
+               <cbc:StartTime>10:00:00+01:00</cbc:StartTime>
+               <cbc:EndDate>2021-09-29</cbc:EndDate>
+               <cbc:EndTime>11:00:00+01:00</cbc:EndTime>        
+            </cac:Period>      
+         </cac:PlannedDepartureTransportEvent>
+         <cac:PlannedArrivalTransportEvent>
+            <cbc:IdentificationID>54354684732168476514</cbc:IdentificationID>
+            <cac:Location>
+               <cbc:ID schemeID="0088">5790000435951</cbc:ID>
+               <cbc:Name>Finnair Cargo terminal</cbc:Name>
+               <cac:Address>
+                  <cbc:StreetName>Turbiinitie 4</cbc:StreetName>
+                  <cbc:CityName>Vantaa</cbc:CityName>
+                  <cbc:PostalZone>01530</cbc:PostalZone>
+                  <cac:Country>
+                     <cbc:IdentificationCode>FI</cbc:IdentificationCode>            
+                  </cac:Country>          
+               </cac:Address>        
+            </cac:Location>
+            <cac:Period>
+               <cbc:StartDate>2021-09-29</cbc:StartDate>
+               <cbc:StartTime>10:00:00+01:00</cbc:StartTime>
+               <cbc:EndDate>2021-09-29</cbc:EndDate>
+               <cbc:EndTime>11:00:00+01:00</cbc:EndTime>        
+            </cac:Period>      
+         </cac:PlannedArrivalTransportEvent>    
+      </cac:OnCarriageShipmentStage>
+      <cac:TransportHandlingUnit>
+         <cbc:ID schemeID="SSCC">173500538500000016</cbc:ID>
+         <cbc:TransportHandlingUnitTypeCode>AG</cbc:TransportHandlingUnitTypeCode>
+         <cbc:HandlingCode>CCC</cbc:HandlingCode>
+         <cbc:HandlingInstructions>To be set vertical</cbc:HandlingInstructions>
+         <cbc:HazardousRiskIndicator>false</cbc:HazardousRiskIndicator>
+         <cbc:ShippingMarks>Keep dry</cbc:ShippingMarks>
+         <cac:TransportEquipment>
+            <cbc:ID>34563444</cbc:ID>
+            <cbc:TransportEquipmentTypeCode>CN</cbc:TransportEquipmentTypeCode>
+            <cbc:SizeTypeCode>10</cbc:SizeTypeCode>
+            <cbc:RefrigerationOnIndicator>true</cbc:RefrigerationOnIndicator>
+            <cbc:Description>A 20 foot refrigerated container that is not actively controlling temperature of the product.</cbc:Description>
+            <cbc:PowerIndicator>true</cbc:PowerIndicator>      
+         </cac:TransportEquipment>
+         <cac:MeasurementDimension>
+            <cbc:AttributeID>LN</cbc:AttributeID>
+            <cbc:Measure unitCode="MTR">123</cbc:Measure>      
+         </cac:MeasurementDimension>
+         <cac:MinimumTemperature>
+            <cbc:AttributeID>TC</cbc:AttributeID>
+            <cbc:Measure unitCode="CEL">-21</cbc:Measure>      
+         </cac:MinimumTemperature>
+         <cac:MaximumTemperature>
+            <cbc:AttributeID>TC</cbc:AttributeID>
+            <cbc:Measure unitCode="CEL">-21</cbc:Measure>      
+         </cac:MaximumTemperature>
+         <cac:GoodsItem>
+            <cbc:ID>10</cbc:ID>
+            <cbc:SequenceNumberID>1</cbc:SequenceNumberID>
+            <cbc:Description>Torsk sl u/h fersk fulliset 20kg iso 2-4 kg</cbc:Description>
+            <cbc:HazardousRiskIndicator>false</cbc:HazardousRiskIndicator>
+            <cbc:Quantity unitCode="EA">6</cbc:Quantity>
+            <cac:Item>
+               <cbc:Name>Torsk</cbc:Name>
+               <cac:CommodityClassification>
+                  <cbc:ItemClassificationCode listID="ZZZ" listVersionID="3.0.2" name="SBMI">KO2012140200</cbc:ItemClassificationCode>          
+               </cac:CommodityClassification>
+               <cac:HazardousItem>
+                  <cbc:ID>123</cbc:ID>
+                  <cbc:AdditionalInformation>Information about the hazardous item</cbc:AdditionalInformation>
+                  <cbc:UNDGCode>ADR</cbc:UNDGCode>
+                  <cbc:TechnicalName>Corrosive liquid, n.o.s., 8, UN 1760, II (contains Octanoyl chloride)</cbc:TechnicalName>
+                  <cbc:CategoryName>Acute toxicity</cbc:CategoryName>
+                  <cbc:HazardousCategoryCode>123</cbc:HazardousCategoryCode>
+                  <cbc:HazardClassID>Code</cbc:HazardClassID>
+                  <cbc:NetWeightMeasure unitCode="KGM">123</cbc:NetWeightMeasure>
+                  <cbc:NetVolumeMeasure unitCode="MTQ">12.3</cbc:NetVolumeMeasure>
+                  <cac:HazardousGoodsTransit>
+                     <cbc:PackingCriteriaCode>123</cbc:PackingCriteriaCode>            
+                  </cac:HazardousGoodsTransit>
+                  <cac:EmergencyTemperature>
+                     <cbc:AttributeID>ABC</cbc:AttributeID>
+                     <cbc:Measure unitCode="CEL">78</cbc:Measure>            
+                  </cac:EmergencyTemperature>          
+               </cac:HazardousItem>        
+            </cac:Item>      
+         </cac:GoodsItem>
+         <cac:ShipmentDocumentReference>
+            <cbc:ID>12345</cbc:ID>
+            <cbc:DocumentTypeCode>270</cbc:DocumentTypeCode>
+            <cbc:DocumentType>DespatchAdvice</cbc:DocumentType>      
+         </cac:ShipmentDocumentReference>    
+      </cac:TransportHandlingUnit>
+      <cac:OfficeOfEntryLocation>
+         <cbc:ID schemeID="0088">5790000435951</cbc:ID>
+         <cbc:Name>Novo Nordisk Pharmatech A/S</cbc:Name>
+         <cac:Address>
+            <cbc:StreetName>Københavnsvej 216</cbc:StreetName>
+            <cbc:AdditionalStreetName>Purchasing</cbc:AdditionalStreetName>
+            <cbc:CityName>Køge</cbc:CityName>
+            <cbc:PostalZone>4600</cbc:PostalZone>
+            <cbc:CountrySubentity>Region Hovedstaden</cbc:CountrySubentity>
+            <cac:AddressLine>
+               <cbc:Line>3rd Floor, Room 5</cbc:Line>        
+            </cac:AddressLine>
+            <cac:Country>
+               <cbc:IdentificationCode>DK</cbc:IdentificationCode>        
+            </cac:Country>
+            <cac:LocationCoordinate>
+               <cbc:CoordinateSystemCode>EPSG:3857</cbc:CoordinateSystemCode>
+               <cbc:LatitudeDegreesMeasure unitCode="DD">59.331660358041425</cbc:LatitudeDegreesMeasure>
+               <cbc:LongitudeDegreesMeasure unitCode="DD">18.063363084988005</cbc:LongitudeDegreesMeasure>
+               <cbc:AltitudeMeasure unitCode="MTR">12.5</cbc:AltitudeMeasure>        
+            </cac:LocationCoordinate>      
+         </cac:Address>    
+      </cac:OfficeOfEntryLocation>
+      <cac:DocumentReference>
+         <cbc:ID>7648779</cbc:ID>
+         <cbc:DocumentTypeCode>380</cbc:DocumentTypeCode>
+         <cbc:DocumentType>Delivery soecification</cbc:DocumentType>    
+      </cac:DocumentReference>  
+   </cac:Consignment>
+</ubl:TransportExecutionPlan>
