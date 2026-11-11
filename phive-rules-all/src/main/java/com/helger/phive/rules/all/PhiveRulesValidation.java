@@ -106,7 +106,6 @@ public final class PhiveRulesValidation
     // The rest in alphabetical order, except where explicitly stated
     CIUS_PTValidation.initCIUS_PT (aRegistry);
     CIUS_ROValidation.initCIUS_RO (aRegistry);
-    EHFValidation.initEHF (aRegistry);
     FranceValidation.initFrance (aRegistry);
     HReRacunValidation.init (aRegistry);
     ISDOCValidation.initISDOC (aRegistry);
@@ -115,6 +114,8 @@ public final class PhiveRulesValidation
     PeppolValidation.initStandard (aRegistry);
     // Must be after Peppol, because the CIUS-DK rules build on the Peppol BIS Billing rules
     CIUS_DKValidation.init (aRegistry);
+    // Must be after Peppol, because EHF Billing aliases the Peppol BIS Billing rules
+    EHFValidation.initEHF (aRegistry);
     PeppolValidationTaxData.init (aRegistry);
     PeppolValidationLogistics.init (aRegistry);
     PeppolValidationPint.initPeppolPint (aRegistry);
