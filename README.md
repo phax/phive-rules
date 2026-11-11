@@ -287,6 +287,11 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.6.5 - work in progress
+* Updated to phive 12.3.0
+* Added the EHF G3 Invoice and Credit Note (`no.ehf.g3:invoice` and `no.ehf.g3:creditnote`) as aliases of all registered, non-deprecated Peppol BIS Billing versions (currently 2025.11.0 and 2026.5.0) with the same version, since EHF Billing 3.0 is a rebranding of Peppol BIS Billing 3.0.
+  `phive-rules-ehf` therefore depends on `phive-rules-peppol`, and the Peppol BIS Billing rules must be registered before the EHF rules.
+
 v4.6.4 - 2026-10-29
 * Updated to phive-rules-foundations 5.0.6
 * `phive-rules-all` now also registers the new Brazilian validation rules of `phive-rules-brazil` from phive-rules-foundations (NF-e/NFC-e, CT-e, MDF-e, NFCom, NF3e, BP-e, NFAg, NFGas and NFS-e, Group ID `br.gov.nfe`)

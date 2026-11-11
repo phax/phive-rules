@@ -36,6 +36,7 @@ import com.helger.phive.ehf.EHFValidationG3_2020_03;
 import com.helger.phive.ehf.EHFValidationG3_2023_02;
 import com.helger.phive.ehf.EHFValidationG3_2026_09;
 import com.helger.phive.en16931.EN16931Validation;
+import com.helger.phive.peppol.PeppolValidationBisEurope;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 @Immutable
@@ -46,6 +47,7 @@ public final class CTestFiles
   static
   {
     EN16931Validation.initEN16931 (VES_REGISTRY);
+    PeppolValidationBisEurope.initBilling (VES_REGISTRY);
     EHFValidation.initEHF (VES_REGISTRY);
   }
 

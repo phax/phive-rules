@@ -33,7 +33,7 @@ import com.helger.diver.api.version.DVRVersionException;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
-import com.helger.phive.api.executorset.ValidationExecutorSetAlias;
+import com.helger.phive.api.executorset.IValidationExecutorSetAlias;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.zugferd.mock.CTestFiles;
 
@@ -92,16 +92,16 @@ public final class ZugferdValidationTest
    *         on error
    */
   @NonNull
-  private static ValidationExecutorSetAlias <IValidationSourceXML> _resolveFacturX (@NonNull final EZugferdProfile eProfile,
-                                                                                    @NonNull final String sVersion,
-                                                                                    @Nullable final OffsetDateTime aCheckDT) throws DVRVersionException
+  private static IValidationExecutorSetAlias <IValidationSourceXML> _resolveFacturX (@NonNull final EZugferdProfile eProfile,
+                                                                                     @NonNull final String sVersion,
+                                                                                     @Nullable final OffsetDateTime aCheckDT) throws DVRVersionException
   {
     final IValidationExecutorSet <IValidationSourceXML> aVES = _resolve (ZugferdValidation.GROUP_ID_FACTUR_X,
                                                                          eProfile,
                                                                          sVersion,
                                                                          aCheckDT);
-    assertTrue (aVES instanceof ValidationExecutorSetAlias);
-    return (ValidationExecutorSetAlias <IValidationSourceXML>) aVES;
+    assertTrue (aVES instanceof IValidationExecutorSetAlias);
+    return (IValidationExecutorSetAlias <IValidationSourceXML>) aVES;
   }
 
   @Test
@@ -119,9 +119,9 @@ public final class ZugferdValidationTest
 
       final IValidationExecutorSet <IValidationSourceXML> aAlias = CTestFiles.VES_REGISTRY.getOfID (aFacturXVESID);
       assertNotNull (aFacturXVESID.getAsSingleID (), aAlias);
-      assertTrue (aAlias instanceof ValidationExecutorSetAlias);
+      assertTrue (aAlias instanceof IValidationExecutorSetAlias);
       assertEquals (aZugferdVESID,
-                    ((ValidationExecutorSetAlias <IValidationSourceXML>) aAlias).getSourceVES ().getID ());
+                    ((IValidationExecutorSetAlias <IValidationSourceXML>) aAlias).getSourceVES ().getID ());
     }
   }
 
@@ -130,7 +130,7 @@ public final class ZugferdValidationTest
   {
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
-      final ValidationExecutorSetAlias <IValidationSourceXML> aAlias = _resolveFacturX (eProfile, "oldest", null);
+      final IValidationExecutorSetAlias <IValidationSourceXML> aAlias = _resolveFacturX (eProfile, "oldest", null);
       assertEquals ("1.0.3", aAlias.getID ().getVersionString ());
       assertEquals ("2.0.1", aAlias.getSourceVES ().getID ().getVersionString ());
     }
@@ -141,7 +141,7 @@ public final class ZugferdValidationTest
   {
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
-      final ValidationExecutorSetAlias <IValidationSourceXML> aAlias = _resolveFacturX (eProfile, "latest", null);
+      final IValidationExecutorSetAlias <IValidationSourceXML> aAlias = _resolveFacturX (eProfile, "latest", null);
       assertEquals ("1.0.9-2", aAlias.getID ().getVersionString ());
       assertEquals ("2.5.2", aAlias.getSourceVES ().getID ().getVersionString ());
 
@@ -200,7 +200,7 @@ public final class ZugferdValidationTest
   {
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
-      final ValidationExecutorSetAlias <IValidationSourceXML> aAlias = _resolveFacturX (eProfile, "latest", null);
+      final IValidationExecutorSetAlias <IValidationSourceXML> aAlias = _resolveFacturX (eProfile, "latest", null);
       final IValidationExecutorSet <IValidationSourceXML> aZugferd = _resolve (ZugferdValidation.GROUP_ID_ZUGFERD,
                                                                                eProfile,
                                                                                "latest",
