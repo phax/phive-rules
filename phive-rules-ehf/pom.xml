@@ -69,6 +69,10 @@
       <artifactId>phive-rules-en16931</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-peppol</artifactId>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>

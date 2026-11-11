@@ -45,7 +45,9 @@ public final class EHFValidation
   @ReturnsMutableCopy
   public static ICommonsList <DVRCoordinate> getAllPrerequisites ()
   {
-    return EHFValidationG3_2026_09.getAllPrerequisites ();
+    final ICommonsList <DVRCoordinate> ret = EHFValidationG3_2026_09.getAllPrerequisites ();
+    ret.addAll (EHFValidationG3Billing.getAllPrerequisites ());
+    return ret;
   }
 
   /**
@@ -61,5 +63,6 @@ public final class EHFValidation
     EHFValidationG3_2020_03.initEHF (aRegistry);
     EHFValidationG3_2023_02.initEHF (aRegistry);
     EHFValidationG3_2026_09.initEHF (aRegistry);
+    EHFValidationG3Billing.initEHF (aRegistry);
   }
 }
