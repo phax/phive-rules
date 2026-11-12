@@ -104,6 +104,19 @@ public final class ZugferdValidationTest
     return (IValidationExecutorSetAlias <IValidationSourceXML>) aVES;
   }
 
+  @NonNull
+  private static String _getLatestZugferdVersion (@NonNull final EZugferdProfile eProfile)
+  {
+    // Only Extended has a "-ph1" version, which sorts after the plain version
+    return eProfile == EZugferdProfile.EXTENDED ? "2.5.2-ph1" : "2.5.2";
+  }
+
+  @NonNull
+  private static String _getLatestFacturXVersion (@NonNull final EZugferdProfile eProfile)
+  {
+    return eProfile == EZugferdProfile.EXTENDED ? "1.0.9-2-ph1" : "1.0.9-2";
+  }
+
   @Test
   public void testFacturXAliasesArePresent ()
   {
@@ -142,15 +155,15 @@ public final class ZugferdValidationTest
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
       final IValidationExecutorSetAlias <IValidationSourceXML> aAlias = _resolveFacturX (eProfile, "latest", null);
-      assertEquals ("1.0.9-2", aAlias.getID ().getVersionString ());
-      assertEquals ("2.5.2", aAlias.getSourceVES ().getID ().getVersionString ());
+      assertEquals (_getLatestFacturXVersion (eProfile), aAlias.getID ().getVersionString ());
+      assertEquals (_getLatestZugferdVersion (eProfile), aAlias.getSourceVES ().getID ().getVersionString ());
 
       // Must be the same as resolving the ZUGFeRD side
       final IValidationExecutorSet <IValidationSourceXML> aZugferd = _resolve (ZugferdValidation.GROUP_ID_ZUGFERD,
                                                                                eProfile,
                                                                                "latest",
                                                                                null);
-      assertEquals ("2.5.2", aZugferd.getID ().getVersionString ());
+      assertEquals (_getLatestZugferdVersion (eProfile), aZugferd.getID ().getVersionString ());
       assertEquals (aZugferd, aAlias.getSourceVES ());
     }
   }
@@ -160,7 +173,8 @@ public final class ZugferdValidationTest
   {
     // No Snapshot versions are registered, so this is the same as "latest"
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
-      assertEquals ("1.0.9-2", _resolveFacturX (eProfile, "latest-release", null).getID ().getVersionString ());
+      assertEquals (_getLatestFacturXVersion (eProfile),
+                    _resolveFacturX (eProfile, "latest-release", null).getID ().getVersionString ());
   }
 
   @Test
@@ -170,14 +184,14 @@ public final class ZugferdValidationTest
     {
       // Factur-X 1.0.9-2 (ZUGFeRD 2.5.2) is valid from 2026-09-01 onwards only
       assertEquals ("1.0.9", _resolveFacturX (eProfile, "latest-active", DT_BEFORE_2_5_2).getID ().getVersionString ());
-      assertEquals ("1.0.9-2",
+      assertEquals (_getLatestFacturXVersion (eProfile),
                     _resolveFacturX (eProfile, "latest-active", DT_AFTER_2_5_2).getID ().getVersionString ());
 
       // Same behaviour on the ZUGFeRD side
       assertEquals ("2.5",
                     _resolve (ZugferdValidation.GROUP_ID_ZUGFERD, eProfile, "latest-active", DT_BEFORE_2_5_2).getID ()
                                                                                                              .getVersionString ());
-      assertEquals ("2.5.2",
+      assertEquals (_getLatestZugferdVersion (eProfile),
                     _resolve (ZugferdValidation.GROUP_ID_ZUGFERD, eProfile, "latest-active", DT_AFTER_2_5_2).getID ()
                                                                                                             .getVersionString ());
     }
@@ -190,7 +204,7 @@ public final class ZugferdValidationTest
     {
       assertEquals ("1.0.9",
                     _resolveFacturX (eProfile, "latest-release-active", DT_BEFORE_2_5_2).getID ().getVersionString ());
-      assertEquals ("1.0.9-2",
+      assertEquals (_getLatestFacturXVersion (eProfile),
                     _resolveFacturX (eProfile, "latest-release-active", DT_AFTER_2_5_2).getID ().getVersionString ());
     }
   }
