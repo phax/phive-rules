@@ -107,6 +107,7 @@ When adding a new module or a new VES coordinate, follow the **DVR Coordinate na
 - `phive-rules-peppol-logistics` is standalone (Peppol Logistics, UBL 2.1/2.3/2.4); its VES versions are per transaction, not per release
 - `phive-rules-energieefactuur` depends on `simplerinvoicing`
 - `phive-rules-ehf` depends on `en16931` (EHF Self-Billing is based on the EN 16931 UBL VES) and on `peppol` (the EHF G3 Invoice and Credit Note `no.ehf.g3:invoice` / `no.ehf.g3:creditnote` are read-only aliases with the same version, created generically by `EHFValidationG3Billing` for every non-deprecated `eu.peppol.bis3:invoice` / `creditnote` VES already in the registry - no change is needed there for a new Peppol release, unless `PeppolValidation2026_05` used in its prerequisites moves to legacy), so `EHFValidation.initEHF` must run after `PeppolValidation.initStandard`
+- `phive-rules-zugferd` ships a locally patched `2.5.2-ph1` Extended VES (rule `BR-FXEXT-08` rewritten for performance in `rule-source/2.5.2-ph1/FACTUR-X_EXTENDED.sch`; reuses the 2.5.2 XSD and test files). An unknown qualifier like `-ph1` sorts *after* the plain version in `DVRVersion`, so it is what `latest` resolves to. Carry the patch over when a newer ZUGFeRD version is added.
 - `phive-rules-oioubl` is consumed by `phive-rules-oioubl-legacy` (other repo) for its OIOUBL UtilityStatement XSDs
 
 ## Imports & Annotations

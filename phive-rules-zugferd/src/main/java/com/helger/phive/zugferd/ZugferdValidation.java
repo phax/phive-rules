@@ -224,6 +224,11 @@ public final class ZugferdValidation
                                                                                              EZugferdProfile.EXTENDED.getArtifactID (),
                                                                                              "2.5.2");
 
+  // v2.5.2-ph1 - Extended only, with a faster BR-FXEXT-08
+  public static final DVRCoordinate VID_ZUGFERD_2_5_2_PH1_EXTENDED = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                                 EZugferdProfile.EXTENDED.getArtifactID (),
+                                                                                                 "2.5.2-ph1");
+
   // Global version map
   private static final ICommonsMap <DVRVersion, DVRVersion> ZUGFERD_TO_FACTURX_MAP = new CommonsHashMap <> ();
   static
@@ -236,6 +241,7 @@ public final class ZugferdValidation
     ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.4"), DVRVersion.parseOrNull ("1.0.8"));
     ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.5"), DVRVersion.parseOrNull ("1.0.9"));
     ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.5.2"), DVRVersion.parseOrNull ("1.0.9-2"));
+    ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.5.2-ph1"), DVRVersion.parseOrNull ("1.0.9-2-ph1"));
   }
 
   private ZugferdValidation ()
@@ -587,6 +593,28 @@ public final class ZugferdValidation
                    .notDeprecated ()
                    .validFrom (VALID_FROM_2_5_2_UTC)
                    .addXSD (getXSDResource24onwards (sZugferdVersion, eProfile))
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
+                                                                                                   sZugferdVersion +
+                                                                                                   "/FACTUR-X_" +
+                                                                                                   eProfile.getFilenameSuffix24onwards () +
+                                                                                                   ".xslt",
+                                                                                                   _getCL ())))
+                   .addAlias (_createFacturXAlias (aVESID, eProfile))
+                   .registerInto (aRegistry);
+    }
+
+    // Zugferd 2.5.2-ph1 / Factur-X 1.0.9-2-ph1 - Extended only, with a faster BR-FXEXT-08
+    {
+      final String sZugferdVersion = "2.5.2-ph1";
+      final EZugferdProfile eProfile = EZugferdProfile.EXTENDED;
+      final DVRCoordinate aVESID = VID_ZUGFERD_2_5_2_PH1_EXTENDED;
+
+      VesXmlBuilder.builder ()
+                   .vesID (aVESID)
+                   .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
+                   .notDeprecated ()
+                   .validFrom (VALID_FROM_2_5_2_UTC)
+                   .addXSD (getXSDResource24onwards ("2.5.2", eProfile))
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
                                                                                                    sZugferdVersion +
                                                                                                    "/FACTUR-X_" +
