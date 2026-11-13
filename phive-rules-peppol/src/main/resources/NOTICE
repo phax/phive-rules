@@ -11,6 +11,8 @@ European Union Public Licence (EUPL) version 1.2 (EUPL-1.2).
 The Peppol files state: "This schematron uses business terms defined the CEN/EN16931-1 and is reproduced with
 permission from CEN. CEN bears no liability from the use of the content and implementation of this schematron
 and gives no warranties expressed or implied for any purpose."
+The contained Peppol BIS Envelope Rules (PeppolBIS-Envelope-Rules.sch, version 2026.5) for the Peppol Business Message
+Envelope (SBDH) are originally from https://docs.peppol.eu/poacc/billing/3.0/ (OpenPeppol).
 
 The contained A-NZ Peppol BIS 3.0 validation rules (versions 1.0.11 and 1.0.12) are originally from
 https://github.com/A-NZ-PEPPOL/A-NZ-PEPPOL-BIS-3.0

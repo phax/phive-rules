@@ -52,5 +52,6 @@ public final class PeppolValidationBillingTest
     assertNotNull (aRegistry.getOfID (PeppolValidation2026_03.VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3));
     assertNotNull (aRegistry.getOfID (PeppolValidation2026_05.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3));
     assertNull (aRegistry.getOfID (PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3));
+    assertNotNull (aRegistry.getOfID (PeppolValidationSbdhEnvelope2026_05.VID_SBDH_INVOICE));
   }
 }

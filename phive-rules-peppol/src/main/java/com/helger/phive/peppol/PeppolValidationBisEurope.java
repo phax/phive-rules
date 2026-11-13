@@ -66,6 +66,7 @@ public final class PeppolValidationBisEurope
     PeppolValidation2025_11.init (aRegistry);
     PeppolValidation2026_03.init (aRegistry);
     PeppolValidation2026_05.init (aRegistry);
+    PeppolValidationSbdhEnvelope2026_05.init (aRegistry);
   }
 
   /**
@@ -81,5 +82,6 @@ public final class PeppolValidationBisEurope
     PeppolValidation2025_11.initBilling (aRegistry);
     PeppolValidation2026_03.initBilling (aRegistry);
     PeppolValidation2026_05.initBilling (aRegistry);
+    PeppolValidationSbdhEnvelope2026_05.init (aRegistry);
   }
 }

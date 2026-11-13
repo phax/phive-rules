@@ -33,7 +33,7 @@
       "current": "1.3.17",
       "upstream-latest": "validation-1.3.17 (2026-10-12)",
       "status": "up-to-date",
-      "last-checked": "2026-10-14",
+      "last-checked": "2026-11-13",
       "detect": "release tags \"validation-X.Y.Z\"; assets en16931-{cii,ubl}-<v>.zip",
       "notes": "A new CEN release usually triggers follow-up releases of XRechnung, SimplerInvoicing, France CTC and Peppol. Version 1.3.6.a is a phax fork and not checked."
     },
@@ -50,11 +50,11 @@
       "url-status": "verified",
       "current": "2026.5",
       "current-upstream": "3.0.21",
-      "upstream-latest": "3.0.21 (May 2026, published 2026-05-20, mandatory 2026-08-17)",
+      "upstream-latest": "3.0.21 (May 2026, published 2026-05-20, mandatory 2026-08-17); PEPPOL-EN16931-UBL.sch re-published in place 2026-08-18 (EAS 0158 added to the 'eaid' code list; release notes do not mention it)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
-      "detect": "top version on the release notes page; also watch for \"-hotfix\" suffixes",
-      "notes": "Repo versions are YYYY.M release months (see README \"Peppol Validation Artefact Versioning\"). Mapping: '2025.11 = 3.0.20 (-hotfix swapped in place), 2026.5 = 3.0.21.' Billing, Self-Billing and Post-Award share one YYYY.M coordinate per release. QUESTION: 'code says published 2026-05-18, release notes say 2026-05-20.'"
+      "last-checked": "2026-11-13",
+      "detect": "top version on the release notes page; also watch for \"-hotfix\" suffixes. The page footers no longer show a PDK date - compare Last-Modified and SHA-256 of the downloadable .sch files with rule-source/openpeppol/<version> (silent in-place re-publications happen, e.g. 2026-08-18)",
+      "notes": "Repo versions are YYYY.M release months (see README \"Peppol Validation Artefact Versioning\"). Mapping: '2025.11 = 3.0.20 (-hotfix swapped in place), 2026.5 = 3.0.21.' Billing, Self-Billing and Post-Award share one YYYY.M coordinate per release. QUESTION: 'code says published 2026-05-18, release notes say 2026-05-20.' The Billing and Self-Billing pages also offer PeppolBIS-Envelope-Rules.sch (SBDH envelope rules, Last-Modified 2026-08-18) - registered as org.peppol.bis3.sbdh-envelope:*:2026.5 (#100); compare its hash too. The 2026-08-18 in-place re-publication (EAS 0158 added) was applied in place to the 2026.5 coordinates on 2026-11-13 (originals in docs/ with suffix -2026-08-18)."
     },
     {
       "id": "peppol-bis-self-billing",
@@ -69,10 +69,11 @@
       "url-status": "verified",
       "current": "2026.5",
       "current-upstream": "3.0.2",
-      "upstream-latest": "3.0.2 (published 2026-05-20, mandatory 2026-08-17)",
+      "upstream-latest": "3.0.2 (published 2026-05-20, mandatory 2026-08-17); PEPPOL-EN16931-UBL-SB.sch re-published in place 2026-08-18 (EAS 0158 added to the 'eaid' code list; release notes do not mention it)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
-      "notes": "Mapping 2026.3 = 3.0.1, 2026.5 = 3.0.2. Both still not deprecated."
+      "last-checked": "2026-11-13",
+      "notes": "Mapping 2026.3 = 3.0.1, 2026.5 = 3.0.2. Both still not deprecated. The 2026-08-18 in-place re-publication (EAS 0158 added) was applied in place to the 2026.5 coordinates on 2026-11-13 (originals in docs/ with suffix -2026-08-18).",
+      "detect": "version on the release notes page AND Last-Modified / SHA-256 of the .sch files vs rule-source/openpeppol/<version>"
     },
     {
       "id": "peppol-bis-post-award",
@@ -97,10 +98,11 @@
       "url-status": "verified",
       "current": "2026.5",
       "current-upstream": "3.0.17",
-      "upstream-latest": "3.0.17 (published 2026-05-20, mandatory 2026-08-17)",
+      "upstream-latest": "3.0.17 (published 2026-05-20, mandatory 2026-08-17); PEPPOLBIS-Upgrade-Schematron.zip re-published in place 2026-08-18 (all 12 PEPPOLBIS-T*.sch: EAS 0158 added to the 'eaid' code list; release notes do not mention it)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
-      "notes": "Mapping 2025.11 = 3.0.16, 2026.5 = 3.0.17."
+      "last-checked": "2026-11-13",
+      "notes": "Mapping 2025.11 = 3.0.16, 2026.5 = 3.0.17. The 2026-08-18 in-place re-publication (EAS 0158 added) was applied in place to the 2026.5 coordinates on 2026-11-13 (originals in docs/ with suffix -2026-08-18).",
+      "detect": "version on the release notes page AND Last-Modified / SHA-256 of the Schematron ZIP contents vs rule-source/openpeppol/<version>"
     },
     {
       "id": "peppol-bis-aunz",
@@ -135,7 +137,7 @@
       "current-upstream": "3.0.17",
       "upstream-latest": "3.0.17 (released 2026-06-08, mandatory 2026-09-08)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "notes": "The Schematron ZIP URL (peppolguide.sg/billing/files/SG-BIS-Billing3-Schematron.zip) is constant - watch the release notes."
     },
     {
@@ -150,7 +152,7 @@
       "url-status": "verified",
       "current": "1.0.2",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "notes": "1.0.1 and 1.0.2 only update the code lists to the latest Peppol BIS Billing 3 release (currency codes, units of measure, ICD, EAS) - verified by diffing SGBIS-TOB.sch. The repo coordinate is \"1.0\" while upstream uses 1.0.x - decide the DVR version for 1.0.2 (e.g. 1.0.2). Spec page: https://www.peppolguide.sg/po-balance/",
       "upstream-latest": "1.0.2 (released 2026-06-08, mandatory 2026-09-08); 1.0.1 (2025-12-11, mandatory 2026-03-11) was skipped",
       "detect": "top version on the release notes page; the Schematron ZIP URL https://www.peppolguide.sg/po-balance/files/SG-BIS-TOB-Schematron.zip is constant (Last-Modified 2026-06-11) - compare its hash",
@@ -204,7 +206,7 @@
       "current": "3.0.0",
       "upstream-latest": "peppol-directory-business-card-20180621.xsd (v3.0)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "notes": "XSD only, very stable."
     },
     {
@@ -229,7 +231,7 @@
       "current-upstream": "Peppol Logistics - Release 1.3.1 Hotfix",
       "upstream-latest": "Release 1.3.1 Hotfix (last updated 2026-09-16)",
       "status": "up-to-date",
-      "last-checked": "2026-10-29",
+      "last-checked": "2026-11-13",
       "detect": "Release name in the page header and the per-transaction syntax versions on the main page; the rules are in https://docs.peppol.eu/logistics/files/Schematron.zip and the examples in https://docs.peppol.eu/logistics/files/Examples.zip",
       "notes": "VES versions are the per-transaction syntax versions, not the release version. T123/T124 are validated against UBL 2.4, T120/T129 against UBL 2.1, all others against UBL 2.3. Two upstream examples were invalid and are fixed locally, marked with '[PH]' XML comments: ReceiptAdvice_Example_Full.xml (PEPPOL-T128-R023) and TransportationStatusRequest_Example_UseCase_04.xml (XSD element order). Re-apply when updating the examples."
     },
@@ -249,9 +251,9 @@
       "url": "https://peppol-docs.agid.gov.it/docs/attachments/",
       "url-status": "verified",
       "current": "3.2.1 (content of the 2026-08-17 re-publication, BIS 3.0.21)",
-      "upstream-latest": "3.2.1 re-published in place 2026-08-17 (Last-Modified), now based on Peppol BIS Billing 3.0.21",
+      "upstream-latest": "3.2.1; all four ZIPs re-uploaded 2026-11-09 (Last-Modified) - contents identical to the 2026-08-17 re-publication except CRLF line endings in ENG/CEN/CEN-EN16931-UBL.sch; still based on Peppol BIS Billing 3.0.21 (without EAS 0158)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "The directory itself is not listable (HTTP 404) - request the known files directly and compare Last-Modified / SHA-256: AGID-PEPPOL-Schematron-Billing-3.2.1.zip, AGID-PEPPOL-Validator-Billing-3.2.1.zip, AGID-PEPPOL-Schematron-Others-3.2.1.zip, AGID-Peppol-Esempi-Fattura-3.zip (the old names Esempi-*-3.2.1.zip return 404). Also probe the next version numbers. The TLS certificate chain fails curl's validation ('permitted subtree violation'), so the checker needs to tolerate that.",
       "notes": "AGID updates 3.2.1 in place without a version bump; the VES coordinates are kept (decision in #92). The ITA invoice folder lacks the wrapper AGID-EN16931-UBL.sch since 2026-08-17 - the previous one is kept (see phive-rules-peppol-italy/docs/README.md). Secondary: https://peppol-docs.agid.gov.it/docs/my_index_fatt-ENG.jsp shows \"Peppol BIS Billing 3.0.21.1(IT)\".",
       "issue": "https://github.com/phax/phive-rules/issues/92"
@@ -270,7 +272,7 @@
       "current": "1.1.3",
       "upstream-latest": "1.1.3 (2026-06-05)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30"
+      "last-checked": "2026-11-13"
     },
     {
       "id": "pint-ae",
@@ -289,7 +291,7 @@
       "current-upstream": "1.0.4",
       "upstream-latest": "1.0.4 (PDK 1.4.4, 2026-07-29)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "version AND the PDK release date in the page footer - hotfixes replace Schematrons in place under the same version",
       "notes": "Mapping 2026.3 = 1.0.3, 2026.5 = 1.0.4. QUESTION: '2026.3 VALID_PER is 2026-01-21 but its comment says \"from 2026-03-25\".'"
     },
@@ -309,7 +311,7 @@
       "current": "1.1.3",
       "upstream-latest": "1.1.3 (2026-05-21)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30"
+      "last-checked": "2026-11-13"
     },
     {
       "id": "pint-eu",
@@ -326,7 +328,7 @@
       "current-upstream": "1.1.1",
       "upstream-latest": "1.1.1 (2026-06-09)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "notes": "Mapping 2025.10 = 1.0.0, 2025.11 = 1.0.1, 2026.6 = 1.1.1."
     },
     {
@@ -345,7 +347,7 @@
       "current": "1.1.3",
       "upstream-latest": "1.1.3 for all three (2026-05-18)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "notes": "Standard, NTR and SB are released together."
     },
     {
@@ -364,7 +366,7 @@
       "current": "1.3.1",
       "upstream-latest": "1.3.1 (2026-06-05)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "notes": "QUESTION: 1.2.1 is not deprecated, but the newer 1.3.0 is - intended?"
     },
     {
@@ -383,7 +385,7 @@
       "current": "1.0.1",
       "upstream-latest": "1.0.1 (PDK 1.4.4, 2026-07-29)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "version AND PDK release date - Schematrons were refreshed several times under the same version"
     },
     {
@@ -400,7 +402,7 @@
       "current": "1.4.1",
       "upstream-latest": "1.4.1 (2026-05-25)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30"
+      "last-checked": "2026-11-13"
     },
     {
       "id": "tdd-ae",
@@ -415,7 +417,7 @@
       "current": "1.0.4",
       "upstream-latest": "1.0.4 (2026-07-29)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30"
+      "last-checked": "2026-11-13"
     },
     {
       "id": "tdd-om",
@@ -430,7 +432,7 @@
       "current": "1.0.1",
       "upstream-latest": "1.0.1 (PDK 1.4.4, 2026-07-29)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "version AND PDK release date (in-place refreshes happened for 1.0.0)"
     },
     {
@@ -445,7 +447,7 @@
       "url-status": "verified",
       "current": "1.0.0",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "notes": "Note the path /tdd/sk/, not /poac/sk/. The three Schematrons in resources.zip (Last-Modified 2026-04-14) are byte-identical to rule-source/tdd/sk/1.0.0, although the repo added them on 2026-04-02.",
       "upstream-latest": "1.0.0 (2026-04-14)",
       "detect": "version and release date on the page (release notes: https://docs.peppol.eu/tdd/sk/tdd-sk/release-notes/); resources package https://docs.peppol.eu/tdd/sk/tdd-sk/resources.zip for hash comparison"
@@ -463,8 +465,8 @@
       "current": "1.1.0",
       "upstream-latest": "1.1.0 (2026-09-14)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
-      "notes": "QUESTION: the URL contains the version, so it cannot show a newer one. Is there a stable ViDA URL?"
+      "last-checked": "2026-11-13",
+      "notes": "QUESTION: the URL contains the version, so it cannot show a newer one. Is there a stable ViDA URL? The unversioned page https://test-docs.peppol.eu/vida/Vida-tdd/ (verified 2026-11-13, linked from https://test-docs.peppol.eu/vida/) shows 1.1.0 (15 Sep 2026) with identical Schematrons - candidate stable URL."
     },
     {
       "id": "sg-iras-invoicenow-gst",
@@ -479,7 +481,7 @@
       "current": "2026.9.8",
       "upstream-latest": "package with last changelog entry 2026-09-08",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "redirects to a ZIP; compare ZIP hash and the date of the last changelog entry inside",
       "notes": "The Schematron carries no version (title \"v0.3.4\" since 2025-01); the repo version is the changelog date."
     },
@@ -501,7 +503,7 @@
       "current-upstream": "Schematron 2.6.0",
       "upstream-latest": "v2.6.0 (2026-09-02)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "compare the Schematron release version (2.x), not the XRechnung version - the coordinate may stay 3.0.2",
       "notes": "Tag names changed from \"release-2.4.0\" to \"v2.5.0\". validator-configuration-xrechnung (v2026-08-31) is reference material only. QUESTION: 3.0.0 and 3.0.1 are still not deprecated - intended?"
     },
@@ -540,7 +542,7 @@
       "current": "1.17.0",
       "upstream-latest": "PEPPOL_DK_CIUS_2026-08-03_v1.17.0.ff275f9.zip",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "file names PEPPOL_DK_CIUS_<date>_v<ver>.<sha>.zip",
       "notes": "Secondary signal is the Nemhandel RSS feed https://nemhandel.dk/nyheder_releases.xml"
     },
@@ -557,7 +559,7 @@
       "current": "1.17.2",
       "upstream-latest": "OIOUBL_Schematron_2026-05-01_v1.17.2.ec0bcd89.zip",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "file names OIOUBL_Schematron_<date>_v<ver>.<sha>.zip; ignore \"RC\" files (or report as early warning)",
       "notes": "QUESTION: should RC packages trigger a notification?"
     },
@@ -574,7 +576,7 @@
       "current": "release 2026-09 (no.ehf.g3:*:3.0.4, despatch-advice/payment-request 3.0.3, invoice-self-billing/creditnote-self-billing 3.0.0)",
       "upstream-latest": "2026-09-29",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "notes": "Many upstream releases contain no rule changes (text only) - compare the asserts of the Schematron packages, not the release dates. Each release ships ehf-postaward-g3-schematron-<date>.zip. Self-Billing is based on the EN 16931 1.3.16 VES (the package only contains the SB rules).",
       "issue": "https://github.com/phax/phive-rules/issues/95"
     },
@@ -622,7 +624,7 @@
       "current": "2.0.3.13 (g-account 1.0.13, nlcius-cii 1.0.3.13)",
       "upstream-latest": "release 2026-05-21 (in effect 2026-08-17)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "release tags are dates YYYY-MM-DD; old v2.0.x git tags are irrelevant",
       "notes": "Repo moved from Simplerinvoicing/validation (README.md:53 still has the old URL, which redirects). Upstream calls the G-Account version \"1.0.2.13\", the repo \"1.0.13\"."
     },
@@ -639,7 +641,7 @@
       "current": "3.1.0",
       "upstream-latest": "v3.1.0 (2022-12-20)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "notes": "Inactive since 2022. QUESTION: keep checking (low frequency) or treat as frozen?"
     },
     {
@@ -658,7 +660,7 @@
       "current": "1.4 (timecard 1.4.2)",
       "upstream-latest": "TimeCard v1.4.2 (2024-10-07, adds hour type \"Break\"); other three unchanged",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "gh api repos/setu-standards/xml-specifications/commits?path=setu/validator, or hash of the 4 source files",
       "notes": "Upstream sub-versions (1.4.1, 1.4.2) only appear in in-file changelog comments. QUESTION: 'adopt TimeCard 1.4.2, and as which DVR version?'",
       "issue": "https://github.com/phax/phive-rules/issues/94"
@@ -686,7 +688,7 @@
       "current-upstream": "1.4.0.04",
       "upstream-latest": "v1.4.0.04 (2026-09-04)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "tag name AND the commit SHA - tags were moved (v1.4.0.04 moved 5f76380b -> 97ba0f3d)",
       "notes": "Secondary: 'https://fnfe-mpe.org/ressources/ . Releases have no assets.' QUESTION: 'upstream 1.4.0.01 and 1.4.0.02 were never added - intended (checker only flags the latest)?' QUESTION: 'should 1.3.1 stay not deprecated next to 1.4.0-04?'"
     },
@@ -740,7 +742,7 @@
       "url-status": "verified",
       "current": "2.1.1",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "notes": "No upstream change since 2.1.1 (2021-02-26). The page also offers CIUS-PT for CEFACT (CII), which is not registered here.",
       "upstream-latest": "CIUS-PT para UBL2.1 (versão 2.1.1) de 26/02/2021",
       "detect": "compare the \"(versão x.y.z) de dd/mm/yyyy\" strings. The page redirects to set a cookie - the fetcher needs a cookie jar (curl -c/-b), otherwise it loops."
@@ -758,7 +760,7 @@
       "url-status": "verified",
       "current": "1.0.9",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "newest ro16931-ubl-<version>.zip link and Informatii_ver.<version>.txt on the page; the 1.0.9 ZIP (/static/10/eFactura/ro16931-ubl-1.0.9.zip) is byte-identical to docs/1.0.9. The server resets connections from non-browser clients - send a browser User-Agent, keep cookies from the page request and set the page as Referer.",
       "notes": "The page also offers a combined validator (roefacturavalidator_12122024.zip, UBL + CII) and CII examples; only UBL is registered here.",
       "upstream-latest": "ro16931-ubl-1.0.9 (Informatii_ver.1.0.9.txt; ZIP Last-Modified 2024-06-06)"
@@ -778,7 +780,7 @@
       "current-upstream": "validator 13.03.2026 (HRUBLSchematron_13032026-2.zip)",
       "upstream-latest": "\"Validator - dorađena verzija - u primjeni od 15.3.2026.\" 13.03.2026 (HRUBLSchematron_13032026-2.zip)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "date/label of the \"Validator\" document on the page; download https://porezna.gov.hr/fiskalizacija/api/dokumenti/197 and compare the hash (no version numbers upstream, the repo assigns 1.0.x itself)",
       "notes": "HRUBLSchematron_13032026-2.zip differs from all rule sources in the repo (1.0.0-1.0.3): OIB check rewritten, HR-BR-53/HR-BR-54 split per party, HR-BR-56 moved, PaymentMeans due date rule changed, EN 16931 permission comment removed. It also contains HR-UBL-Schematron-Uputa.pdf. docs/UBL2.1 eRačun 2026-04-15.zip is stored but not used.",
       "issue": "https://github.com/phax/phive-rules/issues/93"
@@ -796,8 +798,8 @@
       "current": "1.0",
       "upstream-latest": "\"eIzvještavanje Schema\" 12.02.2026",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
-      "notes": "The download is byte-identical to docs/eIzvjestavanjeSchema-2026-02-09.zip (SHA-256 a559b9ef...). The same page has \"eFiskalizacija Schema\" (/api/dokumenti/175) and \"Tehnička specifikacija Fiskalizacija eRačuna i eIzvještavanje\" (/api/dokumenti/186), both 12.02.2026.",
+      "last-checked": "2026-11-13",
+      "notes": "The download is byte-identical to docs/eIzvjestavanjeSchema-2026-02-09.zip (SHA-256 a559b9ef...). The same page has \"eFiskalizacija Schema\" (/api/dokumenti/175) (12.02.2026) and \"Tehnička specifikacija Fiskalizacija eRačuna i eIzvještavanje\", now /api/dokumenti/212 dated 06.11.2026 (was /186, 12.02.2026) - specification only, not checked for schema impact.",
       "detect": "date of the document \"eIzvještavanje Schema\" on the page; download https://porezna.gov.hr/fiskalizacija/api/dokumenti/187 and compare the hash"
     },
     {
@@ -813,8 +815,8 @@
       "current": "6.0.2",
       "upstream-latest": "6.0.2 (2022-03-23)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
-      "notes": "The URL in docs/readme.md (mvcr.cz) now redirects to an \"archiv\" host - the source may be moving. The repo patched two upstream Schematron errors (docs/readme.md); re-check them on a new release. QUESTION: 'is there a new canonical ISDOC home (e.g. isdoc.cz)?'"
+      "last-checked": "2026-11-13",
+      "notes": "The URL in docs/readme.md (mvcr.cz) now redirects to an \"archiv\" host - the source may be moving. The repo patched two upstream Schematron errors (docs/readme.md); re-check them on a new release. QUESTION: 'is there a new canonical ISDOC home (e.g. isdoc.cz)?' https://isdoc.cz/ (verified 2026-11-13) shows the same \"Aktuální verze 6.0.2 z 23.3.2022\" and hosts the files under isdoc.cz/6.0.2/; the archive page links to it."
     },
     {
       "id": "serbia-srbdt",
@@ -830,7 +832,7 @@
       "current": "1.0.0",
       "upstream-latest": "last commit 2022-06-16",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "notes": "Upstream looks abandoned; the official SEF spec was updated 2024-08-22 without a Schematron. Secondary: 'https://www.efaktura.gov.rs/'"
     },
     {
@@ -846,8 +848,8 @@
       "url-status": "verified",
       "current": "1.1.0",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
-      "detect": "Technical Instruction version in the PDF file name on the page (currently \"Техничко упутство  1.6.0.pdf\"); UBL example versions on /tekst/5379/eotpremnica-ubl-primeri.php and /tekst/5427/eprijemnica-ubl-primeri.php; CustomizationID date suffix; official Schematron publication. System release notes: /tekst/6088/seo-azuriranja-i-verzije.php (currently 1.6.3). The portal returns HTTP 403 without a browser User-Agent and Accept header.",
+      "last-checked": "2026-11-13",
+      "detect": "Technical Instruction version in the PDF file name on the page (currently \"Техничко упутство  1.6.0.pdf\"); UBL example versions on /tekst/5379/eotpremnica-ubl-primeri.php and /tekst/5427/eprijemnica-ubl-primeri.php; CustomizationID date suffix; official Schematron publication. System release notes: /tekst/6088/seo-azuriranja-i-verzije.php (currently 1.7.0 production since 2026-10-07, 1.8.0 demo since 2026-11-09 - no UBL/XSD/CustomizationID changes). The portal returns HTTP 403 without a browser User-Agent and Accept header.",
       "notes": "XSD-only validation; the business rules for future Schematron are extracted from section 1 (pages 4-37) of the Technical Instruction into docs/seo-business-rules.md. Section 1 is textually identical in 1.5.0 and 1.6.0 - the 1.6.0 changes are in the API part - so docs/seo-business-rules.md is still valid. docs/ holds 1.5.0 and 1.6.0. No official Schematron exists (issue #68).",
       "current-upstream": "Техничко упутство (Technical Instruction) 1.6.0 (docs/, section 1 identical to 1.5.0); UBL examples 1.1.0; CustomizationID suffix 2025.12",
       "upstream-latest": "Техничко упутство 1.6.0 (PDF created 2026-07-02, Last-Modified 2026-07-15); UBL examples still 1.1.0; CustomizationIDs unchanged (…:1:2025.12)"
@@ -870,7 +872,7 @@
       "current-upstream": "Schematron release 20260701 (e-FaturaPaketi Last-Modified 2026-08-24)",
       "upstream-latest": "e-FaturaPaketi (29).zip - same as docs/latest-release.md",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "Reuse MainGibArtefactDownloader (src/test/.../supplementary/tools): compares Last-Modified and the latest date in schematron/History.txt. Do not match the exact file name - GİB uses browser-style \"(NN)\" suffixes.",
       "notes": "Rule updates keep the VES coordinate 1.2.1 (updated in place)."
     },
@@ -888,7 +890,7 @@
       "current": "1.31",
       "upstream-latest": "GLOBALUBL.BE V1.31 (July 2024)",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "numbering jumped from 1.2.9 to 1.30 - compare as \"1.<int>\""
     },
     {
@@ -904,7 +906,7 @@
       "current": "3.4.6",
       "upstream-latest": "SDK 3.4.6 (stable), SDK 4.0.0 Beta",
       "status": "up-to-date",
-      "last-checked": "2026-09-30",
+      "last-checked": "2026-11-13",
       "detect": "SDK version on the page; do NOT compare the \"R\" number in the zip names",
       "notes": "Official download: https://sandbox.zatca.gov.sa/downloadSDK (Arabic version more up to date). New XSLs need the manual \"[PH]\" patches. SDK 4.0.0 is in beta."
     },

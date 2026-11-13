@@ -287,12 +287,17 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.6.5 - work in progress
+v4.7.0 - work in progress
 * Updated to phive 12.3.0
 * Added the EHF G3 Invoice and Credit Note (`no.ehf.g3:invoice` and `no.ehf.g3:creditnote`) as aliases of all registered, non-deprecated Peppol BIS Billing versions (currently 2025.11.0 and 2026.5.0) with the same version, since EHF Billing 3.0 is a rebranding of Peppol BIS Billing 3.0.
   `phive-rules-ehf` therefore depends on `phive-rules-peppol`, and the Peppol BIS Billing rules must be registered before the EHF rules.
 * Added ZUGFeRD 2.5.2-ph1 Extended (`de.zugferd:extended:2.5.2-ph1`, Factur-X alias `fr.factur-x:extended:1.0.9-2-ph1`), a variant of ZUGFeRD 2.5.2 Extended with a much faster implementation of rule `BR-FXEXT-08`.
   As `2.5.2-ph1` sorts after `2.5.2`, the pseudo versions `latest` etc. of ZUGFeRD/Factur-X Extended now resolve to this version.
+* Updated the Peppol BIS Billing, Self-Billing and Post-Award 2026.5 rules in place to the Schematrons silently re-published by OpenPeppol on 2026-08-18.
+  The only change is the addition of the EAS code `0158` to the list of allowed Electronic Address Schemes (also affects the EHF G3 Invoice and Credit Note aliases)
+* Added the validation of Peppol BIS Billing and Self-Billing documents enveloped in a Peppol Business Message Envelope (SBDH), Group ID `org.peppol.bis3.sbdh-envelope`, artefacts `invoice`, `creditnote`, `invoice-self-billing` and `creditnote-self-billing`, version `2026.5`. See [#100](https://github.com/phax/phive-rules/issues/100)
+  Each VES validates the SBDH header (XML Schema), the contained business document with all rules of the respective Peppol BIS 2026.5 VES, and the new OpenPeppol "Envelope Rules" Schematron (`BR-SBDH-1` to `BR-SBDH-4`: SBDH sender and receiver must match the endpoint IDs of the business document).
+  This requires phive 12.3.0 (new class `ValidationExecutorPartial`) and adds a dependency to `ph-sbdh` to `phive-rules-peppol`.
 
 v4.6.4 - 2026-10-29
 * Updated to phive-rules-foundations 5.0.6

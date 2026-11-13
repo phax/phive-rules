@@ -40,6 +40,7 @@ import com.helger.phive.peppol.PeppolValidationBisSG;
 import com.helger.phive.peppol.PeppolValidationDirectory;
 import com.helger.phive.peppol.PeppolValidationMLS;
 import com.helger.phive.peppol.PeppolValidationReporting;
+import com.helger.phive.peppol.PeppolValidationSbdhEnvelope2026_05;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 @Immutable
@@ -112,6 +113,10 @@ public final class CTestFiles
                                                              PeppolValidation2026_05.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3,
                                                              PeppolValidation2026_05.VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3,
                                                              PeppolValidation2026_05.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3,
+                                                             PeppolValidationSbdhEnvelope2026_05.VID_SBDH_INVOICE,
+                                                             PeppolValidationSbdhEnvelope2026_05.VID_SBDH_CREDIT_NOTE,
+                                                             PeppolValidationSbdhEnvelope2026_05.VID_SBDH_INVOICE_SELF_BILLING,
+                                                             PeppolValidationSbdhEnvelope2026_05.VID_SBDH_CREDIT_NOTE_SELF_BILLING,
                                                              PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_V3,
                                                              PeppolValidation2026_05.VID_OPENPEPPOL_DESPATCH_ADVICE_V3,
                                                              PeppolValidation2026_05.VID_OPENPEPPOL_CATALOGUE_V3,
@@ -476,6 +481,14 @@ public final class CTestFiles
                         "SB-vat-category-Z.xml");
       if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3))
         return _getAll ("openpeppol/2026.5/", "SB-base-creditnote-correction.xml");
+      if (aVESID.equals (PeppolValidationSbdhEnvelope2026_05.VID_SBDH_INVOICE))
+        return _getAll ("openpeppol/2026.5/sbdh/", "sbdh-base-example.xml");
+      if (aVESID.equals (PeppolValidationSbdhEnvelope2026_05.VID_SBDH_CREDIT_NOTE))
+        return _getAll ("openpeppol/2026.5/sbdh/", "sbdh-base-creditnote-correction.xml");
+      if (aVESID.equals (PeppolValidationSbdhEnvelope2026_05.VID_SBDH_INVOICE_SELF_BILLING))
+        return _getAll ("openpeppol/2026.5/sbdh/", "sbdh-SB-base-example.xml");
+      if (aVESID.equals (PeppolValidationSbdhEnvelope2026_05.VID_SBDH_CREDIT_NOTE_SELF_BILLING))
+        return _getAll ("openpeppol/2026.5/sbdh/", "sbdh-SB-base-creditnote-correction.xml");
       if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_V3))
         return _getAll ("openpeppol/2026.5/",
                         "Order_Example.xml",
