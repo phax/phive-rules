@@ -112,15 +112,22 @@ public final class SingaporeIRASValidation
       final ICommonsList <IValidationExecutor <IValidationSourceXML>> aExecutors = new CommonsArrayList <> ();
       // The envelope must be present - this is what makes an unwrapped UBL document fail
       aExecutors.add (ValidationExecutorXSDPartial.create (new CommonsArrayList <> (CSBDH.SBDH_XSDS),
-                                                           XSDPartialContext.createMandatory (XPathHelper.createNewXPathExpression (aXP,
-                                                                                                                                    "/sh:StandardBusinessDocument/sh:StandardBusinessDocumentHeader"))));
+                                                           XSDPartialContext.builder ()
+                                                                            .xpathExpression (aXP,
+                                                                                              "/sh:StandardBusinessDocument/sh:StandardBusinessDocumentHeader")
+                                                                            .exactNodeCount (1)
+                                                                            .build ()));
       // Every contained payload is validated on its own, so a bulk submission works
       aExecutors.add (ValidationExecutorXSDPartial.create (UBL21Marshaller.getAllInvoiceXSDs (),
-                                                           XSDPartialContext.create (XPathHelper.createNewXPathExpression (aXP,
-                                                                                                                           "/sh:StandardBusinessDocument/ubl:Invoice"))));
+                                                           XSDPartialContext.builder ()
+                                                                            .xpathExpression (aXP,
+                                                                                              "/sh:StandardBusinessDocument/ubl:Invoice")
+                                                                            .build ()));
       aExecutors.add (ValidationExecutorXSDPartial.create (UBL21Marshaller.getAllCreditNoteXSDs (),
-                                                           XSDPartialContext.create (XPathHelper.createNewXPathExpression (aXP,
-                                                                                                                           "/sh:StandardBusinessDocument/cn:CreditNote"))));
+                                                           XSDPartialContext.builder ()
+                                                                            .xpathExpression (aXP,
+                                                                                              "/sh:StandardBusinessDocument/cn:CreditNote")
+                                                                            .build ()));
       aExecutors.add (PhiveRulesHelper.createXSLT (new ClassPathResource (sPrefix + "non_peppol_doc_validation.xslt",
                                                                           _getCL ()), aNSCtx));
 

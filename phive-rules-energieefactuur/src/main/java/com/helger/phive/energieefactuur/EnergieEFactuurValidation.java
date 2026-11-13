@@ -32,8 +32,8 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.shared.PhiveRulesHelper;
 import com.helger.phive.rules.shared.DVRHelper;
+import com.helger.phive.rules.shared.PhiveRulesHelper;
 import com.helger.phive.simplerinvoicing.SimplerInvoicingValidation;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -155,7 +155,12 @@ public final class EnergieEFactuurValidation
       // Same Schematrons as SimplerInvoicing - and same classloader!
       final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI11.executors ());
       // Add the Partial XSD in the middle
-      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE100)));
+      aNewList.add (1,
+                    ValidationExecutorXSDPartial.create (aPartialXSDs,
+                                                         XSDPartialContext.builder ()
+                                                                          .xpathExpression (aXE100)
+                                                                          .exactNodeCount (1)
+                                                                          .build ()));
 
       VesXmlBuilder.builder ()
                    .vesID (VID_ENERGIE_EFACTUUR_1_0_0)
@@ -185,7 +190,12 @@ public final class EnergieEFactuurValidation
       // Same Schematrons as SimplerInvoicing - and same classloader!
       final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI11.executors ());
       // Add the Partial XSD in the middle
-      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE101)));
+      aNewList.add (1,
+                    ValidationExecutorXSDPartial.create (aPartialXSDs,
+                                                         XSDPartialContext.builder ()
+                                                                          .xpathExpression (aXE101)
+                                                                          .exactNodeCount (1)
+                                                                          .build ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       VesXmlBuilder.builder ()
@@ -217,7 +227,12 @@ public final class EnergieEFactuurValidation
       // Same Schematrons as SimplerInvoicing - and same classloader!
       final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI12.executors ());
       // Add the Partial XSD in the middle
-      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE200)));
+      aNewList.add (1,
+                    ValidationExecutorXSDPartial.create (aPartialXSDs,
+                                                         XSDPartialContext.builder ()
+                                                                          .xpathExpression (aXE200)
+                                                                          .exactNodeCount (1)
+                                                                          .build ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       VesXmlBuilder.builder ()
@@ -249,7 +264,12 @@ public final class EnergieEFactuurValidation
       // Same Schematrons as SimplerInvoicing - and same classloader!
       final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI20.executors ());
       // Add the Partial XSD in the middle
-      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE300)));
+      aNewList.add (1,
+                    ValidationExecutorXSDPartial.create (aPartialXSDs,
+                                                         XSDPartialContext.builder ()
+                                                                          .xpathExpression (aXE300)
+                                                                          .exactNodeCount (1)
+                                                                          .build ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       VesXmlBuilder.builder ()
@@ -280,7 +300,12 @@ public final class EnergieEFactuurValidation
       // Same Schematrons as SimplerInvoicing - and same classloader!
       final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI2035.executors ());
       // Add the Partial XSD in the middle
-      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE310)));
+      aNewList.add (1,
+                    ValidationExecutorXSDPartial.create (aPartialXSDs,
+                                                         XSDPartialContext.builder ()
+                                                                          .xpathExpression (aXE310)
+                                                                          .exactNodeCount (1)
+                                                                          .build ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       VesXmlBuilder.builder ()
