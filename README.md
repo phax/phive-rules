@@ -33,6 +33,7 @@ Their Maven and VES coordinates are unchanged.
 * the legacy aggregator `phive-rules-all-legacy`
 
 This project is divided into sub-projects each keeping tracking of one document type set:
+* phive-rules-bom - a Maven Bill of Materials (BOM) that manages the versions of all phive-rules artefacts (since v4.7.0)
 * phive-rules-api - Shared UBL/CII helper classes; depends on `phive-rules-foundation-api` (from [phive-rules-foundations](https://github.com/phax/phive-rules-foundations)) which provides the validation rules registration SPI and the core helpers
 * phive-rules-cius-dk - Validation rules for the Danish Peppol CIUS (since v4.5.7)
 * phive-rules-cius-pt - Validation rules for the Portuguese EN 16931 CIUS (since v1.0.11)
@@ -223,17 +224,21 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 </dependency>
 ```
 
-Alternate usage as a Maven BOM:
+Alternate usage as a Maven BOM (since v4.7.0) - add it to the `<dependencyManagement>` section and omit the versions of the phive-rules artefacts in your `<dependencies>`:
 
 ```xml
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
-  <artifactId>phive-rules-parent-pom</artifactId>
+  <artifactId>phive-rules-bom</artifactId>
   <version>x.y.z</version>
   <type>pom</type>
   <scope>import</scope>
 </dependency>
 ```
+
+`phive-rules-bom` only manages the versions of the phive-rules artefacts of this repository.
+For the foundational formats import `phive-rules-foundations-bom` from [phive-rules-foundations](https://github.com/phax/phive-rules-foundations) as well.
+Before v4.7.0, `phive-rules-parent-pom` had to be imported instead, which also manages the versions of many third-party dependencies.
 
 ## Aggregator module usage
 
@@ -287,8 +292,10 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.7.0 - work in progress
+v4.7.0 - 2026-11-15
 * Updated to phive 12.3.0
+* Added new submodule `phive-rules-bom` - a Maven Bill of Materials (BOM) for all phive-rules artefacts. Use it instead of importing `phive-rules-parent-pom`.
+* The parent POM now imports the new BOMs of ph-commons, ph-diver, phive and phive-rules-foundations instead of their parent POMs
 * Added the EHF G3 Invoice and Credit Note (`no.ehf.g3:invoice` and `no.ehf.g3:creditnote`) as aliases of all registered, non-deprecated Peppol BIS Billing versions (currently 2025.11.0 and 2026.5.0) with the same version, since EHF Billing 3.0 is a rebranding of Peppol BIS Billing 3.0.
   `phive-rules-ehf` therefore depends on `phive-rules-peppol`, and the Peppol BIS Billing rules must be registered before the EHF rules.
 * Added ZUGFeRD 2.5.2-ph1 Extended (`de.zugferd:extended:2.5.2-ph1`, Factur-X alias `fr.factur-x:extended:1.0.9-2-ph1`), a variant of ZUGFeRD 2.5.2 Extended with a much faster implementation of rule `BR-FXEXT-08`.

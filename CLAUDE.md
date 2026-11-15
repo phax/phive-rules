@@ -82,7 +82,7 @@ Every rule module also ships a `{Format}ValidationSPI` implementing `com.helger.
 - **Prerequisites & ordering:** a module that depends on another module's VES overrides `getAllPrerequisites()` to return those `DVRCoordinate`s, sharing the same constants its `init…` method requires (declared as a static `getAllPrerequisites()` on the `{Format}Validation` class). `ValidationRulesRegistrar.registerAllValidationRules (registry)` discovers all SPIs via `ServiceLoader` and, because load order is non-deterministic, only registers a module once all its prerequisites are present — deferring and retrying the others in later rounds, and throwing `IllegalStateException` if a full round makes no progress.
 - **Aggregators:** `phive-rules-all` (`PhiveRulesValidation.initPhiveRules`) imperatively registers all current modules in the correct order. The legacy counterpart `phive-rules-all-legacy` (`PhiveRulesLegacyValidation.initPhiveRulesLegacy`) lives in `../phive-rules-legacy` since v4.6.0. Aggregator modules do NOT ship an SPI themselves.
 
-When adding a module, wire all three: the `init…` method, the `{Format}ValidationSPI` + its `META-INF/services` file, and — if it has cross-module prerequisites — a static `getAllPrerequisites()`. Also register it in `phive-rules-all` (pom dependency + a call in `initPhiveRules`).
+When adding a module, wire all three: the `init…` method, the `{Format}ValidationSPI` + its `META-INF/services` file, and — if it has cross-module prerequisites — a static `getAllPrerequisites()`. Also register it in `phive-rules-all` (pom dependency + a call in `initPhiveRules`), and add it to the `<dependencyManagement>` of `phive-rules-bom` (the Maven BOM of all artefacts of this repo, since v4.7.0).
 
 ### Naming new VES Coordinates
 
