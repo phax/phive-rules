@@ -292,16 +292,19 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.7.1 - work in progress
-* Added Peppol PINT AE 1.0.5 rules (`org.peppol.pint.ae:*:2026.11`) for Billing and Self-Billing. See [#103](https://github.com/phax/phive-rules/issues/103)
+v4.7.1 - 2026-11-17
+* Added Peppol PINT AE 1.0.5 rules (`org.peppol.pint.ae:*:2026.11`) for Billing and Self-Billing.
+  See [#103](https://github.com/phax/phive-rules/issues/103)
   * New rule `ibr-198-ae`, removed rule `ibr-185-ae`, logic corrections in about 20 AE rules (e.g. `ibr-122-ae`, `ibr-123-ae`, `ibr-128-ae`, `ibr-149-ae`, `ibr-177-ae`, `ibr-183-ae`, `aligned-ibrp-ae-06/07`), new RCM code `DL8.48.8.3`, Frequency of Billing moved to IBT-008, based on PINT General 1.1.4
   * The PINT AE 2026.3 (aka 1.0.3) VES are now deprecated
-* Added Peppol AE TDD 1.0.5 rules (`org.peppol.taxdata:ae:1.0.5`). See [#104](https://github.com/phax/phive-rules/issues/104)
+* Added Peppol AE TDD 1.0.5 rules (`org.peppol.taxdata:ae:1.0.5`).
+  See [#104](https://github.com/phax/phive-rules/issues/104)
   * New rules `ibr-tdd-58` to `ibr-tdd-61` (Seller and Buyer name), `ibr-tdd-42` relaxed for Invoice type codes 480 and 81 and for a Seller with TRN and TIN, currency code list aligned with PINT AE (`STN`, `XCG` added; `ANG`, `BGN`, `STD` removed)
 
 v4.7.0 - 2026-11-15
 * Updated to phive 12.3.0
-* Added new submodule `phive-rules-bom` - a Maven Bill of Materials (BOM) for all phive-rules artefacts. Use it instead of importing `phive-rules-parent-pom`.
+* Added new submodule `phive-rules-bom` - a Maven Bill of Materials (BOM) for all phive-rules artefacts.
+  Use it instead of importing `phive-rules-parent-pom`.
 * The parent POM now imports the new BOMs of ph-commons, ph-diver, phive and phive-rules-foundations instead of their parent POMs
 * Added the EHF G3 Invoice and Credit Note (`no.ehf.g3:invoice` and `no.ehf.g3:creditnote`) as aliases of all registered, non-deprecated Peppol BIS Billing versions (currently 2025.11.0 and 2026.5.0) with the same version, since EHF Billing 3.0 is a rebranding of Peppol BIS Billing 3.0.
   `phive-rules-ehf` therefore depends on `phive-rules-peppol`, and the Peppol BIS Billing rules must be registered before the EHF rules.
@@ -309,7 +312,8 @@ v4.7.0 - 2026-11-15
   As `2.5.2-ph1` sorts after `2.5.2`, the pseudo versions `latest` etc. of ZUGFeRD/Factur-X Extended now resolve to this version.
 * Updated the Peppol BIS Billing, Self-Billing and Post-Award 2026.5 rules in place to the Schematrons silently re-published by OpenPeppol on 2026-08-18.
   The only change is the addition of the EAS code `0158` to the list of allowed Electronic Address Schemes (also affects the EHF G3 Invoice and Credit Note aliases)
-* Added the validation of Peppol BIS Billing and Self-Billing documents enveloped in a Peppol Business Message Envelope (SBDH), Group ID `org.peppol.bis3.sbdh-envelope`, artefacts `invoice`, `creditnote`, `invoice-self-billing` and `creditnote-self-billing`, version `2026.5`. See [#100](https://github.com/phax/phive-rules/issues/100)
+* Added the validation of Peppol BIS Billing and Self-Billing documents enveloped in a Peppol Business Message Envelope (SBDH), Group ID `org.peppol.bis3.sbdh-envelope`, artefacts `invoice`, `creditnote`, `invoice-self-billing` and `creditnote-self-billing`, version `2026.5`.
+  See [#100](https://github.com/phax/phive-rules/issues/100)
   Each VES validates the SBDH header (XML Schema), the contained business document with all rules of the respective Peppol BIS 2026.5 VES, and the new OpenPeppol "Envelope Rules" Schematron (`BR-SBDH-1` to `BR-SBDH-4`: SBDH sender and receiver must match the endpoint IDs of the business document).
   This requires phive 12.3.0 (new class `ValidationExecutorPartial`) and adds a dependency to `ph-sbdh` to `phive-rules-peppol`.
 
@@ -410,18 +414,23 @@ v4.6.1 - 2026-09-25
   As a side effect the SBDH envelope is now mandatory - an unwrapped UBL Invoice is rejected, whereas the Schematron alone reports nothing at all for it, because its envelope rules simply do not match.
 
 v4.6.0 - 2026-09-23
-* Moved the legacy validation rules out into the separate repository [phive-rules-legacy](https://github.com/phax/phive-rules-legacy), so that the current rules can be built and released without the accumulated weight of all historic rule sets. All Maven and VES coordinates are unchanged.
+* Moved the legacy validation rules out into the separate repository [phive-rules-legacy](https://github.com/phax/phive-rules-legacy), so that the current rules can be built and released without the accumulated weight of all historic rule sets.
+  All Maven and VES coordinates are unchanged.
     * `phive-rules-peppol-legacy` and `phive-rules-all-legacy` moved there unchanged
-    * The legacy Danish OIOUBL rule sets moved into the new module `phive-rules-oioubl-legacy` there. `phive-rules-oioubl` retains only the current 1.17.2 rule set; the deprecated 1.12.3, 1.13.0, 1.13.2, 1.14.2, 1.15.0-rc, 1.15.1, 1.15.2, 1.16.1, 1.17.0-rc and 1.17.1 rule sets (VES group `dk.oioubl`) are now registered by `OIOUBLValidationOlder` in package `com.helger.phive.oioubl.legacy`
+    * The legacy Danish OIOUBL rule sets moved into the new module `phive-rules-oioubl-legacy` there.
+      `phive-rules-oioubl` retains only the current 1.17.2 rule set; the deprecated 1.12.3, 1.13.0, 1.13.2, 1.14.2, 1.15.0-rc, 1.15.1, 1.15.2, 1.16.1, 1.17.0-rc and 1.17.1 rule sets (VES group `dk.oioubl`) are now registered by `OIOUBLValidationOlder` in package `com.helger.phive.oioubl.legacy`
     * `OIOUBLLegacyValidation` (VES group `dk.oioubl.legacy`, versions 2.0.2 and 3.0.1) moved from package `com.helger.phive.oioubl` to `com.helger.phive.oioubl.legacy` in `phive-rules-oioubl-legacy`
     * `OIOUBLValidationSPI` no longer declares any prerequisite and no longer registers the legacy OIOUBL rules, so `phive-rules-oioubl` no longer depends on `phive-rules-en16931`
     * The Peppol `openpeppol` 2024.5 and 2024.11 Schematron XSLTs moved from `phive-rules-peppol` to `phive-rules-peppol-legacy` - they were only referenced by the legacy rule sets, but had been left behind when those rule sets were moved in v4.1.2
     * This reduces the `phive-rules-oioubl` JAR from 15.0 MB to 2.3 MB and the total size of all deployed JARs from 34.6 MB to roughly 17 MB
 * `phive-rules-peppol-legacy` now declares `ph-ubl21` and `ph-ubl23` explicitly instead of inheriting them from `phive-rules-peppol`
-* The test sources are no longer deployed to Maven Central. The `-test-sources.jar` artefacts contained all the sample documents and Schematron rule sources and made up 135 of the 175 MB of the Central bundle (`phive-rules-ublbe` alone shipped a 0.67 MB JAR next to a 53.67 MB test sources JAR), without being usable by anyone. The bundle is now roughly 40 MB.
+* The test sources are no longer deployed to Maven Central.
+  The `-test-sources.jar` artefacts contained all the sample documents and Schematron rule sources and made up 135 of the 175 MB of the Central bundle (`phive-rules-ublbe` alone shipped a 0.67 MB JAR next to a 53.67 MB test sources JAR), without being usable by anyone.
+  The bundle is now roughly 40 MB.
 
 v4.5.7 - 2026-09-22
-* Added the Peppol BIS Billing Singapore 2026.6 rules (aka BIS 3.0.17, released 2026-06-08), VES coordinates `eu.peppol.bis3.sg.ubl:invoice:2026.6` and `eu.peppol.bis3.sg.ubl:creditnote:2026.6`, and deprecated the 2024.12 (aka BIS 3.0.14) rules. See [issue #88](https://github.com/phax/phive-rules/issues/88).
+* Added the Peppol BIS Billing Singapore 2026.6 rules (aka BIS 3.0.17, released 2026-06-08), VES coordinates `eu.peppol.bis3.sg.ubl:invoice:2026.6` and `eu.peppol.bis3.sg.ubl:creditnote:2026.6`, and deprecated the 2024.12 (aka BIS 3.0.14) rules.
+  See [issue #88](https://github.com/phax/phive-rules/issues/88).
   The rules are taken from [SG-BIS-Billing3-Schematron.zip](https://www.peppolguide.sg/billing/files/SG-BIS-Billing3-Schematron.zip) and are marked as valid from 2026-09-08, the mandatory use date stated in the [SG release notes](https://www.peppolguide.sg/billing/release-notes/).
   It contains the accumulated changes of BIS 3.0.15 (2025-05-21), 3.0.16 (2025-12-11) and 3.0.17:
     * The eight Singapore GST rules `BR-106-GST-SG`, `BR-107-GST-SG`, `BR-108-GST-SG`, `BR-109-GST-SG`, `BR-111-GST-SG`, `BR-112-GST-SG`, `BR-113-GST-SG` and `UBL-SR-53-SG` were raised from "warning" to "fatal" - this may break existing validation workflows, please evaluate the impact
@@ -437,7 +446,8 @@ v4.5.7 - 2026-09-22
   Requires `peppol-vida` 0.11.0, because the TDD 1.1.0 XSD is bound by the new `PeppolViDATDD110Marshaller`.
   The first two changes are backwards incompatible, so Tax Data Documents that passed against 1.0.0 need to be regenerated:
     * The new mandatory Invoice Transmission UUID (TDT-018), carried as `pxs:TransmissionUUID` inside `pxs:ReportedTransaction` - new rules `ibr-tdd-88` and `ibr-tdd-89`
-    * The Invoice UUID (TDT-017) is now calculated from the Seller VAT identifier (BT-31), the invoice type code (BT-03), the invoice number (BT-01) and the invoice issue date (BT-02) - previously the Seller identifier (BT-29) was used instead of BT-31. The new rule `ibr-tdd-87` only checks that it is a version 5 UUID
+    * The Invoice UUID (TDT-017) is now calculated from the Seller VAT identifier (BT-31), the invoice type code (BT-03), the invoice number (BT-01) and the invoice issue date (BT-02) - previously the Seller identifier (BT-29) was used instead of BT-31.
+      The new rule `ibr-tdd-87` only checks that it is a version 5 UUID
     * New buy side rules `ibr-tdd-90` to `ibr-tdd-93`: when the Reporter role (TDT-012) is `C3`, BT-110, BT-112, BT-117, BT-118, BT-119 and - if BT-006 is present - BT-111 are mandatory
     * `ibr-tdd-05` now really enforces the time zone on the Tax Data Document issue time (TDT-005); the previous regular expression made the offset optional
     * Several inherited CEN EN 16931 and Peppol rules were repaired, because they could not match a TDD: the VAT breakdown rules `BR-{AE,E,G,K,Z,S,O,AF,AG}-08/09/10` and `PEPPOL-EN16931-R051` were anchored at the document root (`/*/cac:TaxTotal/...`), which is `pxs:TaxData` in a TDD; the German rules `DE-R-001`, `DE-R-016`, `DE-R-017`, `DE-R-026` and `DE-R-031` had a duplicated path segment (`.../pxs:ReportedDocument/pxs:ReportedDocument`); `UBL-CR-674` tested for the non-existing element `cbc:PrimaryAccountNumber` instead of `cbc:PrimaryAccountNumberID`; and `NL-R-007` accepted a `cac:PaymentMeans` anywhere in the document instead of only in the reported document
@@ -453,24 +463,30 @@ v4.5.7 - 2026-09-22
   This is what step 1 of the FNFE explanatory note demands, because EN 16931 deviates from the UN/CEFACT code lists for the allowance and charge reason codes.
   The CDAR D22B XML Schema used by `fr.ctc:cdar:*` was already uncoupled and is unchanged
 * Added the France PPF Flux 1 validation rules v1.1 (2026-09-17), VES coordinates `fr.ctc.flux1:ubl-invoice-demarrage:1.1`, `fr.ctc.flux1:ubl-creditnote-demarrage:1.1`, `fr.ctc.flux1:cii-demarrage:1.1`, `fr.ctc.flux1:ubl-invoice-cible:1.1`, `fr.ctc.flux1:ubl-creditnote-cible:1.1` and `fr.ctc.flux1:cii-cible:1.1`, and deprecated the 0.2 rules.
-  The rules are taken from the AIFE package "AIFE - PPF_Flux1_v1.1". The previous VES version `0.2` was named after the Schematron files of the "v1.0" package, which carried the internal version `v0_2` - from this release on the AIFE file version matches the package version.
+  The rules are taken from the AIFE package "AIFE - PPF_Flux1_v1.1".
+  The previous VES version `0.2` was named after the Schematron files of the "v1.0" package, which carried the internal version `v0_2` - from this release on the AIFE file version matches the package version.
   The AIFE XSDs are unchanged - they are still the ones published with the Flux 1 v1.0 package.
   All four Schematrons (UBL and CII, each Démarrage and Cible) received the identical set of changes:
     * The rules `F1-START-VENDEUR-TVA-G2.33` and `F1-START-ACHETEUR-TVA-G2.33` were removed - the seller resp. buyer VAT identifier is no longer mandatory when their legal identifier uses the scheme `0002` (SIREN) or `0223` (UE_HORS_FRANCE)
-    * `G2.01` on the seller country code no longer rejects `EL`, and its message now names `EL` as the code required for Greece. Note that the buyer and the delivery country code checks of the same rule still reject `EL` and still name `GR`, so the rule set contradicts itself in that regard
+    * `G2.01` on the seller country code no longer rejects `EL`, and its message now names `EL` as the code required for Greece.
+      Note that the buyer and the delivery country code checks of the same rule still reject `EL` and still name `GR`, so the rule set contradicts itself in that regard
     * `G1.53` now uses `xs:decimal()` instead of `number()` for the total comparisons, to avoid rounding differences caused by the number representation.
       It also takes the total VAT amount in the invoice currency (BT-5) - CII previously hard coded EUR and UBL took every `cac:TaxTotal/cbc:TaxAmount`
-    * `G1.12` was rewritten: if BT-5 is EUR, exactly one total VAT amount (BT-110) in EUR is expected; if BT-5 is not EUR, exactly two are required - one in BT-5 and one in EUR. Previously only the presence of an EUR amount was checked
+    * `G1.12` was rewritten: if BT-5 is EUR, exactly one total VAT amount (BT-110) in EUR is expected; if BT-5 is not EUR, exactly two are required - one in BT-5 and one in EUR.
+      Previously only the presence of an EUR amount was checked
     * `G2.32` was rewritten and now rejects an invoice whose VAT category codes are all `O`, or are all `E` together with a CGI 261 exemption reason code, or are a mixture of `O` and `E`
-* The France PPF Flux 1 XSD resources were moved from `/external/schemas/flux1/0.2/` to `/external/schemas/flux1/1.0/`, because they are versioned by the AIFE XSD package (v1.0) and not by the Schematron rules version. Both the 0.2 and the 1.1 rules reference them
+* The France PPF Flux 1 XSD resources were moved from `/external/schemas/flux1/0.2/` to `/external/schemas/flux1/1.0/`, because they are versioned by the AIFE XSD package (v1.0) and not by the Schematron rules version.
+  Both the 0.2 and the 1.1 rules reference them
 * Added the new submodule `phive-rules-cius-dk` with the Danish Peppol CIUS validation rules 1.17.0 (2026-08-03), VES coordinates `dk.gov.erst.cius-dk:ubl-invoice:1.17.0` and `dk.gov.erst.cius-dk:ubl-creditnote:1.17.0`.
   The rules are taken from the [`PEPPOL_DK_CIUS_2026-08-03_v1.17.0`](https://rep.erst.dk/git/openebusiness/common/-/tree/master/released/peppol) package of Nemhandel / Erhvervsstyrelsen and are marked as valid from 2026-08-17 12:00 CET, the mandatory use date stated in the [release announcement](https://nemhandel.dk/release-af-peppol-schematron-pakker-1170-og-1214).
   The rules build on `eu.peppol.bis3:invoice:2026.5` resp. `eu.peppol.bis3:creditnote:2026.5` (Peppol BIS Billing 3.0.21), so `phive-rules-peppol` is a prerequisite of the new module.
   The CEN EN 16931 and Peppol Schematrons shipped in the Danish ZIP are not used - only `DK-EN16931-UBL.sch` is taken from it.
-  Note that this Danish Schematron currently contains **no active rule** - `DK-R-008` and `DK-R-009` are commented out upstream, so the CIUS-DK rules presently validate exactly like the underlying Peppol BIS Billing rules. The VES exist so that Danish senders and receivers have a stable coordinate to reference
+  Note that this Danish Schematron currently contains **no active rule** - `DK-R-008` and `DK-R-009` are commented out upstream, so the CIUS-DK rules presently validate exactly like the underlying Peppol BIS Billing rules.
+  The VES exist so that Danish senders and receivers have a stable coordinate to reference
 * The Danish `PEPPOL_BIS3-Other` package (version 1.2.14) is intentionally not included: it only redistributes the Peppol BIS3 Schematrons for the non-Billing documents, which `phive-rules-peppol` already provides as `eu.peppol.bis3:*:2026.5` (Peppol BIS 3.0.17)
 * Added Factur-X validation rules for the France CTC 1.4.0.04 rule set, VES coordinates `fr.ctc:facturx-basicwl:1.4.0-04`, `fr.ctc:facturx-en16931:1.4.0-04` and `fr.ctc:facturx-extended:1.4.0-04`.
-  They are built like the plain CII rules: the Factur-X profile XML Schema, then the Factur-X profile Schematron, then the `BR-FR-Flux2-Schematron-CII` rules of 1.4.0.04. They are marked as valid from 2026-10-01, like the other 1.4.0.04 rules.
+  They are built like the plain CII rules: the Factur-X profile XML Schema, then the Factur-X profile Schematron, then the `BR-FR-Flux2-Schematron-CII` rules of 1.4.0.04.
+  They are marked as valid from 2026-10-01, like the other 1.4.0.04 rules.
   Only these 3 profiles exist, because the FNFE package only ships Schematrons for BASIC WL, EN 16931 and EXTENDED - there are none for MINIMUM and BASIC.
   The XML Schemas are the Factur-X 1.0.9-2 (ZUGFeRD 2.5.2) ones from `phive-rules-zugferd`.
   The BASIC WL and EN 16931 Schematrons of the FNFE package are byte identical to the Factur-X 1.0.9-2 ones, so they are referenced from `phive-rules-zugferd` instead of being duplicated.
