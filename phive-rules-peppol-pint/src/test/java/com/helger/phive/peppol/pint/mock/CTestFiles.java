@@ -78,6 +78,11 @@ public final class CTestFiles
                                                              PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2026_05,
                                                              PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2026_05,
 
+                                                             PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_INVOICE_2026_11,
+                                                             PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2026_11,
+                                                             PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2026_11,
+                                                             PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2026_11,
+
                                                              /* PINT A-NZ */
                                                              PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_2,
                                                              PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_2,
@@ -292,6 +297,55 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2026_05))
     {
       return _getAll ("pint-ae/2026.5/selfbilling/cn/", "Self billing tax credit note.xml");
+    }
+
+    // 2026.11
+    if (aVESID.equals (PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_INVOICE_2026_11))
+    {
+      return _getAll ("pint-ae/2026.11/billing/inv/",
+                      "Buyer-PAS-identifier.xml",
+                      "Commercial invoice.xml",
+                      "Continuous.supplies.xml",
+                      "Deemed.supply.-.predefined.endpoint.xml",
+                      "Disclosed.agent.billing.xml",
+                      "Doc-level-allowance-AE-category.xml",
+                      "Doc-level-allowance-E-category.xml",
+                      "Doc-level-allowance-O-category.xml",
+                      "Doc-level-allowance-Z-category.xml",
+                      "Doc-level-charge-AE-category.xml",
+                      "Doc-level-charge-E-category.xml",
+                      "Doc-level-charge-O-category.xml",
+                      "Doc-level-charge-Z-category.xml",
+                      "Exports.-.predefined.endpoint.xml",
+                      "Exports.xml",
+                      "Margin scheme.xml",
+                      "Seller-PAS-identifier.xml",
+                      "Seller-TIN-identifier.xml",
+                      "Seller-TRN-and-TIN-identifiers.xml",
+                      "Standard invoice Mandatory fields.xml",
+                      "Standard tax invoice.xml",
+                      "Standard.invoice.-.Extensive.xml",
+                      "Standard.tax.invoice.-.predefined.endpoint.xml",
+                      "Summary tax invoice.xml",
+                      "Supply involving free trade zone.xml",
+                      "Supply through e-commerce.xml",
+                      "Supply under Reverse charge mechanism.xml",
+                      "Zero rated supplies.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2026_11))
+    {
+      return _getAll ("pint-ae/2026.11/billing/cn/",
+                      "Disclosed agent billing tax credit note.xml",
+                      "Standard tax credit Note.xml",
+                      "Volume-discount-credit-note.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2026_11))
+    {
+      return _getAll ("pint-ae/2026.11/selfbilling/inv/", "Self Billing.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2026_11))
+    {
+      return _getAll ("pint-ae/2026.11/selfbilling/cn/", "Self billing tax credit note.xml");
     }
 
     /* PINT AUNZ */

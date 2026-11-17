@@ -292,6 +292,13 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.7.1 - work in progress
+* Added Peppol PINT AE 1.0.5 rules (`org.peppol.pint.ae:*:2026.11`) for Billing and Self-Billing. See [#103](https://github.com/phax/phive-rules/issues/103)
+  * New rule `ibr-198-ae`, removed rule `ibr-185-ae`, logic corrections in about 20 AE rules (e.g. `ibr-122-ae`, `ibr-123-ae`, `ibr-128-ae`, `ibr-149-ae`, `ibr-177-ae`, `ibr-183-ae`, `aligned-ibrp-ae-06/07`), new RCM code `DL8.48.8.3`, Frequency of Billing moved to IBT-008, based on PINT General 1.1.4
+  * The PINT AE 2026.3 (aka 1.0.3) VES are now deprecated
+* Added Peppol AE TDD 1.0.5 rules (`org.peppol.taxdata:ae:1.0.5`). See [#104](https://github.com/phax/phive-rules/issues/104)
+  * New rules `ibr-tdd-58` to `ibr-tdd-61` (Seller and Buyer name), `ibr-tdd-42` relaxed for Invoice type codes 480 and 81 and for a Seller with TRN and TIN, currency code list aligned with PINT AE (`STN`, `XCG` added; `ANG`, `BGN`, `STD` removed)
+
 v4.7.0 - 2026-11-15
 * Updated to phive 12.3.0
 * Added new submodule `phive-rules-bom` - a Maven Bill of Materials (BOM) for all phive-rules artefacts. Use it instead of importing `phive-rules-parent-pom`.

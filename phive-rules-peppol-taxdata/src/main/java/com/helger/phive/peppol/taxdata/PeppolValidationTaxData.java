@@ -56,6 +56,7 @@ public final class PeppolValidationTaxData
   @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_3 = DVRHelper.createCoordinate (GROUP_ID, "ae", "1.0.3");
   public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_4 = DVRHelper.createCoordinate (GROUP_ID, "ae", "1.0.4");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_5 = DVRHelper.createCoordinate (GROUP_ID, "ae", "1.0.5");
 
   // OM
   @Deprecated (forRemoval = false)
@@ -147,6 +148,17 @@ public final class PeppolValidationTaxData
                    .addXSD (aXsds100)
                    .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                        "ae/xslt/peppol-ae-tdd-1.0.4.xslt",
+                                                                                       _getCL ()), aNsCtx))
+                   .registerInto (aRegistry);
+
+      // TDD AE 1.0.5
+      VesXmlBuilder.builder ()
+                   .vesID (VID_OPENPEPPOL_TDD_AE_1_0_5)
+                   .displayName ("AE Tax Data Document 1.0.5")
+                   .notDeprecated ()
+                   .addXSD (aXsds100)
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "ae/xslt/peppol-ae-tdd-1.0.5.xslt",
                                                                                        _getCL ()), aNsCtx))
                    .registerInto (aRegistry);
     }

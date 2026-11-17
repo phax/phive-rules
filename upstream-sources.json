@@ -287,13 +287,14 @@
       "check": "web-page",
       "url": "https://docs.peppol.eu/poac/ae/",
       "url-status": "verified",
-      "current": "2026.5",
-      "current-upstream": "1.0.4",
-      "upstream-latest": "1.0.4 (PDK 1.4.4, 2026-07-29)",
+      "current": "2026.11",
+      "current-upstream": "1.0.5",
+      "upstream-latest": "1.0.5 (PDK 1.4.4, 2026-11-17)",
       "status": "up-to-date",
-      "last-checked": "2026-11-13",
+      "last-checked": "2026-11-17",
       "detect": "version AND the PDK release date in the page footer - hotfixes replace Schematrons in place under the same version",
-      "notes": "Mapping 2026.3 = 1.0.3, 2026.5 = 1.0.4. QUESTION: '2026.3 VALID_PER is 2026-01-21 but its comment says \"from 2026-03-25\".'"
+      "notes": "Mapping 2026.3 = 1.0.3, 2026.5 = 1.0.4, 2026.11 = 1.0.5. QUESTION: '2026.3 VALID_PER is 2026-01-21 but its comment says \"from 2026-03-25\".'",
+      "issue": "https://github.com/phax/phive-rules/issues/103"
     },
     {
       "id": "pint-aunz",
@@ -414,10 +415,11 @@
       "check": "web-page",
       "url": "https://docs.peppol.eu/poac/ae/ae-tdd/",
       "url-status": "verified",
-      "current": "1.0.4",
-      "upstream-latest": "1.0.4 (2026-07-29)",
+      "current": "1.0.5",
+      "upstream-latest": "1.0.5 (2026-11-17)",
       "status": "up-to-date",
-      "last-checked": "2026-11-13"
+      "last-checked": "2026-11-17",
+      "issue": "https://github.com/phax/phive-rules/issues/104"
     },
     {
       "id": "tdd-om",
