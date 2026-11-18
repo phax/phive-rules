@@ -71,7 +71,7 @@
     <phive-rules-shared.version>1.0.0</phive-rules-shared.version>
     <phive-rules-foundations.version>5.0.7</phive-rules-foundations.version>
 
-    <peppol-commons.version>13.2.3</peppol-commons.version>
+    <peppol-commons.version>13.3.0</peppol-commons.version>
     <peppol-om.version>1.2.5</peppol-om.version>
     <peppol-sk.version>0.9.2</peppol-sk.version>
     <peppol-uae.version>1.2.0</peppol-uae.version>
