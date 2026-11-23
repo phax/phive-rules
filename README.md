@@ -292,7 +292,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.7.2 - work in progress
+v4.7.2 - 2026-11-23
 * Added Peppol SK TDD 1.1.0 rules (`org.peppol.taxdata:sk:1.1.0`), mandatory from 2026-11-25.
   See [#105](https://github.com/phax/phive-rules/issues/105)
   * New rules `ibr-tdd-88` (Corrected invoice 384 requires a preceding document reference) and `ibr-tdd-89` to `ibr-tdd-100` (no attributes other than `currencyID`, `unitCode` or `listID`), Buyer VAT identifier (BT-48) optional, Buyer legal registration identifier (BT-47) added, `BR-IC-12` disabled, corrected rule contexts so that inherited EN 16931 and Peppol rules now fire, code lists aligned with Peppol BIS Billing 3.1.0 and PINT General 1.1.4
