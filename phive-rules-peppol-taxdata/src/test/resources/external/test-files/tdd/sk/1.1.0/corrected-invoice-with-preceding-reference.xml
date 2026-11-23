@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SK-SK domestic corrected invoice (BT-003 = 384) with a PRECEDING DOCUMENT/INVOICE REFERENCE (BG-03). Expected result: valid, no assertion raised by ibr-tdd-88. -->
+<pxs:TaxData xmlns:pxs="urn:peppol:schema:sk-taxdata:1.0" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+	<cbc:CustomizationID>urn:peppol:taxdata:sk-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:taxreporting</cbc:ProfileID>
+	<cbc:UUID>6c3a1f10-2b41-4f2c-9a2d-11f0b6c4a101</cbc:UUID>
+	<cbc:IssueDate>2026-03-16</cbc:IssueDate>
+	<cbc:IssueTime>10:15:00.0Z</cbc:IssueTime>
+	<pxs:TaxDataTypeCode>S</pxs:TaxDataTypeCode>
+	<pxs:DocumentScope>D</pxs:DocumentScope>
+	<pxs:ReporterRole>C2</pxs:ReporterRole>
+	<pxs:TaxAuthority>
+		<cbc:ID>SK-TAX</cbc:ID>
+		<cbc:Name>Financial Directorate of the Slovak Republic</cbc:Name>
+	</pxs:TaxAuthority>
+	<pxs:ReportingParty>
+		<cbc:EndpointID schemeID="0088">9482348239846</cbc:EndpointID>
+	</pxs:ReportingParty>
+	<pxs:ReceivingParty>
+		<cbc:EndpointID schemeID="0242">SK12345678</cbc:EndpointID>
+	</pxs:ReceivingParty>
+	<pxs:ReportersRepresentative>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0242">SK12345678</cbc:ID>
+		</cac:PartyIdentification>
+	</pxs:ReportersRepresentative>
+	<pxs:ReportedTransaction>
+		<pxs:ReportedDocument>
+			<cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0</cbc:CustomizationID>
+			<cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+			<cbc:ID>SK-INV-2026-0101</cbc:ID>
+			<cbc:UUID>b1d2e3f4-0011-4a2b-8c3d-5e6f70819201</cbc:UUID>
+			<cbc:IssueDate>2026-03-15</cbc:IssueDate>
+			<pxs:DocumentTypeCode>384</pxs:DocumentTypeCode>
+			<cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+			<cac:BillingReference>
+				<cac:InvoiceDocumentReference>
+					<cbc:ID>SK-INV-2026-0100</cbc:ID>
+					<cbc:IssueDate>2026-02-10</cbc:IssueDate>
+				</cac:InvoiceDocumentReference>
+			</cac:BillingReference>
+			<cac:AccountingSupplierParty>
+				<cac:Party>
+					<cac:PostalAddress>
+						<cac:Country>
+							<cbc:IdentificationCode>SK</cbc:IdentificationCode>
+						</cac:Country>
+					</cac:PostalAddress>
+					<cac:PartyTaxScheme>
+						<cbc:CompanyID>SK2020123456</cbc:CompanyID>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:PartyTaxScheme>
+				</cac:Party>
+			</cac:AccountingSupplierParty>
+			<cac:AccountingCustomerParty>
+				<cac:Party>
+					<cac:PostalAddress>
+						<cac:Country>
+							<cbc:IdentificationCode>SK</cbc:IdentificationCode>
+						</cac:Country>
+					</cac:PostalAddress>
+					<cac:PartyTaxScheme>
+						<cbc:CompanyID>SK2020654321</cbc:CompanyID>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:PartyTaxScheme>
+					<cac:PartyLegalEntity>
+						<cbc:RegistrationName>Bratislava Trading s.r.o.</cbc:RegistrationName>
+					</cac:PartyLegalEntity>
+				</cac:Party>
+			</cac:AccountingCustomerParty>
+			<cac:PaymentMeans>
+				<cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
+				<cbc:PaymentID>SK-INV-2026-0101</cbc:PaymentID>
+				<cac:PayeeFinancialAccount>
+					<cbc:ID>SK3112000000198742637541</cbc:ID>
+					<cac:FinancialInstitutionBranch>
+						<cbc:ID>GIBASKBX</cbc:ID>
+					</cac:FinancialInstitutionBranch>
+				</cac:PayeeFinancialAccount>
+			</cac:PaymentMeans>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="EUR">230.00</cbc:TaxAmount>
+				<cac:TaxSubtotal>
+					<cbc:TaxableAmount currencyID="EUR">1000.00</cbc:TaxableAmount>
+					<cbc:TaxAmount currencyID="EUR">230.00</cbc:TaxAmount>
+					<cac:TaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>23.0</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+			<pxs:MonetaryTotal>
+				<cbc:LineExtensionAmount currencyID="EUR">1000.00</cbc:LineExtensionAmount>
+				<cbc:TaxExclusiveAmount currencyID="EUR">1000.00</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount currencyID="EUR">1230.00</cbc:TaxInclusiveAmount>
+				<cbc:PayableAmount currencyID="EUR">1230.00</cbc:PayableAmount>
+			</pxs:MonetaryTotal>
+			<pxs:DocumentLine>
+				<cbc:ID>1</cbc:ID>
+				<cbc:InvoicedQuantity unitCode="DAY">10</cbc:InvoicedQuantity>
+				<cbc:LineExtensionAmount currencyID="EUR">1000.00</cbc:LineExtensionAmount>
+				<cac:Item>
+					<cbc:Description>Consulting services delivered in February 2026</cbc:Description>
+					<cbc:Name>Consulting services</cbc:Name>
+					<cac:CommodityClassification>
+						<cbc:ItemClassificationCode listID="SRV">09348023</cbc:ItemClassificationCode>
+					</cac:CommodityClassification>
+					<cac:ClassifiedTaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>23.0</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:ClassifiedTaxCategory>
+				</cac:Item>
+				<cac:Price>
+					<cbc:PriceAmount currencyID="EUR">100.00</cbc:PriceAmount>
+				</cac:Price>
+			</pxs:DocumentLine>
+		</pxs:ReportedDocument>
+	</pxs:ReportedTransaction>
+</pxs:TaxData>

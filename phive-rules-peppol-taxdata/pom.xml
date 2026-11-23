@@ -118,8 +118,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/tdd/sk/1.0.0</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/tdd/sk/1.0.0</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/tdd/sk/1.1.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/tdd/sk/1.1.0</xsltDirectory>
             </configuration>
           </execution>
           -->

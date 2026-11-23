@@ -64,7 +64,9 @@ public final class PeppolValidationTaxData
   public static final DVRCoordinate VID_OPENPEPPOL_TDD_OM_1_0_1 = DVRHelper.createCoordinate (GROUP_ID, "om", "1.0.1");
 
   // SK
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_TDD_SK_1_0_0 = DVRHelper.createCoordinate (GROUP_ID, "sk", "1.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_SK_1_1_0 = DVRHelper.createCoordinate (GROUP_ID, "sk", "1.1.0");
 
   // ViDA Pilot
   @Deprecated (forRemoval = false)
@@ -192,13 +194,14 @@ public final class PeppolValidationTaxData
 
     // SK
     {
+      // The XML Schema is identical in 1.0.0 and 1.1.0
       final MapBasedNamespaceContext aNsCtx = PeppolSKTDD100Marshaller.createNamespaceContext ();
 
       // 1.0.0
       VesXmlBuilder.builder ()
                    .vesID (VID_OPENPEPPOL_TDD_SK_1_0_0)
                    .displayName ("Peppol SK Tax Data Document 1.0.0")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (PeppolSKTDD100Marshaller.getAllXSDs ())
                    .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                        "sk/1.0.0/CEN-EN16931-UBL.xslt",
@@ -208,6 +211,23 @@ public final class PeppolValidationTaxData
                                                                                        _getCL ()), aNsCtx))
                    .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                        "sk/1.0.0/Peppol-Slovak Republic-TDD.xslt",
+                                                                                       _getCL ()), aNsCtx))
+                   .registerInto (aRegistry);
+
+      // 1.1.0
+      VesXmlBuilder.builder ()
+                   .vesID (VID_OPENPEPPOL_TDD_SK_1_1_0)
+                   .displayName ("Peppol SK Tax Data Document 1.1.0")
+                   .notDeprecated ()
+                   .addXSD (PeppolSKTDD100Marshaller.getAllXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "sk/1.1.0/CEN-EN16931-UBL.xslt",
+                                                                                       _getCL ()), aNsCtx))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "sk/1.1.0/PEPPOL-EN16931-UBL.xslt",
+                                                                                       _getCL ()), aNsCtx))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "sk/1.1.0/Peppol-Slovak Republic-TDD.xslt",
                                                                                        _getCL ()), aNsCtx))
                    .registerInto (aRegistry);
     }

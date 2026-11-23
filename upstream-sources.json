@@ -447,12 +447,13 @@
       "check": "web-page",
       "url": "https://docs.peppol.eu/tdd/sk/tdd-sk/",
       "url-status": "verified",
-      "current": "1.0.0",
+      "current": "1.1.0",
       "status": "up-to-date",
-      "last-checked": "2026-11-13",
-      "notes": "Note the path /tdd/sk/, not /poac/sk/. The three Schematrons in resources.zip (Last-Modified 2026-04-14) are byte-identical to rule-source/tdd/sk/1.0.0, although the repo added them on 2026-04-02.",
-      "upstream-latest": "1.0.0 (2026-04-14)",
-      "detect": "version and release date on the page (release notes: https://docs.peppol.eu/tdd/sk/tdd-sk/release-notes/); resources package https://docs.peppol.eu/tdd/sk/tdd-sk/resources.zip for hash comparison"
+      "last-checked": "2026-11-23",
+      "notes": "Note the path /tdd/sk/, not /poac/sk/. Versioned pages exist since 1.1.0: https://docs.peppol.eu/tdd/sk/v1.1.0/tdd-sk/ (resources.zip there, Last-Modified 2026-11-20). On 2026-11-23 the unversioned url still showed 1.0.0 (2026-04-14) - also probe the next versioned URL (v1.1.1/, v1.2.0/). 1.1.0 is mandatory from 2026-11-25. The XSD in 1.1.0 is byte-identical to 1.0.0 (peppol-sk 2026-04-14). The two WithoutTaxes examples are not XSD valid (missing cbc:TaxAmount) and are excluded from the tests.",
+      "upstream-latest": "1.1.0 (2026-11-20, PDK 1.4.4)",
+      "detect": "version and release date on the page (release notes: https://docs.peppol.eu/tdd/sk/tdd-sk/release-notes/); resources package https://docs.peppol.eu/tdd/sk/tdd-sk/resources.zip for hash comparison",
+      "issue": "https://github.com/phax/phive-rules/issues/105"
     },
     {
       "id": "tdd-vida",

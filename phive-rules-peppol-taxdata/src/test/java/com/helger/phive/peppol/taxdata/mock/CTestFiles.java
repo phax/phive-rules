@@ -63,6 +63,7 @@ public final class CTestFiles
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_OM_1_0_1,
 
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_SK_1_0_0,
+                                                             PeppolValidationTaxData.VID_OPENPEPPOL_TDD_SK_1_1_0,
 
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_VIDA_1_0_0,
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_VIDA_1_1_0, })
@@ -195,6 +196,43 @@ public final class CTestFiles
                       "Vat-category-S.xml",
                       "vat-category-Z.xml"
       // ,"WithoutTaxes-example.xml"
+      );
+    }
+
+    // SK TDD 1.1.0
+    if (aVESID.equals (PeppolValidationTaxData.VID_OPENPEPPOL_TDD_SK_1_1_0))
+    {
+      return _getAll ("tdd/sk/1.1.0/",
+                      "Allowance-example.xml",
+                      "base-creditnote-correction.xml",
+                      "base-example.xml",
+                      "base-negative-inv-correction.xml",
+                      "buyer-without-vat-identifier.xml",
+                      "commercial-invoice-without-preceding-reference.xml",
+                      "corrected-invoice-with-preceding-reference.xml",
+                      "SB-Allowance-example.xml",
+                      "SB-base-creditnote-correction.xml",
+                      "SB-base-example.xml",
+                      "SB-base-negative-inv-correction.xml",
+                      "SB-vat-category-E.xml",
+                      "SB-vat-category-O.xml",
+                      "SB-Vat-category-S.xml",
+                      "SB-vat-category-Z.xml",
+                      // "SB-WithoutTaxes-example.xml" - not XSD valid, see below
+                      "vat-category-AE-BT-47.xml",
+                      "vat-category-AE.xml",
+                      "vat-category-E.xml",
+                      "vat-category-G.xml",
+                      "vat-category-K.xml",
+                      "vat-category-L.xml",
+                      "vat-category-M.xml",
+                      "vat-category-O.xml",
+                      "Vat-category-S.xml",
+                      "vat-category-Z.xml"
+      // The two "WithoutTaxes" examples of the specification are not XSD valid: they contain a
+      // cac:TaxTotal without cbc:TaxAmount and a cac:TaxSubtotal without cbc:TaxAmount, but both
+      // are mandatory in UBL 2.1
+      // , "WithoutTaxes-example.xml"
       );
     }
 
