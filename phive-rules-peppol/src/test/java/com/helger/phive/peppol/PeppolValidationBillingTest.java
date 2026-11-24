@@ -47,11 +47,14 @@ public final class PeppolValidationBillingTest
     final ValidationExecutorSetRegistry <IValidationSourceXML> aRegistry = new ValidationExecutorSetRegistry <> ();
     PeppolValidationBisEurope.initBilling (aRegistry);
 
-    assertTrue (aRegistry.getAll ().size () >= 8);
+    assertTrue (aRegistry.getAll ().size () >= 12);
     assertNotNull (aRegistry.getOfID (PeppolValidation2025_11.VID_OPENPEPPOL_INVOICE_UBL_V3));
     assertNotNull (aRegistry.getOfID (PeppolValidation2026_03.VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3));
     assertNotNull (aRegistry.getOfID (PeppolValidation2026_05.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3));
     assertNull (aRegistry.getOfID (PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3));
     assertNotNull (aRegistry.getOfID (PeppolValidationSbdhEnvelope2026_05.VID_SBDH_INVOICE));
+    assertNotNull (aRegistry.getOfID (PeppolValidation2026_11.VID_OPENPEPPOL_INVOICE_UBL_V3));
+    assertNull (aRegistry.getOfID (PeppolValidation2026_11.VID_OPENPEPPOL_ORDER_V3));
+    assertNotNull (aRegistry.getOfID (PeppolValidationSbdhEnvelope2026_11.VID_SBDH_INVOICE));
   }
 }

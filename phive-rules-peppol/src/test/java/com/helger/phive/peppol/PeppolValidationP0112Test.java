@@ -102,4 +102,10 @@ public final class PeppolValidationP0112Test
   {
     _testRelease (PeppolValidation2026_05.VERSION_STR, PeppolValidation2026_05.VID_OPENPEPPOL_INVOICE_UBL_V3);
   }
+
+  @Test
+  public void test2026_11 ()
+  {
+    _testRelease (PeppolValidation2026_11.VERSION_STR, PeppolValidation2026_11.VID_OPENPEPPOL_INVOICE_UBL_V3);
+  }
 }

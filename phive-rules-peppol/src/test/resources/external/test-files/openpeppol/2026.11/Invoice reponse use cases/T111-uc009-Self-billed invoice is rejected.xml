@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+                Content:
+                This file contains a Peppol Invoice Response, profile 63.
+                It demonstrates Use Case 9 - Self-billed invoice is rejected by the Seller.
+
+                Errors:
+                None
+
+                Warnings:
+                None
+
+-->
+<ApplicationResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:invoice_response:3</cbc:CustomizationID>
+    <cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:invoice_response:3</cbc:ProfileID>
+    <cbc:ID>imr-selfbilling-001</cbc:ID>
+    <cbc:IssueDate>2026-08-20</cbc:IssueDate>
+    <cac:SenderParty>
+        <cbc:EndpointID schemeID="0088">5798000012349</cbc:EndpointID>
+        <cac:PartyLegalEntity>
+            <cbc:RegistrationName>Seller company</cbc:RegistrationName>
+        </cac:PartyLegalEntity>
+    </cac:SenderParty>
+    <cac:ReceiverParty>
+        <cbc:EndpointID schemeID="0088">7330001000000</cbc:EndpointID>
+        <cac:PartyLegalEntity>
+            <cbc:RegistrationName>Buyer organization</cbc:RegistrationName>
+        </cac:PartyLegalEntity>
+    </cac:ReceiverParty>
+    <cac:DocumentResponse>
+        <cac:Response>
+            <cbc:ResponseCode>RE</cbc:ResponseCode>
+            <cac:Status>
+                <cbc:StatusReasonCode listID="OPStatusReason">REF</cbc:StatusReasonCode>
+                <cbc:StatusReason>The contract reference in the self-billed invoice is incorrect.</cbc:StatusReason>
+            </cac:Status>
+        </cac:Response>
+        <cac:DocumentReference>
+            <cbc:ID>SBI-2026-0042</cbc:ID>
+            <cbc:IssueDate>2026-08-19</cbc:IssueDate>
+            <cbc:DocumentTypeCode>389</cbc:DocumentTypeCode>
+        </cac:DocumentReference>
+    </cac:DocumentResponse>
+</ApplicationResponse>

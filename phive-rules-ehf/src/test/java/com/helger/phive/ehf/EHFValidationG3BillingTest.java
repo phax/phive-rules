@@ -31,6 +31,7 @@ import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.ehf.mock.CTestFiles;
 import com.helger.phive.peppol.PeppolValidation2025_11;
 import com.helger.phive.peppol.PeppolValidation2026_05;
+import com.helger.phive.peppol.PeppolValidation2026_11;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
@@ -62,6 +63,8 @@ public final class EHFValidationG3BillingTest
     _assertAlias (PeppolValidation2025_11.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3);
     _assertAlias (PeppolValidation2026_05.VID_OPENPEPPOL_INVOICE_UBL_V3);
     _assertAlias (PeppolValidation2026_05.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3);
+    _assertAlias (PeppolValidation2026_11.VID_OPENPEPPOL_INVOICE_UBL_V3);
+    _assertAlias (PeppolValidation2026_11.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3);
   }
 
   @Test
@@ -89,7 +92,7 @@ public final class EHFValidationG3BillingTest
                                                                                                                        EHFValidationG3Billing.ARTIFACT_ID_INVOICE,
                                                                                                                        "latest"));
     assertNotNull (aAlias);
-    assertEquals (PeppolValidation2026_05.VERSION_STR, aAlias.getID ().getVersionString ());
+    assertEquals (PeppolValidation2026_11.VERSION_STR, aAlias.getID ().getVersionString ());
   }
 
   @Test

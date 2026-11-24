@@ -297,6 +297,15 @@ v4.7.3 - work in progress
   See [#106](https://github.com/phax/phive-rules/issues/106)
   * Rule `PEPPOL-EN16931-P0112`: invoice type code 384 (Corrected invoice) is now also allowed when both buyer and seller are Slovak organisations; codes 326 and 389 are only allowed when both are German organisations
   * Self-Billing and Post-Award are unchanged
+* Added Peppol BIS release 2026.11 (Billing 3.1.0, Self-Billing 3.1.0, Upgrade-3 3.1.0) as `eu.peppol.bis3:*:2026.11` and `org.peppol.bis3.sbdh-envelope:*:2026.11`, mandatory from 2027-02-22.
+  See [#107](https://github.com/phax/phive-rules/issues/107)
+  * New fatal inferred mandatory-cardinality rules `PEPPOL-EN16931-R140` to `R276`; `PEPPOL-COMMON-R040` only allows GLN13 with scheme 0088; `PEPPOL-COMMON-R043` validates Belgian enterprise numbers; `PEPPOL-COMMON-R054` to `R057` are now fatal; new warnings `PEPPOL-COMMON-R058` (LU VAT), `R059` (LU Matricule) and `R062` (BE VAT)
+  * Billing: `DE-R-T02` is now fatal, `GR-R-001-5` removed, new Slovak warnings `SK-R-001` to `SK-R-007`, `SE-R-006` only for domestic transactions, `P0112` from the 3.0.22 hotfix
+  * Post-Award: `PEPPOL-T01-R002` and `PEPPOL-T114-R002` removed, new Item Property Name Code list check `PEPPOL-T19-B22701` (the `listID` check moved to `PEPPOL-T19-B22702`)
+  * Code lists: ICD 0249, 0250 and 0251, 18 `VATEX-ES-*` codes, UNCL1001 extended
+  * SBDH envelope rules `BR-SBDH-1` to `BR-SBDH-4` compare identifiers case-insensitively and ignore leading and trailing whitespace
+  * `PeppolValidationBisEurope.getVersionToUse ()` returns 2026.11 from 2027-02-22; the 2026.5 VES stay active
+  * The EHF G3 aliases `no.ehf.g3:invoice:2026.11` and `no.ehf.g3:creditnote:2026.11` are created automatically, so `latest` now resolves to 2026.11
 
 v4.7.2 - 2026-11-23
 * Added Peppol SK TDD 1.1.0 rules (`org.peppol.taxdata:sk:1.1.0`), mandatory from 2026-11-25.

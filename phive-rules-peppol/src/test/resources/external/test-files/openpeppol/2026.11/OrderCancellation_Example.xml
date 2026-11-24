@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OrderCancellation
+  xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2"
+  xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+  xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:order_cancellation:3</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</cbc:ProfileID>
+  <cbc:ID>Cancellation-1</cbc:ID>
+  <cbc:IssueDate>2022-02-01</cbc:IssueDate>
+  <cbc:CancellationNote>With reference to phone call</cbc:CancellationNote>
+  <cac:OrderReference>
+    <cbc:ID>Order-1</cbc:ID>
+  </cac:OrderReference>
+  <cac:BuyerCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0088">7300010000001</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="0007">5541277710</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>City Hospital 345433</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:BuyerCustomerParty>
+  <cac:SellerSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0088">7302347231110</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="0007">5546577791</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>The Supplier AB</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cac:Country>
+          <cbc:IdentificationCode>SE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>The Supplier AB</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:SellerSupplierParty>
+</OrderCancellation>

@@ -48,14 +48,14 @@
       "check": "web-page",
       "url": "https://docs.peppol.eu/poacc/billing/3.0/release-notes/",
       "url-status": "verified",
-      "current": "2026.5",
-      "current-upstream": "3.0.22-hotfix",
-      "upstream-latest": "3.0.22-hotfix (released 2026-10-28, files re-published 2026-11-23, mandatory 2026-12-14); 3.1.0 (2026 Q4 release, published 2026-11-23, mandatory 2027-02-24) at https://docs.peppol.eu/poacc/billing/3.0/2026-Q4/",
-      "status": "update-pending",
+      "current": "2026.11",
+      "current-upstream": "3.1.0",
+      "upstream-latest": "3.1.0 (2026 Q4 release, published 2026-11-23, mandatory 2027-02-22, at https://docs.peppol.eu/poacc/billing/3.0/2026-Q4/); 3.0.22-hotfix (released 2026-10-28, mandatory 2026-12-14) applied in place to 2026.5",
+      "status": "up-to-date",
       "last-checked": "2026-11-24",
       "detect": "top version on the release notes page; also watch for \"-hotfix\" suffixes. The page footers no longer show a PDK date - compare Last-Modified and SHA-256 of the downloadable .sch files with rule-source/openpeppol/<version> (silent in-place re-publications happen, e.g. 2026-08-18)",
-      "notes": "Repo versions are YYYY.M release months (see README \"Peppol Validation Artefact Versioning\"). Mapping: '2025.11 = 3.0.20 (-hotfix swapped in place), 2026.5 = 3.0.21 (3.0.22-hotfix swapped in place, #106).' Billing, Self-Billing and Post-Award share one YYYY.M coordinate per release. QUESTION: 'code says published 2026-05-18, release notes say 2026-05-20.' The Billing and Self-Billing pages also offer PeppolBIS-Envelope-Rules.sch (SBDH envelope rules, Last-Modified 2026-08-18) - registered as org.peppol.bis3.sbdh-envelope:*:2026.5 (#100); compare its hash too. The 2026-08-18 in-place re-publication (EAS 0158 added) was applied in place to the 2026.5 coordinates on 2026-11-13 (originals in docs/ with suffix -2026-08-18). The 3.0.22-hotfix changed only PEPPOL-EN16931-UBL.sch (rule P0112, 384 allowed for SK-SK); original in docs/ with suffix -2026-10-28. Upcoming releases are published below the constant page with a quarter suffix (e.g. /poacc/billing/3.0/2026-Q4/) before they replace the constant page.",
-      "issue": "https://github.com/phax/phive-rules/issues/106"
+      "notes": "Repo versions are YYYY.M release months (see README \"Peppol Validation Artefact Versioning\"). Mapping: '2025.11 = 3.0.20 (-hotfix swapped in place), 2026.5 = 3.0.21 (3.0.22-hotfix swapped in place, #106), 2026.11 = 3.1.0 (#107).' Billing, Self-Billing and Post-Award share one YYYY.M coordinate per release. QUESTION: 'code says published 2026-05-18, release notes say 2026-05-20.' The Billing and Self-Billing pages also offer PeppolBIS-Envelope-Rules.sch (SBDH envelope rules, Last-Modified 2026-08-18) - registered as org.peppol.bis3.sbdh-envelope:*:2026.5 (#100); compare its hash too. The 2026-08-18 in-place re-publication (EAS 0158 added) was applied in place to the 2026.5 coordinates on 2026-11-13 (originals in docs/ with suffix -2026-08-18). The 3.0.22-hotfix changed only PEPPOL-EN16931-UBL.sch (rule P0112, 384 allowed for SK-SK); original in docs/ with suffix -2026-10-28. Upcoming releases are published below the constant page with a quarter suffix (e.g. /poacc/billing/3.0/2026-Q4/) before they replace the constant page. The 3.1.0 envelope rules (BR-SBDH-* case-insensitive) are registered as org.peppol.bis3.sbdh-envelope:*:2026.11.",
+      "issue": "https://github.com/phax/phive-rules/issues/107"
     },
     {
       "id": "peppol-bis-self-billing",
@@ -68,13 +68,14 @@
       "check": "web-page",
       "url": "https://docs.peppol.eu/poacc/self-billing/3.0/release-notes/",
       "url-status": "verified",
-      "current": "2026.5",
-      "current-upstream": "3.0.2",
-      "upstream-latest": "3.0.2 (published 2026-05-20, mandatory 2026-08-17); PEPPOL-EN16931-UBL-SB.sch re-published in place 2026-08-18 (EAS 0158 added to the 'eaid' code list; release notes do not mention it)",
+      "current": "2026.11",
+      "current-upstream": "3.1.0",
+      "upstream-latest": "3.1.0 (2026 Q4 release, published 2026-11-23, mandatory 2027-02-22, at https://docs.peppol.eu/poacc/self-billing/3.0/2026-Q4/)",
       "status": "up-to-date",
-      "last-checked": "2026-11-13",
-      "notes": "Mapping 2026.3 = 3.0.1, 2026.5 = 3.0.2. Both still not deprecated. The 2026-08-18 in-place re-publication (EAS 0158 added) was applied in place to the 2026.5 coordinates on 2026-11-13 (originals in docs/ with suffix -2026-08-18).",
-      "detect": "version on the release notes page AND Last-Modified / SHA-256 of the .sch files vs rule-source/openpeppol/<version>"
+      "last-checked": "2026-11-24",
+      "notes": "Mapping 2026.3 = 3.0.1, 2026.5 = 3.0.2, 2026.11 = 3.1.0. Both still not deprecated. The 2026-08-18 in-place re-publication (EAS 0158 added) was applied in place to the 2026.5 coordinates on 2026-11-13 (originals in docs/ with suffix -2026-08-18). The 2026-Q4 Self-Billing page still ships the unchanged 2026.5 PeppolBIS-Envelope-Rules.sch; the newer Billing version is used for both. Its CEN-EN16931-UBL.sch differs from the Billing copy only in an XML comment.",
+      "detect": "version on the release notes page AND Last-Modified / SHA-256 of the .sch files vs rule-source/openpeppol/<version>",
+      "issue": "https://github.com/phax/phive-rules/issues/107"
     },
     {
       "id": "peppol-bis-post-award",
@@ -97,13 +98,14 @@
       "check": "web-page",
       "url": "https://docs.peppol.eu/poacc/upgrade-3/release-notes/",
       "url-status": "verified",
-      "current": "2026.5",
-      "current-upstream": "3.0.17",
-      "upstream-latest": "3.0.17 (published 2026-05-20, mandatory 2026-08-17); PEPPOLBIS-Upgrade-Schematron.zip re-published in place 2026-08-18 (all 12 PEPPOLBIS-T*.sch: EAS 0158 added to the 'eaid' code list; release notes do not mention it)",
+      "current": "2026.11",
+      "current-upstream": "3.1.0",
+      "upstream-latest": "3.1.0 (2026 Q4 release, published 2026-11-23, mandatory 2027-02-22, at https://docs.peppol.eu/poacc/upgrade-3/2026-Q4/)",
       "status": "up-to-date",
-      "last-checked": "2026-11-13",
-      "notes": "Mapping 2025.11 = 3.0.16, 2026.5 = 3.0.17. The 2026-08-18 in-place re-publication (EAS 0158 added) was applied in place to the 2026.5 coordinates on 2026-11-13 (originals in docs/ with suffix -2026-08-18).",
-      "detect": "version on the release notes page AND Last-Modified / SHA-256 of the Schematron ZIP contents vs rule-source/openpeppol/<version>"
+      "last-checked": "2026-11-24",
+      "notes": "Mapping 2025.11 = 3.0.16, 2026.5 = 3.0.17, 2026.11 = 3.1.0. The 2026-08-18 in-place re-publication (EAS 0158 added) was applied in place to the 2026.5 coordinates on 2026-11-13 (originals in docs/ with suffix -2026-08-18). 3.1.0 examples Catalogue_Example.xml and catalogue-wo-response-use-case-5/6.xml violate the new PEPPOL-T19-B22701 (Item Property Name Code list) and are excluded from the tests.",
+      "detect": "version on the release notes page AND Last-Modified / SHA-256 of the Schematron ZIP contents vs rule-source/openpeppol/<version>",
+      "issue": "https://github.com/phax/phive-rules/issues/107"
     },
     {
       "id": "peppol-bis-aunz",
