@@ -292,7 +292,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.7.3 - work in progress
+v4.7.3 - 2026-11-24
 * Updated the Peppol BIS Billing rules (`eu.peppol.bis3:invoice:2026.5` and `eu.peppol.bis3:creditnote:2026.5`) in place to the 3.0.22 hotfix, mandatory from 2026-12-14.
   See [#106](https://github.com/phax/phive-rules/issues/106)
   * Rule `PEPPOL-EN16931-P0112`: invoice type code 384 (Corrected invoice) is now also allowed when both buyer and seller are Slovak organisations; codes 326 and 389 are only allowed when both are German organisations
