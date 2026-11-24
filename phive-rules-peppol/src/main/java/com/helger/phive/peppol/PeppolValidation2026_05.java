@@ -39,8 +39,8 @@ import com.helger.ubl23.UBL23Marshaller;
 
 /**
  * OpenPeppol validation artefacts release May 2026.<br>
- * Covers Peppol BIS Billing 3.0.21, Peppol BIS Self-Billing 3.0.2 and Peppol BIS 3.0.17 (Upgrade-3
- * Post-Award).<br>
+ * Covers Peppol BIS Billing 3.0.21 (including the 3.0.22 hotfix of 2026-10-28, mandatory from
+ * 2026-12-14), Peppol BIS Self-Billing 3.0.2 and Peppol BIS 3.0.17 (Upgrade-3 Post-Award).<br>
  * Publication date: 2026-05-18.<br>
  * Mandatory use from: Monday 2026-08-17
  *
@@ -57,7 +57,7 @@ public final class PeppolValidation2026_05
 
   // Standard
   public static final String GROUP_ID = "eu.peppol.bis3";
-  // Billing 3.0.21
+  // Billing 3.0.21 + 3.0.22 hotfix
   public static final DVRCoordinate VID_OPENPEPPOL_INVOICE_UBL_V3 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                 "invoice",
                                                                                                 VERSION_STR);
@@ -131,7 +131,7 @@ public final class PeppolValidation2026_05
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // See https://docs.peppol.eu/poacc/billing/3.0/release-notes/
-    final String sAkaVersionBilling = " (aka BIS Billing 3.0.21)";
+    final String sAkaVersionBilling = " (aka BIS Billing 3.0.22)";
     // See https://docs.peppol.eu/poacc/self-billing/3.0/release-notes/
     final String sAkaVersionSelfBilling = " (aka BIS Self-Billing 3.0.2)";
 
@@ -141,7 +141,7 @@ public final class PeppolValidation2026_05
     final IReadableResource INVOICE_UBL_PEPPOL_SB = new ClassPathResource (PREFIX_XSLT + "PEPPOL-EN16931-UBL-SB.xslt",
                                                                            _getCL ());
 
-    // Peppol BIS Billing 3.0.21
+    // Peppol BIS Billing 3.0.22 (hotfix)
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_INVOICE_UBL_V3)
                  .displayName ("OpenPeppol UBL Invoice" + SUFFIX_VERSION + sAkaVersionBilling)

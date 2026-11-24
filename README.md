@@ -292,6 +292,12 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.7.3 - work in progress
+* Updated the Peppol BIS Billing rules (`eu.peppol.bis3:invoice:2026.5` and `eu.peppol.bis3:creditnote:2026.5`) in place to the 3.0.22 hotfix, mandatory from 2026-12-14.
+  See [#106](https://github.com/phax/phive-rules/issues/106)
+  * Rule `PEPPOL-EN16931-P0112`: invoice type code 384 (Corrected invoice) is now also allowed when both buyer and seller are Slovak organisations; codes 326 and 389 are only allowed when both are German organisations
+  * Self-Billing and Post-Award are unchanged
+
 v4.7.2 - 2026-11-23
 * Added Peppol SK TDD 1.1.0 rules (`org.peppol.taxdata:sk:1.1.0`), mandatory from 2026-11-25.
   See [#105](https://github.com/phax/phive-rules/issues/105)

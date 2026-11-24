@@ -3290,15 +3290,17 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="not(normalize-space(.) = '326' or normalize-space(.) = '384') or ($supplierCountryIsDE and $customerCountryIsDE)" />
+      <xsl:when test="not(normalize-space(.) = '326' or normalize-space(.) = '384' or normalize-space(.) = '389') or ($supplierCountryIsDE and $customerCountryIsDE) or (normalize-space(.) = '384' and $supplierCountry = 'SK' and $customerCountry = 'SK')" />
       <xsl:otherwise>
-        <svrl:failed-assert test="not(normalize-space(.) = '326' or normalize-space(.) = '384') or ($supplierCountryIsDE and $customerCountryIsDE)">
+        <svrl:failed-assert test="not(normalize-space(.) = '326' or normalize-space(.) = '384' or normalize-space(.) = '389') or ($supplierCountryIsDE and $customerCountryIsDE) or (normalize-space(.) = '384' and $supplierCountry = 'SK' and $customerCountry = 'SK')">
           <xsl:attribute name="id">PEPPOL-EN16931-P0112</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[PEPPOL-EN16931-P0112]-Invoice type code 326 or 384 are only allowed when both buyer and seller are German organizations </svrl:text>
+          <svrl:text>[PEPPOL-EN16931-P0112]-Invoice type codes 326 and 389 are only allowed when both
+        buyer and seller are German organizations. Invoice type code 384 is only allowed when both
+        buyer and seller are German organizations or both are Slovak organizations.</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
