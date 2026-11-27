@@ -174,9 +174,11 @@ public final class SimplerInvoicingValidation
                                                                                                "2.0.3.11");
 
   // In effect as of February 23, 2026
+  @Deprecated
   public static final DVRCoordinate VID_SI_INVOICE_V2_0_3_12 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                            "invoice",
                                                                                            "2.0.3.12");
+  @Deprecated
   public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2_0_3_12 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                "creditnote",
                                                                                                "2.0.3.12");
@@ -188,6 +190,14 @@ public final class SimplerInvoicingValidation
   public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2_0_3_13 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                "creditnote",
                                                                                                "2.0.3.13");
+
+  // In effect as of 2027-02-22
+  public static final DVRCoordinate VID_SI_INVOICE_V2_0_3_14 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                           "invoice",
+                                                                                           "2.0.3.14");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2_0_3_14 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                               "creditnote",
+                                                                                               "2.0.3.14");
 
   @Deprecated
   public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V10 = DVRHelper.createCoordinate (GROUP_ID,
@@ -237,12 +247,16 @@ public final class SimplerInvoicingValidation
   public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V1_0_11 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                      "invoice20.g-account",
                                                                                                      "1.0.11");
+  @Deprecated
   public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V1_0_12 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                      "invoice20.g-account",
                                                                                                      "1.0.12");
   public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V1_0_13 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                      "invoice20.g-account",
                                                                                                      "1.0.13");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V1_0_14 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                     "invoice20.g-account",
+                                                                                                     "1.0.14");
 
   @Deprecated
   public static final DVRCoordinate VID_SI_NLCIUS_CII_V103 = DVRHelper.createCoordinate (GROUP_ID,
@@ -288,12 +302,16 @@ public final class SimplerInvoicingValidation
   public static final DVRCoordinate VID_SI_NLCIUS_CII_V1_0_3_11 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                               "nlcius-cii",
                                                                                               "1.0.3.11");
+  @Deprecated
   public static final DVRCoordinate VID_SI_NLCIUS_CII_V1_0_3_12 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                               "nlcius-cii",
                                                                                               "1.0.3.12");
   public static final DVRCoordinate VID_SI_NLCIUS_CII_V1_0_3_13 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                               "nlcius-cii",
                                                                                               "1.0.3.13");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1_0_3_14 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                              "nlcius-cii",
+                                                                                              "1.0.3.14");
 
   @NonNull
   private static ClassLoader _getCL ()
@@ -694,14 +712,14 @@ public final class SimplerInvoicingValidation
       VesXmlBuilder.builder ()
                    .vesID (VID_SI_INVOICE_V2_0_3_12)
                    .displayName ("Simplerinvoicing Invoice 2.0.3.12")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_SI_CREDIT_NOTE_V2_0_3_12)
                    .displayName ("Simplerinvoicing Credit Note 2.0.3.12")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
                    .registerInto (aRegistry);
@@ -720,6 +738,25 @@ public final class SimplerInvoicingValidation
       VesXmlBuilder.builder ()
                    .vesID (VID_SI_CREDIT_NOTE_V2_0_3_13)
                    .displayName ("Simplerinvoicing Credit Note 2.0.3.13")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
+                   .registerInto (aRegistry);
+    }
+
+    // 2.0.3.14 - In effect as of 2027-02-22
+    {
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.14.xslt", _getCL ());
+      VesXmlBuilder.builder ()
+                   .vesID (VID_SI_INVOICE_V2_0_3_14)
+                   .displayName ("Simplerinvoicing Invoice 2.0.3.14")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
+                   .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                   .vesID (VID_SI_CREDIT_NOTE_V2_0_3_14)
+                   .displayName ("Simplerinvoicing Credit Note 2.0.3.14")
                    .notDeprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
@@ -862,7 +899,7 @@ public final class SimplerInvoicingValidation
     VesXmlBuilder.builder ()
                  .vesID (VID_SI_INVOICE_20_GACCOUNT_V1_0_12)
                  .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0.12")
-                 .notDeprecated ()
+                 .deprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                               "si-ubl-2.0-ext-gaccount-1.0.12.xslt",
@@ -877,6 +914,17 @@ public final class SimplerInvoicingValidation
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                               "si-ubl-2.0-ext-gaccount-1.0.13.xslt",
+                                                                                              _getCL ())))
+                 .registerInto (aRegistry);
+
+    // 2.0 G-Account 1.0.14 - release 2026-11-27
+    VesXmlBuilder.builder ()
+                 .vesID (VID_SI_INVOICE_20_GACCOUNT_V1_0_14)
+                 .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0.14")
+                 .notDeprecated ()
+                 .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
+                                                                                              "si-ubl-2.0-ext-gaccount-1.0.14.xslt",
                                                                                               _getCL ())))
                  .registerInto (aRegistry);
 
@@ -1009,7 +1057,7 @@ public final class SimplerInvoicingValidation
     VesXmlBuilder.builder ()
                  .vesID (VID_SI_NLCIUS_CII_V1_0_3_12)
                  .displayName ("NLCIUS-CII 1.0.3.12")
-                 .notDeprecated ()
+                 .deprecated ()
                  .addXSD (CCIID16B.getXSDResource ())
                  .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
                                                                                                  "nlcius-cii-1.0.3.12.xslt",
@@ -1024,6 +1072,17 @@ public final class SimplerInvoicingValidation
                  .addXSD (CCIID16B.getXSDResource ())
                  .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
                                                                                                  "nlcius-cii-1.0.3.13.xslt",
+                                                                                                 _getCL ())))
+                 .registerInto (aRegistry);
+
+    // NLCIUS 1.0.3.14 - release 2026-11-27
+    VesXmlBuilder.builder ()
+                 .vesID (VID_SI_NLCIUS_CII_V1_0_3_14)
+                 .displayName ("NLCIUS-CII 1.0.3.14")
+                 .notDeprecated ()
+                 .addXSD (CCIID16B.getXSDResource ())
+                 .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
+                                                                                                 "nlcius-cii-1.0.3.14.xslt",
                                                                                                  _getCL ())))
                  .registerInto (aRegistry);
   }

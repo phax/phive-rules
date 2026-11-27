@@ -292,6 +292,12 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.7.4 - work in progress
+* Deprecated Simplerinvoicing Invoice 2.0.3.12, Simplerinvoicing 2.0 G-Account extension 1.0.12 and NLCIUS-CII 1.0.3.12
+* Added Simplerinvoicing Invoice 2.0.3.14, Simplerinvoicing 2.0 G-Account extension 1.0.14 and NLCIUS-CII 1.0.3.14 (release 2026-11-27, in effect from 2027-02-22)
+  * New rules `BR-NL-36` (KVK number 8 digits), `BR-NL-37` (OIN number 20 digits), `BR-NL-38-1`/`BR-NL-38-2` (Dutch VAT number `NL<9 digits>B<2 digits>`) and `BR-NL-39` (KVK establishment number 12 digits), all as warnings
+  * The contained CEN/TC 434 rules were updated from 1.3.16 to 1.3.17
+
 v4.7.3 - 2026-11-24
 * Updated the Peppol BIS Billing rules (`eu.peppol.bis3:invoice:2026.5` and `eu.peppol.bis3:creditnote:2026.5`) in place to the 3.0.22 hotfix, mandatory from 2026-12-14.
   See [#106](https://github.com/phax/phive-rules/issues/106)

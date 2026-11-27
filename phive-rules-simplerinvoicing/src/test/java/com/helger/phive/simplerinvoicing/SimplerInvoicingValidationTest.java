@@ -76,9 +76,9 @@ public final class SimplerInvoicingValidationTest
     // The numeric version classifiers are compared as Strings, hence they must
     // be zero padded to be comparable - see
     // https://github.com/phax/phive-rules/issues/80
-    _testLatest ("invoice", "2.0.3-13");
-    _testLatest ("creditnote", "2.0.3-13");
-    _testLatest ("nlcius-cii", "1.0.3-13");
-    _testLatest ("invoice20.g-account", "1.0.13");
+    _testLatest ("invoice", "2.0.3-14");
+    _testLatest ("creditnote", "2.0.3-14");
+    _testLatest ("nlcius-cii", "1.0.3-14");
+    _testLatest ("invoice20.g-account", "1.0.14");
   }
 }

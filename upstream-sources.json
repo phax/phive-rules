@@ -629,12 +629,12 @@
       "check": "github-release",
       "url": "https://github.com/peppolautoriteit-nl/validation/releases",
       "url-status": "verified",
-      "current": "2.0.3.13 (g-account 1.0.13, nlcius-cii 1.0.3.13)",
-      "upstream-latest": "release 2026-05-21 (in effect 2026-08-17)",
+      "current": "2.0.3.14 (g-account 1.0.14, nlcius-cii 1.0.3.14)",
+      "upstream-latest": "release 2026-11-27 (GitHub pre-release, in effect 2027-02-22)",
       "status": "up-to-date",
-      "last-checked": "2026-11-24",
+      "last-checked": "2026-11-27",
       "detect": "release tags are dates YYYY-MM-DD; old v2.0.x git tags are irrelevant",
-      "notes": "Repo moved from Simplerinvoicing/validation (README.md:53 still has the old URL, which redirects). Upstream calls the G-Account version \"1.0.2.13\", the repo \"1.0.13\"."
+      "notes": "Repo moved from Simplerinvoicing/validation (README.md:53 still has the old URL, which redirects). Upstream calls the G-Account version \"1.0.2.13\", the repo \"1.0.13\". Release 2026-11-27 implemented in 4.7.4 (2.0.3.12 deprecated, 2.0.3.13 kept active)."
     },
     {
       "id": "energie-efactuur",
